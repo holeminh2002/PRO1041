@@ -5,6 +5,7 @@
  */
 package com.coffee.ui;
 
+import com.coffee.utils.MsgBox;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -46,31 +47,30 @@ public class Main extends javax.swing.JFrame {
         btnQLbh = new javax.swing.JButton();
         btnKhuyenmai = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mnuHeThong = new javax.swing.JMenu();
+        mniDangXuat = new javax.swing.JMenuItem();
+        mniDoiMK = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        mniAccount = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        mniExit = new javax.swing.JMenuItem();
+        mnuQuanLy = new javax.swing.JMenu();
+        mniqlnv = new javax.swing.JMenuItem();
+        mniqlkh = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        mnibanhang = new javax.swing.JMenuItem();
+        mnisp = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jSeparator5 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jSeparator6 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
+        mnikhuyenmai = new javax.swing.JMenuItem();
+        mnuThongKe = new javax.swing.JMenu();
+        mniDoanhThu = new javax.swing.JMenuItem();
+        mniKhachHang = new javax.swing.JMenuItem();
+        mniSanPham = new javax.swing.JMenuItem();
+        mnuTroGiup = new javax.swing.JMenu();
+        mniHuongDan = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        mniInfo = new javax.swing.JMenuItem();
+        jSeparator9 = new javax.swing.JPopupMenu.Separator();
         jMenuItem15 = new javax.swing.JMenuItem();
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
         jMenuItem16 = new javax.swing.JMenuItem();
@@ -106,7 +106,7 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setMinimumSize(new java.awt.Dimension(1920, 1200));
         jLabel1.setPreferredSize(new java.awt.Dimension(1920, 1200));
 
-        btnQLnv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Unknown person.png"))); // NOI18N
+        btnQLnv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/User group.png"))); // NOI18N
         btnQLnv.setText("Quản lý nhân viên");
         btnQLnv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +114,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnQLkh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Globe.png"))); // NOI18N
+        btnQLkh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Clien list.png"))); // NOI18N
         btnQLkh.setText("Quản lý khách hàng");
         btnQLkh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +122,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnThongke.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Coin.png"))); // NOI18N
+        btnThongke.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Scroll list.png"))); // NOI18N
         btnThongke.setText("Thống kê");
         btnThongke.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +130,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnQLsp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Call.png"))); // NOI18N
+        btnQLsp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/coffee-icon (1).png"))); // NOI18N
         btnQLsp.setText("Quản lý sản phẩm");
         btnQLsp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +146,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnQLbh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Color wheel.png"))); // NOI18N
+        btnQLbh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Payment.png"))); // NOI18N
         btnQLbh.setText("Quản lý bán hàng");
         btnQLbh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,82 +162,137 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Hệ thống");
+        mnuHeThong.setText("Hệ thống");
 
-        jMenuItem1.setText("Đăng xuất");
-        jMenu1.add(jMenuItem1);
+        mniDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Log out.png"))); // NOI18N
+        mniDangXuat.setText("Đăng xuất");
+        mnuHeThong.add(mniDangXuat);
 
-        jMenuItem2.setText("Đổi mật khẩu");
-        jMenu1.add(jMenuItem2);
-        jMenu1.add(jSeparator1);
+        mniDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Refresh.png"))); // NOI18N
+        mniDoiMK.setText("Đổi mật khẩu");
+        mnuHeThong.add(mniDoiMK);
+        mnuHeThong.add(jSeparator1);
 
-        jMenuItem3.setText("Xem thông tin tài khoản");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        mniAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Unknown person.png"))); // NOI18N
+        mniAccount.setText("Xem thông tin tài khoản");
+        mniAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                mniAccountActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
-        jMenu1.add(jSeparator2);
+        mnuHeThong.add(mniAccount);
+        mnuHeThong.add(jSeparator2);
 
-        jMenuItem4.setText("Thoát");
-        jMenu1.add(jMenuItem4);
+        mniExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Stop.png"))); // NOI18N
+        mniExit.setText("Thoát");
+        mniExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniExitActionPerformed(evt);
+            }
+        });
+        mnuHeThong.add(mniExit);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(mnuHeThong);
 
-        jMenu2.setText("Quản lý");
+        mnuQuanLy.setText("Quản lý");
 
-        jMenuItem5.setText("Quản lý nhân viên");
-        jMenu2.add(jMenuItem5);
+        mniqlnv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/User group.png"))); // NOI18N
+        mniqlnv.setText("Quản lý nhân viên");
+        mniqlnv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniqlnvActionPerformed(evt);
+            }
+        });
+        mnuQuanLy.add(mniqlnv);
 
-        jMenuItem6.setText("Quản lý thông tin KH");
-        jMenu2.add(jMenuItem6);
-        jMenu2.add(jSeparator3);
+        mniqlkh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Clien list.png"))); // NOI18N
+        mniqlkh.setText("Quản lý thông tin KH");
+        mniqlkh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniqlkhActionPerformed(evt);
+            }
+        });
+        mnuQuanLy.add(mniqlkh);
+        mnuQuanLy.add(jSeparator3);
 
-        jMenuItem7.setText("Quản lý sản phẩm");
-        jMenu2.add(jMenuItem7);
-        jMenu2.add(jSeparator4);
+        mnibanhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Payment.png"))); // NOI18N
+        mnibanhang.setText("Quản lý bán hàng");
+        mnibanhang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnibanhangActionPerformed(evt);
+            }
+        });
+        mnuQuanLy.add(mnibanhang);
 
-        jMenuItem8.setText("Chương trình khuyến mãi");
-        jMenu2.add(jMenuItem8);
+        mnisp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/coffee-icon (1).png"))); // NOI18N
+        mnisp.setText("Quản lý sản phẩm");
+        mnisp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnispActionPerformed(evt);
+            }
+        });
+        mnuQuanLy.add(mnisp);
+        mnuQuanLy.add(jSeparator4);
 
-        jMenuBar1.add(jMenu2);
+        mnikhuyenmai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Favourites.png"))); // NOI18N
+        mnikhuyenmai.setText("Chương trình khuyến mãi");
+        mnikhuyenmai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnikhuyenmaiActionPerformed(evt);
+            }
+        });
+        mnuQuanLy.add(mnikhuyenmai);
 
-        jMenu3.setText("Thống kê");
+        jMenuBar1.add(mnuQuanLy);
 
-        jMenuItem9.setText("jMenuItem1");
-        jMenu3.add(jMenuItem9);
+        mnuThongKe.setText("Thống kê");
 
-        jMenuItem10.setText("jMenuItem1");
-        jMenu3.add(jMenuItem10);
-        jMenu3.add(jSeparator5);
+        mniDoanhThu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Coins.png"))); // NOI18N
+        mniDoanhThu.setText("Thống kê doanh thu");
+        mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDoanhThuActionPerformed(evt);
+            }
+        });
+        mnuThongKe.add(mniDoanhThu);
 
-        jMenuItem11.setText("jMenuItem1");
-        jMenu3.add(jMenuItem11);
-        jMenu3.add(jSeparator6);
+        mniKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/User.png"))); // NOI18N
+        mniKhachHang.setText("Thống kê khách hàng");
+        mniKhachHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniKhachHangActionPerformed(evt);
+            }
+        });
+        mnuThongKe.add(mniKhachHang);
 
-        jMenuItem12.setText("jMenuItem1");
-        jMenu3.add(jMenuItem12);
+        mniSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/coffee-icon (1).png"))); // NOI18N
+        mniSanPham.setText("Thống kê sản phẩm");
+        mnuThongKe.add(mniSanPham);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(mnuThongKe);
 
-        jMenu4.setText("Trợ giúp");
+        mnuTroGiup.setText("Trợ giúp");
 
-        jMenuItem13.setText("Hướng dẫn sử dụng");
-        jMenu4.add(jMenuItem13);
+        mniHuongDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Globe.png"))); // NOI18N
+        mniHuongDan.setText("Hướng dẫn sử dụng");
+        mnuTroGiup.add(mniHuongDan);
+        mnuTroGiup.add(jSeparator7);
 
-        jMenuItem14.setText("Thông tin cty");
-        jMenu4.add(jMenuItem14);
-        jMenu4.add(jSeparator7);
+        mniInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Info.png"))); // NOI18N
+        mniInfo.setText("Thông tin cty");
+        mnuTroGiup.add(mniInfo);
+        mnuTroGiup.add(jSeparator9);
 
+        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Mail.png"))); // NOI18N
         jMenuItem15.setText("Email liên hệ QC");
-        jMenu4.add(jMenuItem15);
-        jMenu4.add(jSeparator8);
+        mnuTroGiup.add(jMenuItem15);
+        mnuTroGiup.add(jSeparator8);
 
+        jMenuItem16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Accept.png"))); // NOI18N
         jMenuItem16.setText("Lê Minh đẹp trai ( chưa biết thêm gì )");
-        jMenu4.add(jMenuItem16);
+        mnuTroGiup.add(jMenuItem16);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(mnuTroGiup);
 
         setJMenuBar(jMenuBar1);
 
@@ -315,9 +370,45 @@ public class Main extends javax.swing.JFrame {
         new Dk_TV(this, true).setVisible(true);
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void mniAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAccountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_mniAccountActionPerformed
+
+    private void mniExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniExitActionPerformed
+
+        if (MsgBox.confirm(this, "Bạn muốn kết thúc làm việc ?")) {
+            System.exit(0);
+        }
+
+    }//GEN-LAST:event_mniExitActionPerformed
+
+    private void mniKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniKhachHangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniKhachHangActionPerformed
+
+    private void mniDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoanhThuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniDoanhThuActionPerformed
+
+    private void mniqlnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniqlnvActionPerformed
+        new QLnhanivenDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_mniqlnvActionPerformed
+
+    private void mniqlkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniqlkhActionPerformed
+        new Dk_TV(this, true).setVisible(true);
+    }//GEN-LAST:event_mniqlkhActionPerformed
+
+    private void mnibanhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnibanhangActionPerformed
+        new QLsanphamDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_mnibanhangActionPerformed
+
+    private void mnikhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnikhuyenmaiActionPerformed
+        new KhuyenMaiJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_mnikhuyenmaiActionPerformed
+
+    private void mnispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnispActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnispActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -363,37 +454,36 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnQLsp;
     private javax.swing.JButton btnThongke;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
-    private javax.swing.JPopupMenu.Separator jSeparator5;
-    private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JPopupMenu.Separator jSeparator7;
     private javax.swing.JPopupMenu.Separator jSeparator8;
+    private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JLabel lblDongHo;
     private javax.swing.JLabel lblTrangThai;
+    private javax.swing.JMenuItem mniAccount;
+    private javax.swing.JMenuItem mniDangXuat;
+    private javax.swing.JMenuItem mniDoanhThu;
+    private javax.swing.JMenuItem mniDoiMK;
+    private javax.swing.JMenuItem mniExit;
+    private javax.swing.JMenuItem mniHuongDan;
+    private javax.swing.JMenuItem mniInfo;
+    private javax.swing.JMenuItem mniKhachHang;
+    private javax.swing.JMenuItem mniSanPham;
+    private javax.swing.JMenuItem mnibanhang;
+    private javax.swing.JMenuItem mnikhuyenmai;
+    private javax.swing.JMenuItem mniqlkh;
+    private javax.swing.JMenuItem mniqlnv;
+    private javax.swing.JMenuItem mnisp;
+    private javax.swing.JMenu mnuHeThong;
+    private javax.swing.JMenu mnuQuanLy;
+    private javax.swing.JMenu mnuThongKe;
+    private javax.swing.JMenu mnuTroGiup;
     private javax.swing.JPanel pnlTrangThai;
     // End of variables declaration//GEN-END:variables
     void init() {
