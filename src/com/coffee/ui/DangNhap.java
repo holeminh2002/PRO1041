@@ -19,7 +19,6 @@ public class DangNhap extends javax.swing.JDialog {
     public DangNhap(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        init();
     }
 
     /**
@@ -182,7 +181,7 @@ public class DangNhap extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +190,7 @@ public class DangNhap extends javax.swing.JDialog {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 610));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -263,7 +262,4 @@ public class DangNhap extends javax.swing.JDialog {
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 
-    private void init() {
-        this.setLocationRelativeTo(null);
-    }
 }
