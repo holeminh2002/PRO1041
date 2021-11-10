@@ -5,6 +5,13 @@
  */
 package com.coffee.ui;
 
+import com.coffee.utils.MsgBox;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
+
 /**
  *
  * @author Dell
@@ -32,39 +39,38 @@ public class Main extends javax.swing.JFrame {
         lblTrangThai = new javax.swing.JLabel();
         lblDongHo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnQLnv = new javax.swing.JButton();
+        btnQLkh = new javax.swing.JButton();
+        btnThongke = new javax.swing.JButton();
+        btnQLsp = new javax.swing.JButton();
+        btnDangXuat = new javax.swing.JButton();
+        btnQLbh = new javax.swing.JButton();
+        btnKhuyenmai = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mnuHeThong = new javax.swing.JMenu();
+        mniDangXuat = new javax.swing.JMenuItem();
+        mniDoiMK = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        mniAccount = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        mniExit = new javax.swing.JMenuItem();
+        mnuQuanLy = new javax.swing.JMenu();
+        mniqlnv = new javax.swing.JMenuItem();
+        mniqlkh = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        mnibanhang = new javax.swing.JMenuItem();
+        mnisp = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jSeparator5 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jSeparator6 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
+        mnikhuyenmai = new javax.swing.JMenuItem();
+        mnuThongKe = new javax.swing.JMenu();
+        mniDoanhThu = new javax.swing.JMenuItem();
+        mniKhachHang = new javax.swing.JMenuItem();
+        mniSanPham = new javax.swing.JMenuItem();
+        mnuTroGiup = new javax.swing.JMenu();
+        mniHuongDan = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        mniInfo = new javax.swing.JMenuItem();
+        jSeparator9 = new javax.swing.JPopupMenu.Separator();
         jMenuItem15 = new javax.swing.JMenuItem();
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
         jMenuItem16 = new javax.swing.JMenuItem();
@@ -72,7 +78,7 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Info.png"))); // NOI18N
-        lblTrangThai.setText("Hệ quản lý đào tạo");
+        lblTrangThai.setText("Hệ thống quản lý cà phê - dự án 1");
 
         lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Alarm.png"))); // NOI18N
         lblDongHo.setText("03:17:43 AM");
@@ -100,98 +106,193 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setMinimumSize(new java.awt.Dimension(1920, 1200));
         jLabel1.setPreferredSize(new java.awt.Dimension(1920, 1200));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Unknown person.png"))); // NOI18N
-        jButton1.setText("Quản lý nhân viên");
+        btnQLnv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/User group.png"))); // NOI18N
+        btnQLnv.setText("Quản lý nhân viên");
+        btnQLnv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLnvActionPerformed(evt);
+            }
+        });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Globe.png"))); // NOI18N
-        jButton2.setText("Quản lý khách hàng");
+        btnQLkh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Clien list.png"))); // NOI18N
+        btnQLkh.setText("Quản lý khách hàng");
+        btnQLkh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLkhActionPerformed(evt);
+            }
+        });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Coin.png"))); // NOI18N
-        jButton3.setText("Thống kê");
+        btnThongke.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Scroll list.png"))); // NOI18N
+        btnThongke.setText("Thống kê");
+        btnThongke.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongkeActionPerformed(evt);
+            }
+        });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Call.png"))); // NOI18N
-        jButton4.setText("Quản lý sản phẩm");
+        btnQLsp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/coffee-icon (1).png"))); // NOI18N
+        btnQLsp.setText("Quản lý sản phẩm");
+        btnQLsp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLspActionPerformed(evt);
+            }
+        });
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Log out.png"))); // NOI18N
-        jButton6.setText("Đăng xuất");
+        btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Log out.png"))); // NOI18N
+        btnDangXuat.setText("Đăng xuất");
+        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangXuatActionPerformed(evt);
+            }
+        });
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Color wheel.png"))); // NOI18N
-        jButton7.setText("Quản lý bán hàng");
+        btnQLbh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Payment.png"))); // NOI18N
+        btnQLbh.setText("Quản lý bán hàng");
+        btnQLbh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLbhActionPerformed(evt);
+            }
+        });
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Favourites.png"))); // NOI18N
-        jButton8.setText("Chương trình khuyến mãi");
+        btnKhuyenmai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Favourites.png"))); // NOI18N
+        btnKhuyenmai.setText("Chương trình khuyến mãi");
+        btnKhuyenmai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhuyenmaiActionPerformed(evt);
+            }
+        });
 
-        jMenu1.setText("File");
+        mnuHeThong.setText("Hệ thống");
 
-        jMenuItem1.setText("jMenuItem1");
-        jMenu1.add(jMenuItem1);
+        mniDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Log out.png"))); // NOI18N
+        mniDangXuat.setText("Đăng xuất");
+        mnuHeThong.add(mniDangXuat);
 
-        jMenuItem2.setText("jMenuItem1");
-        jMenu1.add(jMenuItem2);
-        jMenu1.add(jSeparator1);
+        mniDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Refresh.png"))); // NOI18N
+        mniDoiMK.setText("Đổi mật khẩu");
+        mnuHeThong.add(mniDoiMK);
+        mnuHeThong.add(jSeparator1);
 
-        jMenuItem3.setText("jMenuItem1");
-        jMenu1.add(jMenuItem3);
-        jMenu1.add(jSeparator2);
+        mniAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Unknown person.png"))); // NOI18N
+        mniAccount.setText("Xem thông tin tài khoản");
+        mniAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAccountActionPerformed(evt);
+            }
+        });
+        mnuHeThong.add(mniAccount);
+        mnuHeThong.add(jSeparator2);
 
-        jMenuItem4.setText("jMenuItem1");
-        jMenu1.add(jMenuItem4);
+        mniExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Stop.png"))); // NOI18N
+        mniExit.setText("Thoát");
+        mniExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniExitActionPerformed(evt);
+            }
+        });
+        mnuHeThong.add(mniExit);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(mnuHeThong);
 
-        jMenu2.setText("Edit");
+        mnuQuanLy.setText("Quản lý");
 
-        jMenuItem5.setText("jMenuItem1");
-        jMenu2.add(jMenuItem5);
+        mniqlnv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/User group.png"))); // NOI18N
+        mniqlnv.setText("Quản lý nhân viên");
+        mniqlnv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniqlnvActionPerformed(evt);
+            }
+        });
+        mnuQuanLy.add(mniqlnv);
 
-        jMenuItem6.setText("jMenuItem1");
-        jMenu2.add(jMenuItem6);
-        jMenu2.add(jSeparator3);
+        mniqlkh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Clien list.png"))); // NOI18N
+        mniqlkh.setText("Quản lý thông tin KH");
+        mniqlkh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniqlkhActionPerformed(evt);
+            }
+        });
+        mnuQuanLy.add(mniqlkh);
+        mnuQuanLy.add(jSeparator3);
 
-        jMenuItem7.setText("jMenuItem1");
-        jMenu2.add(jMenuItem7);
-        jMenu2.add(jSeparator4);
+        mnibanhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Payment.png"))); // NOI18N
+        mnibanhang.setText("Quản lý bán hàng");
+        mnibanhang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnibanhangActionPerformed(evt);
+            }
+        });
+        mnuQuanLy.add(mnibanhang);
 
-        jMenuItem8.setText("jMenuItem1");
-        jMenu2.add(jMenuItem8);
+        mnisp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/coffee-icon (1).png"))); // NOI18N
+        mnisp.setText("Quản lý sản phẩm");
+        mnisp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnispActionPerformed(evt);
+            }
+        });
+        mnuQuanLy.add(mnisp);
+        mnuQuanLy.add(jSeparator4);
 
-        jMenuBar1.add(jMenu2);
+        mnikhuyenmai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Favourites.png"))); // NOI18N
+        mnikhuyenmai.setText("Chương trình khuyến mãi");
+        mnikhuyenmai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnikhuyenmaiActionPerformed(evt);
+            }
+        });
+        mnuQuanLy.add(mnikhuyenmai);
 
-        jMenu3.setText("View");
+        jMenuBar1.add(mnuQuanLy);
 
-        jMenuItem9.setText("jMenuItem1");
-        jMenu3.add(jMenuItem9);
+        mnuThongKe.setText("Thống kê");
 
-        jMenuItem10.setText("jMenuItem1");
-        jMenu3.add(jMenuItem10);
-        jMenu3.add(jSeparator5);
+        mniDoanhThu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Coins.png"))); // NOI18N
+        mniDoanhThu.setText("Thống kê doanh thu");
+        mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDoanhThuActionPerformed(evt);
+            }
+        });
+        mnuThongKe.add(mniDoanhThu);
 
-        jMenuItem11.setText("jMenuItem1");
-        jMenu3.add(jMenuItem11);
-        jMenu3.add(jSeparator6);
+        mniKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/User.png"))); // NOI18N
+        mniKhachHang.setText("Thống kê khách hàng");
+        mniKhachHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniKhachHangActionPerformed(evt);
+            }
+        });
+        mnuThongKe.add(mniKhachHang);
 
-        jMenuItem12.setText("jMenuItem1");
-        jMenu3.add(jMenuItem12);
+        mniSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/coffee-icon (1).png"))); // NOI18N
+        mniSanPham.setText("Thống kê sản phẩm");
+        mnuThongKe.add(mniSanPham);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(mnuThongKe);
 
-        jMenu4.setText("Help");
+        mnuTroGiup.setText("Trợ giúp");
 
-        jMenuItem13.setText("jMenuItem1");
-        jMenu4.add(jMenuItem13);
+        mniHuongDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Globe.png"))); // NOI18N
+        mniHuongDan.setText("Hướng dẫn sử dụng");
+        mnuTroGiup.add(mniHuongDan);
+        mnuTroGiup.add(jSeparator7);
 
-        jMenuItem14.setText("jMenuItem1");
-        jMenu4.add(jMenuItem14);
-        jMenu4.add(jSeparator7);
+        mniInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Info.png"))); // NOI18N
+        mniInfo.setText("Thông tin cty");
+        mnuTroGiup.add(mniInfo);
+        mnuTroGiup.add(jSeparator9);
 
-        jMenuItem15.setText("jMenuItem1");
-        jMenu4.add(jMenuItem15);
-        jMenu4.add(jSeparator8);
+        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Mail.png"))); // NOI18N
+        jMenuItem15.setText("Email liên hệ QC");
+        mnuTroGiup.add(jMenuItem15);
+        mnuTroGiup.add(jSeparator8);
 
-        jMenuItem16.setText("jMenuItem1");
-        jMenu4.add(jMenuItem16);
+        jMenuItem16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Accept.png"))); // NOI18N
+        jMenuItem16.setText("Lê Minh đẹp trai ( chưa biết thêm gì )");
+        mnuTroGiup.add(jMenuItem16);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(mnuTroGiup);
 
         setJMenuBar(jMenuBar1);
 
@@ -204,14 +305,13 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnQLnv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnQLsp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnQLbh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnKhuyenmai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                    .addComponent(btnQLkh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -220,20 +320,21 @@ public class Main extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(btnQLnv, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(btnQLkh, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnQLsp, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnQLbh, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnKhuyenmai, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnThongke, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -241,9 +342,74 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnQLnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLnvActionPerformed
+        new QLnhanivenDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_btnQLnvActionPerformed
+
+    private void btnQLkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLkhActionPerformed
+        new Dk_TV(this, true).setVisible(true);
+    }//GEN-LAST:event_btnQLkhActionPerformed
+
+    private void btnQLspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLspActionPerformed
+        new QLsanphamDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_btnQLspActionPerformed
+
+    private void btnQLbhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLbhActionPerformed
+        new BanHangJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_btnQLbhActionPerformed
+
+    private void btnKhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhuyenmaiActionPerformed
+        new KhuyenMaiJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_btnKhuyenmaiActionPerformed
+
+    private void btnThongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongkeActionPerformed
+        new thongke(this, true).setVisible(true);
+    }//GEN-LAST:event_btnThongkeActionPerformed
+
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        new Dk_TV(this, true).setVisible(true);
+    }//GEN-LAST:event_btnDangXuatActionPerformed
+
+    private void mniAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAccountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniAccountActionPerformed
+
+    private void mniExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniExitActionPerformed
+
+        if (MsgBox.confirm(this, "Bạn muốn kết thúc làm việc ?")) {
+            System.exit(0);
+        }
+
+    }//GEN-LAST:event_mniExitActionPerformed
+
+    private void mniKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniKhachHangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniKhachHangActionPerformed
+
+    private void mniDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoanhThuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniDoanhThuActionPerformed
+
+    private void mniqlnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniqlnvActionPerformed
+        new QLnhanivenDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_mniqlnvActionPerformed
+
+    private void mniqlkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniqlkhActionPerformed
+        new Dk_TV(this, true).setVisible(true);
+    }//GEN-LAST:event_mniqlkhActionPerformed
+
+    private void mnibanhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnibanhangActionPerformed
+        new QLsanphamDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_mnibanhangActionPerformed
+
+    private void mnikhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnikhuyenmaiActionPerformed
+        new KhuyenMaiJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_mnikhuyenmaiActionPerformed
+
+    private void mnispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnispActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnispActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -280,48 +446,61 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton btnDangXuat;
+    private javax.swing.JButton btnKhuyenmai;
+    private javax.swing.JButton btnQLbh;
+    private javax.swing.JButton btnQLkh;
+    private javax.swing.JButton btnQLnv;
+    private javax.swing.JButton btnQLsp;
+    private javax.swing.JButton btnThongke;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
-    private javax.swing.JPopupMenu.Separator jSeparator5;
-    private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JPopupMenu.Separator jSeparator7;
     private javax.swing.JPopupMenu.Separator jSeparator8;
+    private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JLabel lblDongHo;
     private javax.swing.JLabel lblTrangThai;
+    private javax.swing.JMenuItem mniAccount;
+    private javax.swing.JMenuItem mniDangXuat;
+    private javax.swing.JMenuItem mniDoanhThu;
+    private javax.swing.JMenuItem mniDoiMK;
+    private javax.swing.JMenuItem mniExit;
+    private javax.swing.JMenuItem mniHuongDan;
+    private javax.swing.JMenuItem mniInfo;
+    private javax.swing.JMenuItem mniKhachHang;
+    private javax.swing.JMenuItem mniSanPham;
+    private javax.swing.JMenuItem mnibanhang;
+    private javax.swing.JMenuItem mnikhuyenmai;
+    private javax.swing.JMenuItem mniqlkh;
+    private javax.swing.JMenuItem mniqlnv;
+    private javax.swing.JMenuItem mnisp;
+    private javax.swing.JMenu mnuHeThong;
+    private javax.swing.JMenu mnuQuanLy;
+    private javax.swing.JMenu mnuThongKe;
+    private javax.swing.JMenu mnuTroGiup;
     private javax.swing.JPanel pnlTrangThai;
     // End of variables declaration//GEN-END:variables
-    void init(){
+    void init() {
         setLocationRelativeTo(null);
+        startDongHo();
+//        new ChaoJDialog(this, true).setVisible(true);
+//        new DangNhapDialog(this, true).setVisible(true);
+    }
+
+    void startDongHo() {
+        new Timer(1000, new ActionListener() {
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss aaa");
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                lblDongHo.setText(sdf.format(new Date()));
+            }
+        }).start();
     }
 }
