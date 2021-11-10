@@ -12,7 +12,7 @@ package com.coffee.ui;
 public class Main extends javax.swing.JFrame {
 
     /**
-     * nam kha test
+     * nam kha test a b c x y z - > lưu lại bằng cách nhìn theo tao nha
      */
     public Main() {
         initComponents();
