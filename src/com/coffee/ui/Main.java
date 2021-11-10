@@ -12,7 +12,7 @@ package com.coffee.ui;
 public class Main extends javax.swing.JFrame {
 
     /**
-     * update giả bộ nha mn
+     * nam kha test
      */
     public Main() {
         initComponents();
