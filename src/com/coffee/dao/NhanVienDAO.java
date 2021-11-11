@@ -18,12 +18,11 @@ import java.util.List;
  */
 public class NhanVienDAO extends CoffeeDAO<NhanVien, String> {
     public void insert(NhanVien model){
-        String sql="INSERT INTO NhanVien (MaNV, TenNV, GioiTinh, ChucVu, DiaChi, SDT, Email, NgayVaoLam, VaiTro, MatKhau, Hinh) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql="INSERT INTO NhanVien (MaNV, TenNV, GioiTinh, DiaChi, SDT, Email, NgayVaoLam, VaiTro, MatKhau, Hinh) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         XJdbc.update(sql, 
                 model.getMaNV(), 
                 model.getTenNV(), 
-                model.getGioiTinh(), 
-                model.getChucVu(), 
+                model.getGioiTinh(),  
                 model.getDiaChi(), 
                 model.getsDT(), 
                 model.getEmail(), 
@@ -34,11 +33,10 @@ public class NhanVienDAO extends CoffeeDAO<NhanVien, String> {
     }
     
     public void update(NhanVien model){
-        String sql="UPDATE NhanVien SET TenNV=?, GioiTinh=?, ChucVu=?, DiaChi=?, SDT=?, Email=?, NgayVaoLam=?, VaiTro=?, MatKhau=?, Hinh=? WHERE MaNV=?";
+        String sql="UPDATE NhanVien SET TenNV=?, GioiTinh=?,DiaChi=?, SDT=?, Email=?, NgayVaoLam=?, VaiTro=?, MatKhau=?, Hinh=? WHERE MaNV=?";
         XJdbc.update(sql, 
                 model.getTenNV(), 
                 model.getGioiTinh(), 
-                model.getChucVu(), 
                 model.getDiaChi(), 
                 model.getsDT(), 
                 model.getEmail(), 
@@ -76,8 +74,7 @@ public class NhanVienDAO extends CoffeeDAO<NhanVien, String> {
                     entity.setMaNV(rs.getString("MaNV"));
                     entity.setTenNV(rs.getString("TenNV"));
                     entity.setGioiTinh(rs.getBoolean("GioiTinh"));
-                    entity.setChucVu(rs.getString("ChucVu"));
-                    entity.setDiaChi(rs.getString("MaNV"));
+                    entity.setDiaChi(rs.getString("DiaChi"));
                     entity.setsDT(rs.getString("SDT"));
                     entity.setEmail(rs.getString("Email"));
                     entity.setNgayVaoLam(rs.getString("NgayVaoLam"));
