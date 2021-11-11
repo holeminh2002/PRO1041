@@ -12,7 +12,7 @@ package com.coffee.ui;
 public class KhuyenMaiJDialog extends javax.swing.JDialog {
 
     /**
-     * Creates new form KhuyenMaiJDialog
+     * Abc xyz test Nhật
      */
     public KhuyenMaiJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

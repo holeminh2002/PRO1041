@@ -19,7 +19,7 @@ import javax.swing.Timer;
 public class Main extends javax.swing.JFrame {
 
     /**
-     * update giả bộ nha mn
+     * nam kha test a b c x y z - > lưu lại bằng cách nhìn theo tao nha
      */
     public Main() {
         initComponents();
