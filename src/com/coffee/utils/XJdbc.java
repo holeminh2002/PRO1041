@@ -8,7 +8,11 @@ import java.sql.SQLException;
 
 public class XJdbc {
     private static String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+<<<<<<< HEAD
     private static String dburl="jdbc:sqlserver://localhost:1433;database=QL_coffee_Group2_Update";
+=======
+    private static String dburl="jdbc:sqlserver://localhost:1433;database=QL_coffee_Group2_update";
+>>>>>>> 1dca0366ee8a29a0648907acafeefd3b07f2dc35
     private static String username="sa";
     private static String password="1234";
     

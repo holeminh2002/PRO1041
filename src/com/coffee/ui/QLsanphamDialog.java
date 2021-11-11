@@ -249,7 +249,7 @@ public class QLsanphamDialog extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(153, 102, 0));
 
         lbl3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        lbl3.setForeground(new java.awt.Color(102, 51, 0));
+        lbl3.setForeground(new java.awt.Color(255, 255, 255));
         lbl3.setText("*LOẠI SẢN PHẨM");
 
         tbldsmaloai.setModel(new javax.swing.table.DefaultTableModel(

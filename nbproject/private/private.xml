@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/E:/Javanetbeans/Java3/PRO1041/src/com/coffee/ui/Dk_TV.java</file>
+            <file>file:/E:/Javanetbeans/Java3/PRO1041/src/com/coffee/ui/thongke.java</file>
+            <file>file:/E:/Javanetbeans/Java3/PRO1041/src/com/coffee/ui/BanHangJDialog.java</file>
+            <file>file:/E:/Javanetbeans/Java3/PRO1041/src/com/coffee/ui/Main.java</file>
+=======
             <file>file:/G:/Github/PRO1041/src/com/coffee/dao/CaLamVienDAO.java</file>
             <file>file:/G:/Github/PRO1041/src/com/coffee/dao/CoffeeDAO.java</file>
             <file>file:/G:/Github/PRO1041/src/com/coffee/utils/XJdbc.java</file>
             <file>file:/G:/Github/PRO1041/src/com/coffee/ui/DangNhap.java</file>
+>>>>>>> 6d7c6087d710e63179093a9581d8ab75fedd0fa9
         </group>
     </open-files>
 </project-private>

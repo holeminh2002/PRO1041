@@ -12,8 +12,7 @@ package com.coffee.entity;
 public class NhanVien {
     private String maNV;
     private String tenNV;
-    private boolean gioiTinh = false;
-    private String chucVu;
+    private boolean gioiTinh = false;   
     private String diaChi;
     private String sDT;
     private String email;
@@ -44,14 +43,6 @@ public class NhanVien {
 
     public void setGioiTinh(boolean gioiTinh) {
         this.gioiTinh = gioiTinh;
-    }
-
-    public String getChucVu() {
-        return chucVu;
-    }
-
-    public void setChucVu(String chucVu) {
-        this.chucVu = chucVu;
     }
 
     public String getDiaChi() {
