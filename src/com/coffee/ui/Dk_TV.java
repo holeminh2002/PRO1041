@@ -34,10 +34,8 @@ public class Dk_TV extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblThanhVien = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtHo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtHoTen = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtMaKH = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -56,7 +54,6 @@ public class Dk_TV extends javax.swing.JDialog {
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
@@ -65,7 +62,7 @@ public class Dk_TV extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
         jLabel1.setText("Đăng ký thành viên");
 
-        jPanel1.setBackground(new java.awt.Color(238, 207, 161));
+        jPanel1.setBackground(new java.awt.Color(189, 107, 9));
 
         tblThanhVien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblThanhVien.setModel(new javax.swing.table.DefaultTableModel(
@@ -93,15 +90,10 @@ public class Dk_TV extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(238, 207, 161));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Họ ");
-
-        txtHo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Tên");
+        jLabel3.setText("Họ tên");
 
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtHoTen.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Mã khách hàng");
@@ -152,13 +144,13 @@ public class Dk_TV extends javax.swing.JDialog {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(cboDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel7)
-                                    .addComponent(jLabel2))
+                                    .addComponent(jLabel3))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtSDT)
@@ -167,16 +159,11 @@ public class Dk_TV extends javax.swing.JDialog {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(txtHo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(39, 39, 39)
-                                                .addComponent(jLabel3)
-                                                .addGap(40, 40, 40)
-                                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addComponent(cboXH, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(41, 41, 41)
                                                 .addComponent(jLabel8))
-                                            .addComponent(jScrollPane2))
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                                            .addComponent(txtHoTen))
                                         .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(413, 413, 413))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -188,10 +175,8 @@ public class Dk_TV extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtHo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -218,7 +203,7 @@ public class Dk_TV extends javax.swing.JDialog {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(238, 207, 161));
+        jPanel3.setBackground(new java.awt.Color(189, 107, 9));
 
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/add-icon_1.png"))); // NOI18N
 
@@ -231,23 +216,6 @@ public class Dk_TV extends javax.swing.JDialog {
         jButton2.setBackground(new java.awt.Color(255, 204, 0));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/coffee-icon.png"))); // NOI18N
         jButton2.setContentAreaFilled(false);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -264,16 +232,15 @@ public class Dk_TV extends javax.swing.JDialog {
                     .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(89, 89, 89))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(126, 126, 126)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -384,7 +351,6 @@ public class Dk_TV extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cboXH;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -396,14 +362,12 @@ public class Dk_TV extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tblThanhVien;
     private javax.swing.JTextArea txtDiaChi;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtHo;
+    private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtMaKH;
     private javax.swing.JTextField txtSDT;
     // End of variables declaration//GEN-END:variables
