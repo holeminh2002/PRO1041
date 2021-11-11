@@ -19,6 +19,7 @@ public class DangNhap extends javax.swing.JDialog {
     public DangNhap(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        init();
     }
 
     /**
@@ -261,5 +262,10 @@ public class DangNhap extends javax.swing.JDialog {
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+        this.setLocationRelativeTo(null);
+        
+    }
 
 }
