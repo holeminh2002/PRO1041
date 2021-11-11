@@ -5,6 +5,13 @@
  */
 package com.coffee.ui;
 
+import com.coffee.dao.KhuyenMaiDAO;
+import com.coffee.entity.KhuyenMai;
+import com.coffee.utils.MsgBox;
+import java.sql.Date;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author MyLaptop
@@ -12,13 +19,15 @@ package com.coffee.ui;
 public class KhuyenMaiJDialog extends javax.swing.JDialog {
 
     /**
-     * Abc xyz test Nhật
+     * Creates new form KhuyenMaiJDialog
      */
     public KhuyenMaiJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        init();
+        this.init();
     }
+    KhuyenMaiDAO kmdao = new KhuyenMaiDAO();
+    int row = -1;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,11 +47,11 @@ public class KhuyenMaiJDialog extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
-        txtChietKhau = new javax.swing.JTextField();
+        txtGiamGia = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblKhuyenMai = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtMoTa = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
         txtDateStart = new javax.swing.JTextField();
         txtDateEnd = new javax.swing.JTextField();
@@ -78,11 +87,16 @@ public class KhuyenMaiJDialog extends javax.swing.JDialog {
                 "Mã khuyến mãi", "Tên chương trình", "Chiết khấu", "Ngày bắt đầu", "Ngày kết thúc", "Mô tả"
             }
         ));
+        tblKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblKhuyenMaiMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblKhuyenMai);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        txtMoTa.setColumns(20);
+        txtMoTa.setRows(5);
+        jScrollPane3.setViewportView(txtMoTa);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 0, 0));
@@ -98,9 +112,19 @@ public class KhuyenMaiJDialog extends javax.swing.JDialog {
 
         btnCapNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Notes.png"))); // NOI18N
         btnCapNhat.setText("Cập nhật");
+        btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCapNhatActionPerformed(evt);
+            }
+        });
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Delete.png"))); // NOI18N
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Text.png"))); // NOI18N
         btnLamMoi.setText("Làm mới");
@@ -145,7 +169,7 @@ public class KhuyenMaiJDialog extends javax.swing.JDialog {
                                         .addGap(18, 18, 18)
                                         .addComponent(btnCapNhat))
                                     .addComponent(txtDateStart)
-                                    .addComponent(txtChietKhau)
+                                    .addComponent(txtGiamGia)
                                     .addComponent(txtDateEnd))))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -183,7 +207,7 @@ public class KhuyenMaiJDialog extends javax.swing.JDialog {
                         .addGap(24, 24, 24)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(txtChietKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -221,11 +245,32 @@ public class KhuyenMaiJDialog extends javax.swing.JDialog {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        this.insert();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
+        this.add();
     }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void tblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 1) {
+            this.row = tblKhuyenMai.getSelectedRow();
+
+            this.edit();
+        }
+    }//GEN-LAST:event_tblKhuyenMaiMouseClicked
+
+    private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
+        // TODO add your handling code here:
+        this.update();
+    }//GEN-LAST:event_btnCapNhatActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        this.delete();
+    }//GEN-LAST:event_btnXoaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,15 +330,107 @@ public class KhuyenMaiJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTable tblKhuyenMai;
-    private javax.swing.JTextField txtChietKhau;
     private javax.swing.JTextField txtDateEnd;
     private javax.swing.JTextField txtDateStart;
+    private javax.swing.JTextField txtGiamGia;
     private javax.swing.JTextField txtID;
+    private javax.swing.JTextArea txtMoTa;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
-    void init(){
+    void init() {
         setLocationRelativeTo(null);
+        this.fillToTable();
+        this.row = -1;
+    }
+
+    void fillToTable() {
+        DefaultTableModel model = (DefaultTableModel) tblKhuyenMai.getModel();
+        model.setRowCount(0);
+        try {
+            List<KhuyenMai> list = kmdao.selectAll();
+            for (KhuyenMai km : list) {
+                Object[] row = {
+                    km.getMaKM(), km.getTenKM(), km.getGiamGia(), km.getDateStart(), km.getDateEnd(), km.getMoTa()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
+
+    void setForm(KhuyenMai km) {
+        txtID.setText(km.getMaKM());
+        txtName.setText(km.getTenKM());
+        txtGiamGia.setText(String.valueOf(km.getGiamGia()));
+        txtDateStart.setText(String.valueOf(km.getDateStart()));
+        txtDateEnd.setText(String.valueOf(km.getDateEnd()));
+        txtMoTa.setText(km.getMoTa());
+    }
+
+    KhuyenMai getModel() {
+        KhuyenMai km = new KhuyenMai();
+        km.setMaKM(txtID.getText());
+        km.setTenKM(txtName.getText());
+        km.setGiamGia(Double.valueOf(txtGiamGia.getText()));
+        km.setDateStart(Date.valueOf(txtDateStart.getText()));
+        km.setDateEnd(Date.valueOf(txtDateEnd.getText()));
+        km.setMoTa(txtMoTa.getText());
+        return km;
+    }
+
+    void add() {
+        KhuyenMai km = new KhuyenMai();
+        this.setForm(km);
+        this.row = -1;
+    }
+
+    void edit() {
+        String masv = (String) tblKhuyenMai.getValueAt(this.row, 0);
+        KhuyenMai km = kmdao.selectById(masv);
+        this.setForm(km);
+    }
+
+    void insert() {
+        KhuyenMai km = getModel();
+        try {
+            kmdao.insert(km);
+            System.out.println("ok");
+            this.fillToTable();
+            this.add(this);
+        } catch (Exception ex1) {
+            ex1.printStackTrace();
+            MsgBox.alert(this, "Lỗi thêm mới thất bại!");
+        }
+
+    }
+
+    void update() {
+        KhuyenMai km = getModel();
+        try {
+            kmdao.update(km);
+            this.fillToTable();
+            this.add();
+        } catch (Exception ex1) {
+            MsgBox.alert(this, "Lỗi thêm mới thất bại!");
+        }
+
+    }
+
+    void delete() {
+        String masv = txtID.getText();
+        if (MsgBox.confirm(this, "Bạn có muốn xóa chương trình này?")) {
+            try {
+                kmdao.delete(masv);
+                this.fillToTable();
+                this.add(this);
+                MsgBox.alert(this, "Bạn đã xóa thất bại!");
+            } catch (Exception ex2) {
+                MsgBox.alert(this, "Bạn đã xóa thành công");
+            }
+        }
+
     }
 }
