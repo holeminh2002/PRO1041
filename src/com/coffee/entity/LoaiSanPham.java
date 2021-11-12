@@ -37,4 +37,15 @@ public class LoaiSanPham {
     public void setMoTa(String MoTa) {
         this.MoTa = MoTa;
     }
+
+    @Override
+    public String toString() {
+        return this.TenLoaiSP;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        LoaiSanPham other = (LoaiSanPham) obj;
+        return other.getMaLoaiSP().equals(this.getMaLoaiSP());
+    }
 }

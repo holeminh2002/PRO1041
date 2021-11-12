@@ -88,4 +88,8 @@ public class SanPhamDAO extends CoffeeDAO<SanPham, String>{
         return list;
     }
     
+    public List<SanPham> selectByLoaiSanPham(String maloaisp){
+        String sql="SELECT * FROM SanPham WHERE MaLoaiSP=?";
+        return this.selectBySql(sql, maloaisp);
+    }
 }
