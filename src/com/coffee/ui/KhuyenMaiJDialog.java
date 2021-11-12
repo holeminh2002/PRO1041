@@ -404,7 +404,6 @@ public class KhuyenMaiJDialog extends javax.swing.JDialog {
             ex1.printStackTrace();
             MsgBox.alert(this, "Lỗi thêm mới thất bại!");
         }
-
     }
 
     void update() {
