@@ -12,7 +12,6 @@ import java.util.Date;
 public class CaLamViec {
     private String maCaLV;
     private String tenCaLV;
-    private Date ngayLV = new Date();
     private int gioBD;
     private int gioKT;
     private double soTien;
@@ -31,16 +30,7 @@ public class CaLamViec {
 
     public void setTenCaLV(String tenCaLV) {
         this.tenCaLV = tenCaLV;
-    }
-
-    public Date getNgayLV() {
-        return ngayLV;
-    }
-
-    public void setNgayLV(Date ngayLV) {
-        this.ngayLV = ngayLV;
-    }
-
+    } 
     public int getGioBD() {
         return gioBD;
     }

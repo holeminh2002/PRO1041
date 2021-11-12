@@ -64,11 +64,11 @@ public class LoaiSanPhamDAO extends CoffeeDAO<LoaiSanPham, String> {
             try {
                 rs = XJdbc.query(sql, args);
                 while(rs.next()){
-                    LoaiSanPham entity=new LoaiSanPham();
-                    entity.setMaLoaiSP(rs.getString("MaLoaiSP"));
-                    entity.setTenLoaiSP(rs.getString("TenLoaiSP"));
-                    entity.setMoTa(rs.getString("MoTa"));
-                    list.add(entity);
+                    LoaiSanPham loaisp =new LoaiSanPham();
+                    loaisp.setMaLoaiSP(rs.getString("MaLoaiSP"));
+                    loaisp.setTenLoaiSP(rs.getString("TenLoaiSP"));
+                    loaisp.setMoTa(rs.getString("Mota"));                   
+                    list.add(loaisp);
                 }
             } 
             finally{
@@ -81,5 +81,7 @@ public class LoaiSanPhamDAO extends CoffeeDAO<LoaiSanPham, String> {
         }
         return list;
     }
+
+ 
     
 }

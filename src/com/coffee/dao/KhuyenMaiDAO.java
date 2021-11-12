@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 /**
  *
@@ -73,8 +74,8 @@ public class KhuyenMaiDAO extends CoffeeDAO<KhuyenMai, String>{
                     entity.setMaKM(rs.getString("MaKM"));
                     entity.setTenKM(rs.getString("TenKM"));
                     entity.setGiamGia(rs.getDouble("GiamGia"));
-//                    entity.setDateStart(rs.getDate("DateStart")); 
-//                    entity.setDateEnd(rs.getDate("DateEnd"));
+                    entity.setDateStart(rs.getDate("NgayBatDau")); 
+                    entity.setDateEnd(rs.getDate("NgayKetThuc"));
                     entity.setMoTa(rs.getString("MoTa"));
                     list.add(entity);
                 } 

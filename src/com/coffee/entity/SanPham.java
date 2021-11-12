@@ -55,4 +55,7 @@ public class SanPham {
     public void setGia(double Gia) {
         this.Gia = Gia;
     }
+     public String toString() {
+        return this.getMaLoaiSP();
+    }
 }

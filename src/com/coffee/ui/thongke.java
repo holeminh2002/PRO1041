@@ -19,6 +19,10 @@ public class thongke extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }
 
+    thongke() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,7 +32,7 @@ public class thongke extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabs = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -58,7 +62,7 @@ public class thongke extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTabbedPane1.setBackground(new java.awt.Color(238, 207, 161));
+        tabs.setBackground(new java.awt.Color(238, 207, 161));
 
         jPanel1.setBackground(new java.awt.Color(238, 207, 161));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê doanh thu"));
@@ -172,7 +176,7 @@ public class thongke extends javax.swing.JDialog {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("DOANH THU", jPanel6);
+        tabs.addTab("DOANH THU", jPanel6);
 
         jPanel2.setBackground(new java.awt.Color(238, 207, 161));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê doanh thu"));
@@ -252,7 +256,7 @@ public class thongke extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("KHÁCH HÀNG", jPanel2);
+        tabs.addTab("KHÁCH HÀNG", jPanel2);
 
         jPanel4.setBackground(new java.awt.Color(238, 207, 161));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê doanh thu"));
@@ -334,17 +338,17 @@ public class thongke extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("SẢN PHẨM", jPanel4);
+        tabs.addTab("SẢN PHẨM", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -442,7 +446,6 @@ public class thongke extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable5;
@@ -454,5 +457,10 @@ public class thongke extends javax.swing.JDialog {
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToggleButton jToggleButton7;
     private javax.swing.JToggleButton jToggleButton8;
+    private javax.swing.JTabbedPane tabs;
     // End of variables declaration//GEN-END:variables
+
+    void selectTab(int index) {
+        tabs.setSelectedIndex(index); //To change body of generated methods, choose Tools | Templates.
+    }
 }

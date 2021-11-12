@@ -37,15 +37,26 @@ public class LoaiSanPham {
     public void setMoTa(String MoTa) {
         this.MoTa = MoTa;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> ee58ef52e7b5d9b1658b5f812680d127a987e48f
     @Override
     public String toString() {
         return this.TenLoaiSP;
     }
 
+<<<<<<< HEAD
     @Override
     public boolean equals(Object obj) {
         LoaiSanPham other = (LoaiSanPham) obj;
         return other.getMaLoaiSP().equals(this.getMaLoaiSP());
     }
+=======
+    /*@Override
+    public boolean equals(Object obj) {
+        LoaiSanPham other = (LoaiSanPham) obj;
+        return other.getMaLoaiSP().equals(this.getMaLoaiSP());
+    }*/
+>>>>>>> ee58ef52e7b5d9b1658b5f812680d127a987e48f
 }
