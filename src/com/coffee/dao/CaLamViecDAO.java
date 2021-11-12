@@ -16,15 +16,14 @@ import java.util.List;
  *
  * @author MyLaptop
  */
-public class CaLamVienDAO extends CoffeeDAO<CaLamViec, String> {
+public class CaLamViecDAO extends CoffeeDAO<CaLamViec, String> {
 
     
     public void insert(CaLamViec model) {
-        String sql="INSERT INTO CaLamViec (MaCaLV, TenCaLV, NgayLV, GioBD, GioKT, SoTien) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql="INSERT INTO CaLamViec (MaCaLV, TenCaLV,GioBD, GioKT, SoTien) VALUES (?, ?, ?, ?, ?, ?)";
         XJdbc.update(sql, 
                 model.getMaCaLV(), 
                 model.getTenCaLV(), 
-                model.getNgayLV(), 
                 model.getGioBD(), 
                 model.getGioKT(), 
                 model.getSoTien());
@@ -32,10 +31,9 @@ public class CaLamVienDAO extends CoffeeDAO<CaLamViec, String> {
 
     
     public void update(CaLamViec model) {
-        String sql="UPDATE CaLamViec SET TenCaLV=?, NgayLV=?, GioBD=?, GioKT=?, SoTien=? WHERE MaCaLV=?";
+        String sql="UPDATE CaLamViec SET TenCaLV=?,GioBD=?, GioKT=?, SoTien=? WHERE MaCaLV=?";
         XJdbc.update(sql, 
                 model.getTenCaLV(), 
-                model.getNgayLV(), 
                 model.getGioBD(), 
                 model.getGioKT(), 
                 model.getSoTien(), 
@@ -72,7 +70,6 @@ public class CaLamVienDAO extends CoffeeDAO<CaLamViec, String> {
                     CaLamViec entity=new CaLamViec();
                     entity.setMaCaLV(rs.getString("MaCaLV"));
                     entity.setTenCaLV(rs.getString("TenCaLV"));
-                    entity.setNgayLV(rs.getDate("NgayLV"));
                     entity.setGioBD(rs.getInt("GioBD"));
                     entity.setGioKT(rs.getInt("GioKT"));
                     entity.setSoTien(rs.getDouble("SoTien"));

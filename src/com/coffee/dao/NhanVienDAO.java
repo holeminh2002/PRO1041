@@ -52,19 +52,20 @@ public class NhanVienDAO extends CoffeeDAO<NhanVien, String> {
         XJdbc.update(sql, MaNV);
     }
     
-    public List<NhanVien> selectAll(){
-        String sql="SELECT * FROM NhanVien";
-        return this.selectBySql(sql);
+    @Override
+    public List<NhanVien> selectAll() {
+        String sql="select * from NhanVien";
+        return this.selectBySQL(sql);
     }
     
-    public NhanVien selectById(String manv){
+    public NhanVien selectById(String manv) {
         String sql="SELECT * FROM NhanVien WHERE MaNV=?";
-        List<NhanVien> list = this.selectBySql(sql, manv);
+        List<NhanVien> list = this.selectBySQL(sql, manv);
         return list.size() > 0 ? list.get(0) : null;
     }
     
-    protected List<NhanVien> selectBySql(String sql, Object...args){
-        List<NhanVien> list=new ArrayList<>();
+     protected List<NhanVien> selectBySQL(String sql, Object... args) {
+         List<NhanVien> list=new ArrayList<>();
         try {
             ResultSet rs = null;
             try {
@@ -94,4 +95,11 @@ public class NhanVienDAO extends CoffeeDAO<NhanVien, String> {
         }
         return list;
     }
+
+    @Override
+    protected List<NhanVien> selectBySql(String sql, Object... args) {
+        return null;
+        
+    }
+    
 }
