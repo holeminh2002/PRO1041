@@ -400,6 +400,9 @@ public class BanHangJDialog extends javax.swing.JDialog {
               curriculumSubjectsModel.addRow(new Object[]
                 {tblThucDon.getValueAt(selectedRowIndex, selectedColIndex)});
               tblOrder.setModel(curriculumSubjectsModel);
+              
+        
+        
         }
         
         
