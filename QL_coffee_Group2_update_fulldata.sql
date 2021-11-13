@@ -133,6 +133,7 @@ create table ChiTietBanHang
 	foreign key(MaHD) references HoaDon(MaHD) on delete no action on update cascade,
 	foreign key(MaSP) references SanPham(MaSP) on delete no action on update cascade
 );	
+
 delete from NhanVien;
 insert into NhanVien(MaNV,TenNV,GioiTinh,DiaChi,SDT,Email,NgayVaoLam,VaiTro,MatKhau,Hinh) values(N'NV01_Hue',N'Bùi Thị A Huệ',0,N'Bình Định',N'0327705273','huebui01@gmail.com','2020-11-20',0,N'ahue123',N'hue.jpg');
 insert into NhanVien(MaNV,TenNV,GioiTinh,DiaChi,SDT,Email,NgayVaoLam,VaiTro,MatKhau,Hinh) values(N'NV02_Khanh',N'Nguyễn Phương Khanh',0,N'Tiền Giang',N'0834461707','khanhnguyen02@gmail.com','2020-10-20',0,N'pkhanh123',N'khanh.jpg');
@@ -168,9 +169,9 @@ insert HoaDon values('NV01_Hue', 1,'2021-10-01',500000,2000,null,1000000,500000,
 insert HoaDon values('NV02_Khanh', 4,'2021-10-02',20000,2400,null,100000,80000,null),
 ('NV03_Minh', 7,'2021-10-03',100000,1200,null,100000,0,null);
 
-insert ChiTietBanHang values (2,'CF02',10),
-(5,'NGK01',1),
-(6,'BN01',1);
+insert ChiTietBanHang values (1,'CF02',10),
+(2,'NGK01',1),
+(3,'BN01',1);
 
 insert CaLamViec values('CS1',N'Ca sáng 1',6,10,80000),
 ('CS2',N'Ca sáng 2',10,14,80000),
@@ -185,3 +186,5 @@ insert ChiTietLuongNhanVien values('CS1','NV01_Hue',30,2400000,N'Tháng 10/2021'
 ('CC1','NV04_Nhat',25,2000000,N'Tháng 10/2021'),
 ('CC2','NV05_Kha',10,800000,N'Tháng 10/2021'),
 ('CT1','TP_Thuong',10,1000000,N'Tháng 10/2021');
+
+select * from NhanVien

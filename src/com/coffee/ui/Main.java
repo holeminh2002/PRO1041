@@ -21,9 +21,7 @@ import javax.swing.Timer;
  */
 public class Main extends javax.swing.JFrame {
 
-    /**
-     * nam kha test a b c x y z - > lưu lại bằng cách nhìn theo tao nha
-     */
+    
     public Main() {
         initComponents();
         init();
@@ -560,7 +558,7 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         startDongHo();
 //        new ChaoJDialog(this, true).setVisible(true);
-//        new DangNhapDialog(this, true).setVisible(true);
+        new DangNhap(this, true).setVisible(true);
     }
 
     void startDongHo() {
