@@ -1,5 +1,10 @@
 package com.coffee.ui;
 
+import com.coffee.dao.NhanVienDAO;
+import com.coffee.entity.NhanVien;
+import com.coffee.utils.Auth;
+import com.coffee.utils.MsgBox;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,6 +25,23 @@ public class DangNhap extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         init();
+    }
+    NhanVienDAO dao = new NhanVienDAO();
+    
+    void dangnhap(){
+        String MaNV = txtUser.getText();
+        String MatKhau = new String(txtPass.getPassword());
+        NhanVien nhanvien = dao.selectById(MaNV);
+        if(nhanvien == null ){
+            MsgBox.alert(this, "Sai tên đăng nhập");
+        }
+        else if(!MatKhau.equals(nhanvien.getMatKhau())){
+            MsgBox.alert(this, "Sai mật khẩu");
+        }
+        else{
+            Auth.user=nhanvien;
+            this.dispose();
+        }
     }
 
     /**
@@ -88,11 +110,21 @@ public class DangNhap extends javax.swing.JDialog {
         btnDangNhap.setBackground(new java.awt.Color(153, 153, 153));
         btnDangNhap.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDangNhap.setText("Đăng nhập");
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangNhapActionPerformed(evt);
+            }
+        });
 
         btnHuy.setBackground(new java.awt.Color(153, 153, 153));
         btnHuy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnHuy.setText("Hủy");
         btnHuy.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/9b64f2ac21ea2c0e31021341ab358235 (3).jpg"))); // NOI18N
 
@@ -203,6 +235,16 @@ public class DangNhap extends javax.swing.JDialog {
     private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPassActionPerformed
+
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        dangnhap(); 
+    }//GEN-LAST:event_btnDangNhapActionPerformed
+
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        if(MsgBox.confirm(this, "Bạn có muốn kết thúc ?")){
+           System.exit(0); 
+        }
+    }//GEN-LAST:event_btnHuyActionPerformed
 
     /**
      * @param args the command line arguments
