@@ -6,6 +6,18 @@
 
 package com.coffee.ui;
 
+import com.coffee.dao.CaLamViecDAO;
+import com.coffee.dao.ChiTietLuongDAO;
+import com.coffee.dao.NhanVienDAO;
+import com.coffee.entity.CaLamViec;
+import com.coffee.entity.ChiTietLuongNhanVien;
+import com.coffee.entity.NhanVien;
+import com.coffee.utils.Auth;
+import com.coffee.utils.MsgBox;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Admin
@@ -16,9 +28,12 @@ public class LuongCalamDialog extends javax.swing.JDialog {
     public LuongCalamDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.init();
     }
-
+    int row = -1;
+CaLamViecDAO calamdao = new CaLamViecDAO();
+ChiTietLuongDAO luongdao = new ChiTietLuongDAO();
+NhanVienDAO nvdao = new NhanVienDAO();
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -70,7 +85,7 @@ public class LuongCalamDialog extends javax.swing.JDialog {
         lbltieude.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         lbltieude.setForeground(new java.awt.Color(102, 0, 0));
         lbltieude.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbltieude.setText("QUẢN LÍ THÔNG TIN SẢN PHẨM");
+        lbltieude.setText("QUẢN LÍ THÔNG TIN CA LÀM VÀ LƯƠNG NHÂN VIÊN");
 
         pncalam.setBackground(new java.awt.Color(238, 207, 161));
 
@@ -121,19 +136,39 @@ public class LuongCalamDialog extends javax.swing.JDialog {
             }
         ));
         tbldscalam.setRowHeight(25);
+        tbldscalam.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbldscalamMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbldscalam);
 
         btnmoi.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnmoi.setForeground(new java.awt.Color(153, 0, 51));
         btnmoi.setText("Mới");
+        btnmoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmoiActionPerformed(evt);
+            }
+        });
 
         btnthem.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnthem.setForeground(new java.awt.Color(153, 0, 51));
         btnthem.setText("Thêm");
+        btnthem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnthemActionPerformed(evt);
+            }
+        });
 
         btnxoa.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnxoa.setForeground(new java.awt.Color(153, 0, 51));
         btnxoa.setText("Xóa");
+        btnxoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnxoaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pncalamLayout = new javax.swing.GroupLayout(pncalam);
         pncalam.setLayout(pncalamLayout);
@@ -250,6 +285,11 @@ public class LuongCalamDialog extends javax.swing.JDialog {
 
         cbbnhanvien.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
         cbbnhanvien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbnhanvien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbnhanvienActionPerformed(evt);
+            }
+        });
 
         tbldsluongnv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -259,22 +299,42 @@ public class LuongCalamDialog extends javax.swing.JDialog {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Kì lương", "Mã ca làm", "Mã nhân viên", "Tổng ca trong tháng", "Tổng lương"
+                "Mã Ca Làm", "Mã Nhân Viên", "Tổng Ca Làm/ Tháng", "Tổng Lương", "Kì Lương"
             }
         ));
+        tbldsluongnv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbldsluongnvMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbldsluongnv);
 
         btnmoi1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnmoi1.setForeground(new java.awt.Color(153, 0, 51));
         btnmoi1.setText("Mới");
+        btnmoi1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmoi1ActionPerformed(evt);
+            }
+        });
 
         btnthem1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnthem1.setForeground(new java.awt.Color(153, 0, 51));
         btnthem1.setText("Thêm");
+        btnthem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnthem1ActionPerformed(evt);
+            }
+        });
 
         btnxoa1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnxoa1.setForeground(new java.awt.Color(153, 0, 51));
         btnxoa1.setText("Xóa");
+        btnxoa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnxoa1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnluongnvLayout = new javax.swing.GroupLayout(pnluongnv);
         pnluongnv.setLayout(pnluongnvLayout);
@@ -283,38 +343,39 @@ public class LuongCalamDialog extends javax.swing.JDialog {
             .addGroup(pnluongnvLayout.createSequentialGroup()
                 .addGroup(pnluongnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnluongnvLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnluongnvLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2))
                     .addGroup(pnluongnvLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(pnluongnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnluongnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnluongnvLayout.createSequentialGroup()
-                                    .addComponent(lblmanv, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(cbbnhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnluongnvLayout.createSequentialGroup()
-                                    .addComponent(lbltongluong, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txttongluong, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnluongnvLayout.createSequentialGroup()
-                                    .addGroup(pnluongnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblkiluong, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblmacalam1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(pnluongnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtmacalam1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtkiluong, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(16, 16, 16)))
                             .addGroup(pnluongnvLayout.createSequentialGroup()
-                                .addComponent(lbltongca, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txttongcalam, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(36, 36, 36)
+                                .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnluongnvLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(pnluongnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnluongnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(pnluongnvLayout.createSequentialGroup()
+                                            .addComponent(lbltongluong, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txttongluong, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pnluongnvLayout.createSequentialGroup()
+                                            .addGroup(pnluongnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(lblkiluong, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lblmacalam1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(pnluongnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(txtmacalam1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                                                .addComponent(txtkiluong))
+                                            .addGap(16, 16, 16)))
+                                    .addGroup(pnluongnvLayout.createSequentialGroup()
+                                        .addComponent(lbltongca, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txttongcalam, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnluongnvLayout.createSequentialGroup()
+                                        .addComponent(lblmanv, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cbbnhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(pnluongnvLayout.createSequentialGroup()
                 .addGap(158, 158, 158)
@@ -382,6 +443,59 @@ public class LuongCalamDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnmoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmoiActionPerformed
+        // TODO add your handling code here:
+        this.addCaLam();
+    }//GEN-LAST:event_btnmoiActionPerformed
+
+    private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
+        // TODO add your handling code here:
+        this.insertCaLam();
+    }//GEN-LAST:event_btnthemActionPerformed
+
+    private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
+        // TODO add your handling code here:
+        this.deleteCaLam();
+    }//GEN-LAST:event_btnxoaActionPerformed
+
+    private void tbldscalamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbldscalamMouseClicked
+        // TODO add your handling code here:
+         if(evt.getClickCount()==1){
+            this.row = tbldscalam.getSelectedRow();
+           
+            this.editCaLam();
+        }
+    }//GEN-LAST:event_tbldscalamMouseClicked
+
+    private void btnmoi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmoi1ActionPerformed
+        // TODO add your handling code here:
+        this.addLuongNV();
+    }//GEN-LAST:event_btnmoi1ActionPerformed
+
+    private void btnthem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthem1ActionPerformed
+        // TODO add your handling code here:
+        this.insertLuongNV();
+    }//GEN-LAST:event_btnthem1ActionPerformed
+
+    private void btnxoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoa1ActionPerformed
+        // TODO add your handling code here:
+        this.deleteLuongNV();
+    }//GEN-LAST:event_btnxoa1ActionPerformed
+
+    private void tbldsluongnvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbldsluongnvMouseClicked
+        // TODO add your handling code here:
+         if(evt.getClickCount()==1){
+            this.row = tbldsluongnv.getSelectedRow();
+           
+            this.editLuongNV();
+        }
+    }//GEN-LAST:event_tbldsluongnvMouseClicked
+
+    private void cbbnhanvienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbnhanvienActionPerformed
+        // TODO add your handling code here:
+        this.fillComboBoxMaNV();
+    }//GEN-LAST:event_cbbnhanvienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -463,5 +577,211 @@ public class LuongCalamDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txttongluong;
     private javax.swing.JTextField txttongtien;
     // End of variables declaration//GEN-END:variables
+
+  private void init() {
+        this.setLocationRelativeTo(null);
+      // this.setIconImage(Images.getAppIcon());
+       this.fillComboBoxMaNV();
+       this.fillToTableCaLamViec();
+       this.fillToTableLuongNV();
+      // this.updateStatus();
+       this.row = -1;
+    }
+    void fillComboBoxMaNV(){
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbnhanvien.getModel();
+        model.removeAllElements();
+        List<NhanVien> list = nvdao.selectAll();
+        for(NhanVien nv : list){
+             model.addElement(nv);
+        }
+}  
+   void fillToTableCaLamViec() {
+        DefaultTableModel model = (DefaultTableModel) tbldscalam.getModel();
+        model.setRowCount(0);
+        try {
+            List<CaLamViec> list = calamdao.selectAll();
+            for (CaLamViec calam : list) {
+                Object[] row = {
+                  calam.getMaCaLV(),calam.getTenCaLV(),calam.getGioBD(),calam.getGioKT(),calam.getSoTien()
+                };
+                model.addRow(row);
+            }
+        } 
+        catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    } 
+     
+     public boolean checkcalam() {
+    List<CaLamViec> list = calamdao.selectAll();
+        for (CaLamViec calam : list) {
+            if (txtmacalam.getText().equalsIgnoreCase(calam.getMaCaLV())) {
+                MsgBox.alert(this, "Mã ca làm đã bị trùng!");
+                return false;
+            }
+        }
+        return true;
+
+    }
+    void insertCaLam(){
+       CaLamViec calam  = getFormCaLam();
+        try {
+            if(checkcalam()){
+            calamdao.insert(calam);
+            this.fillToTableCaLamViec();
+            this.addCaLam();
+            MsgBox.alert(this, "Thêm mới thành công!");
+            }
+        } 
+        catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
+
+    }
+    
+    void deleteCaLam(){
+        if(!Auth.isManager()){
+            MsgBox.alert(this, "Bạn không có quyền xóa lca làm việc này!");
+        }
+        else{
+            if(MsgBox.confirm(this, "Bạn có muốn xóa hay không?")){
+                String macalam = txtmacalam.getText();
+                try {
+                    calamdao.delete(macalam);
+                    this.fillToTableCaLamViec();
+                    this.addCaLam();
+                    MsgBox.alert(this, "Xóa thành công!");
+                } 
+                catch (Exception e) {
+                    MsgBox.alert(this, "Xóa thất bại!");
+                }
+            }
+        }
+    }
+
+
+    
+    
+     void setFormCaLam(CaLamViec calam){
+        txtmacalam.setText(calam.getMaCaLV());
+        txttencalam.setText(calam.getTenCaLV());
+        txtgiobd.setText(String.valueOf(calam.getGioBD()));
+        txtgiokt.setText(String.valueOf(calam.getGioKT()));
+        txttongtien.setText(String.valueOf(calam.getSoTien()));
+     
+       
+        
+    }
+    CaLamViec getFormCaLam(){
+        CaLamViec calam = new CaLamViec();
+        calam.setMaCaLV(txtmacalam.getText());
+        calam.setTenCaLV(txttencalam.getText());
+        calam.setGioBD(Integer.valueOf(txtgiobd.getText()));
+        calam.setGioKT(Integer.valueOf(txtgiokt.getText()));
+        calam.setSoTien(Double.valueOf(txttongtien.getText()));        
+        return calam;
+    }   
+    void addCaLam(){
+        this.setFormCaLam(new CaLamViec());
+        this.row = -1;
+        //this.updateStatus();
+    }
+
+    void editCaLam() {
+        String macalam = (String) tbldscalam.getValueAt(this.row, 0);
+        CaLamViec loaisp = calamdao.selectById(macalam);
+         this.setFormCaLam(loaisp);
+         //this.updateStatus();
+         
+    }
+
+   
+   void fillToTableLuongNV() {
+        DefaultTableModel model = (DefaultTableModel) tbldsluongnv.getModel();
+        model.setRowCount(0);
+        try {
+            List<ChiTietLuongNhanVien> list = luongdao.selectAll();
+            for (ChiTietLuongNhanVien luong : list) {
+                Object[] row = {
+                  luong.getMaCaLV(),luong.getMaNV(),luong.getTongSoCaLamTrongThang(),luong.getThanhTien(),luong.getKyLuong()};
+                model.addRow(row);
+            }
+        } 
+        catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    } 
+     
+   
+   
+    void insertLuongNV(){
+       ChiTietLuongNhanVien luong  = getFormLuongNV();
+        try {
+           
+           luongdao.insert(luong);
+            this.fillToTableCaLamViec();
+            this.addCaLam();
+            MsgBox.alert(this, "Thêm mới thành công!");
+            
+        } 
+        catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
+
+    }
+    
+    void deleteLuongNV(){
+        if(!Auth.isManager()){
+            MsgBox.alert(this, "Bạn không có quyền xóa luong của nhân viên này!");
+        }
+        else{
+            if(MsgBox.confirm(this, "Bạn có muốn xóa hay không?")){
+                String macalam = txtmacalam.getText();
+                try {
+                    calamdao.delete(macalam);
+                    this.fillToTableCaLamViec();
+                    this.addCaLam();
+                    MsgBox.alert(this, "Xóa thành công!");
+                } 
+                catch (Exception e) {
+                    MsgBox.alert(this, "Xóa thất bại!");
+                }
+            }
+        }
+    }
+
+
+    
+    
+     void setFormLuongNV(ChiTietLuongNhanVien luong){
+        txtmacalam.setText(luong.getMaCaLV());
+        cbbnhanvien.setSelectedItem(false);
+        txttongcalam.setText(String.valueOf(luong.getTongSoCaLamTrongThang()));
+        txttongluong.setText(String.valueOf(luong.getThanhTien()));
+        txtkiluong.setText(luong.getKyLuong());       
+     }
+     
+    ChiTietLuongNhanVien getFormLuongNV(){
+        ChiTietLuongNhanVien luong = new ChiTietLuongNhanVien();
+        luong.setMaCaLV(txtmacalam.getText());
+        luong.setMaNV(cbbnhanvien.getItemAt(1));
+        luong.setTongSoCaLamTrongThang(Integer.valueOf(txttongcalam.getText()));
+        luong.setThanhTien(Double.valueOf(txttongluong.getText()));
+        luong.setKyLuong(txtkiluong.getText());            
+        return luong;
+    }   
+    void addLuongNV(){
+        this.setFormLuongNV(new ChiTietLuongNhanVien());
+        this.row = -1;
+        //this.updateStatus();
+    }
+
+    void editLuongNV() {
+        String macalam = (String) tbldscalam.getValueAt(this.row, 0);
+       ChiTietLuongNhanVien luong = luongdao.selectById(macalam);
+         this.setFormLuongNV(luong);
+         //this.updateStatus();
+         
+    }
 
 }

@@ -101,4 +101,12 @@ public class NhanVien {
         this.hinh = hinh;
     }
     
+    public String toString() {
+        return this.maNV + " (" + this.tenNV + ")";
+    }
+     /*@Override
+    public boolean equals(Object obj) {
+        NhanVien other = (NhanVien) obj;
+        return other.getMaNV().equals(this.getMaNV());
+    }*/
 }

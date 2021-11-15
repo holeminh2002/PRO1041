@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 /**
  *
@@ -20,19 +21,25 @@ public class KhuyenMaiDAO extends CoffeeDAO<KhuyenMai, String>{
 
     
     public void insert(KhuyenMai model) {
-        String sql="INSERT INTO KhuyenMai (MaKM, TenKM, GiamGia) VALUES (?, ?, ?)";
+        String sql="INSERT INTO KhuyenMai (MaKM, TenKM, GiamGia, NgayBatDau, NgayKetThuc, MoTa) VALUES (?, ?, ?, ?, ?, ?)";
         XJdbc.update(sql, 
                 model.getMaKM(), 
                 model.getTenKM(), 
                 model.getGiamGia());
+                model.getDateStart();
+                model.getDateEnd();
+                model.getMoTa();
     }
 
     
     public void update(KhuyenMai model) {
-        String sql="UPDATE KhuyenMai SET TenKM=?, GiamGia=? WHERE MaKM=?";
+        String sql="UPDATE KhuyenMai SET TenKM=?, GiamGia=?, NgayBatDau=?, NgayKetThuc=?, MoTa=? where MaKM=?"  ;
         XJdbc.update(sql, 
                 model.getTenKM(), 
-                model.getGiamGia(), 
+                model.getGiamGia(),
+                model.getDateStart(),
+                model.getDateEnd(),
+                model.getMoTa(),
                 model.getMaKM());
     }
 
@@ -67,8 +74,11 @@ public class KhuyenMaiDAO extends CoffeeDAO<KhuyenMai, String>{
                     entity.setMaKM(rs.getString("MaKM"));
                     entity.setTenKM(rs.getString("TenKM"));
                     entity.setGiamGia(rs.getDouble("GiamGia"));
+                    entity.setDateStart(rs.getDate("NgayBatDau")); 
+                    entity.setDateEnd(rs.getDate("NgayKetThuc"));
+                    entity.setMoTa(rs.getString("MoTa"));
                     list.add(entity);
-                }
+                } 
             } 
             finally{
                 rs.getStatement().getConnection().close();

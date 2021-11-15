@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+<<<<<<< HEAD
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/G:/Github/PRO1041/src/com/coffee/ui/QLsanphamDialog.java</file>
@@ -8,4 +9,6 @@
             <file>file:/G:/Github/PRO1041/src/com/coffee/ui/ThanhToanJDialog.java</file>
         </group>
     </open-files>
+=======
+>>>>>>> a98b83e49da12eeee113035448f1e1b63f36e61f
 </project-private>
