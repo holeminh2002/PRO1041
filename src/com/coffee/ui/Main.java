@@ -339,6 +339,11 @@ public class Main extends javax.swing.JFrame {
 
         jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Mail.png"))); // NOI18N
         jMenuItem15.setText("Email liên hệ QC");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
         mnuTroGiup.add(jMenuItem15);
 
         jMenuBar1.add(mnuTroGiup);
@@ -487,6 +492,12 @@ public class Main extends javax.swing.JFrame {
     private void mniDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMKActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mniDoiMKActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        MsgBox.alert(this, "Vui lòng liên hệ quảng cáo qua: "
+                + "\n + Email: ABC@XYZ.com"
+                + "\n + Số điện thoại: 0987654321");
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
