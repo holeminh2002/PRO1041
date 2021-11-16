@@ -19,9 +19,6 @@ public class thongke extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }
 
-    thongke() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.

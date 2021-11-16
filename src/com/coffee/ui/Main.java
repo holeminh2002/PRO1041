@@ -29,12 +29,13 @@ public class Main extends javax.swing.JFrame {
 
     void openThongKe(int index) {
         if (Auth.isLogin()) {
-            if (index == 3 && !Auth.isManager()) {
-                MsgBox.alert(this, "Bạn không có quyền xem thông tin doanh thu");
+            if (!Auth.isManager()) {
+                MsgBox.alert(this, "Bạn không có quyền xem thông tin thống kê");
             } else {
-                thongke tkwin = new thongke();
-                tkwin.setVisible(true);
+                thongke tkwin = new thongke(this,true);
                 tkwin.selectTab(index);
+                tkwin.setVisible(true);
+                this.dispose();
             }
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
@@ -392,31 +393,38 @@ public class Main extends javax.swing.JFrame {
 
     private void btnQLnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLnvActionPerformed
         new QLnhanivenDialog(this, true).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnQLnvActionPerformed
 
     private void btnQLkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLkhActionPerformed
         new Dk_TV(this, true).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnQLkhActionPerformed
 
     private void btnQLspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLspActionPerformed
         new QLsanphamDialog(this, true).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnQLspActionPerformed
 
     private void btnQLbhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLbhActionPerformed
         new BanHangJDialog(this, true).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnQLbhActionPerformed
 
     private void btnKhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhuyenmaiActionPerformed
         new KhuyenMaiJDialog(this, true).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnKhuyenmaiActionPerformed
 
     private void btnThongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongkeActionPerformed
         new thongke(this, true).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnThongkeActionPerformed
 
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
         Auth.clear();
         new DangNhap(this, true).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
     private void mniAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAccountActionPerformed
