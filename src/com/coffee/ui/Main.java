@@ -44,7 +44,7 @@ public class Main extends javax.swing.JFrame {
 
     void openHuongDan() {
         try {
-            Desktop.getDesktop().browse(new File("help/index.html").toURI());
+            Desktop.getDesktop().browse(new File("src\\com\\coffee\\help\\index.html").toURI());
         } catch (Exception e) {
             MsgBox.alert(this, "Không tìm thấy hướng dẫn");
         }
@@ -52,7 +52,7 @@ public class Main extends javax.swing.JFrame {
     }
     void openGioiThieu() {
            try {
-            Desktop.getDesktop().browse(new File("help/about.html").toURI());
+            Desktop.getDesktop().browse(new File("src\\com\\coffee\\help\\about.html").toURI());
         } catch (Exception e) {
             MsgBox.alert(this, "Không tìm thấy hướng dẫn");
         }
