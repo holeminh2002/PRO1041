@@ -108,7 +108,7 @@ public class DangNhap extends javax.swing.JDialog {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/User-Interface-Password-2-icon (1).png"))); // NOI18N
 
         btnDangNhap.setBackground(new java.awt.Color(153, 153, 153));
-        btnDangNhap.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnDangNhap.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         btnDangNhap.setText("Đăng nhập");
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +117,7 @@ public class DangNhap extends javax.swing.JDialog {
         });
 
         btnHuy.setBackground(new java.awt.Color(153, 153, 153));
-        btnHuy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnHuy.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         btnHuy.setText("Hủy");
         btnHuy.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnHuy.addActionListener(new java.awt.event.ActionListener() {

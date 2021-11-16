@@ -2,6 +2,7 @@ package com.coffee.utils;
 
 import java.awt.Image;
 import java.io.File;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,10 +13,11 @@ public class XImage {
     /**
      * Ảnh biểu tượng của ứng dụng, xuất hiện trên mọi cửa sổ
      */
-    public static Image getAppIcon(){
-        String file = "/com/edusys/icon/fpt.png";
-        return new ImageIcon(XImage.class.getResource(file)).getImage();
+   public static Image getAppIcon(){
+      URL url = XImage.class.getResource("com/coffee/icon/coffee-icon.png");
+      return new ImageIcon(url).getImage();
     }
+
     
     /**
      * Sao chép file logo chuyên đề vào thư mục logo

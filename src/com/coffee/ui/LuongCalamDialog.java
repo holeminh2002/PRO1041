@@ -80,6 +80,7 @@ NhanVienDAO nvdao = new NhanVienDAO();
         btnxoa1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("QUẢN LÍ THÔNG TIN CA LÀM VÀ LƯƠNG NHÂN VIÊN");
 
         lbltieude.setBackground(new java.awt.Color(238, 207, 161));
         lbltieude.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
@@ -684,14 +685,14 @@ NhanVienDAO nvdao = new NhanVienDAO();
     void addCaLam(){
         this.setFormCaLam(new CaLamViec());
         this.row = -1;
-        //this.updateStatus();
+       
     }
 
     void editCaLam() {
         String macalam = (String) tbldscalam.getValueAt(this.row, 0);
         CaLamViec loaisp = calamdao.selectById(macalam);
          this.setFormCaLam(loaisp);
-         //this.updateStatus();
+         
          
     }
 

@@ -44,10 +44,10 @@ public class LoaiSanPham {
     }
 
 
-    @Override
+    /*@Override
     public boolean equals(Object obj) {
         LoaiSanPham other = (LoaiSanPham) obj;
         return other.getMaLoaiSP().equals(this.getMaLoaiSP());
-    }
+    }*/
 
 }

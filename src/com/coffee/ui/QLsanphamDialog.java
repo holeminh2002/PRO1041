@@ -669,7 +669,10 @@ public boolean check() {
     List<SanPham> list = spdao.selectAll();
         for (SanPham sp : list) {
             if (txtmasp.getText().equalsIgnoreCase(sp.getMaSP())) {
-                JOptionPane.showMessageDialog(this, "Mã sanpham đã trùng");
+                MsgBox.alert(this, "Mã của sản phẩm đã bị trùng!");
+                return false;
+            } else if(txtmasp.getText().equals("")||txttensp.getText().equals("")||txtdongia.getText().equals("")){
+                MsgBox.alert(this, "Mời bạn nhập thông tin của  sản phẩm!");
                 return false;
             }
         }
@@ -727,22 +730,21 @@ public boolean check() {
     void add(){
         this.setForm(new SanPham());
         this.row = -1;
-        //this.updateStatus();
+        
     }
 
     void edit() {
         String masp = (String) tbldssanpham.getValueAt(this.row, 0);
         SanPham sp = spdao.selectById(masp);
          this.setForm(sp);
-         //this.updateStatus();
+         
          
     }
 
     void setForm(SanPham sp){
         txtmasp.setText(sp.getMaSP());
         txttensp.setText(sp.getTenSP());
-        txtdongia.setText(String.valueOf(sp.getGia()));
-//        cbbloaisp.setText(sp.getMaLoaiSP());
+        txtdongia.setText(String.valueOf(sp.getGia()));        
         cbbloaisp.setSelectedItem(true);
         if(sp.getHinhAnh() != null){
             lblhinhanh.setToolTipText(sp.getHinhAnh());
@@ -754,7 +756,7 @@ public boolean check() {
         sp.setMaSP(txtmasp.getText());
         sp.setTenSP(txttensp.getText());
         sp.setGia(Double.valueOf(txtdongia.getText()));
-        sp.setMaLoaiSP(cbbloaisp.getItemAt(1));
+        //sp.setMaLoaiSP(cbbloaisp.getItemAt(1));
         sp.setHinhAnh(lblhinhanh.getToolTipText());
         return sp;
     }   
@@ -797,7 +799,11 @@ public boolean check() {
     List<LoaiSanPham> list = loaispdao.selectAll();
         for (LoaiSanPham loaisp : list) {
             if (txtmaloaisp.getText().equalsIgnoreCase(loaisp.getMaLoaiSP())) {
-                JOptionPane.showMessageDialog(this, "Mã loaisanpham đã trùng");
+               MsgBox.alert(this, "Mã loại sản phẩm đã bị trùng!");
+                return false;
+            }
+            else if(txtmaloaisp.getText().equals("")||txttenloaisp.getText().equals("")||txtmota.getText().equals("")){
+                MsgBox.alert(this, "Mời bạn nhạp thông tin của loại sản phẩm!");
                 return false;
             }
         }
@@ -861,14 +867,14 @@ public boolean check() {
     void addLoaiSP(){
         this.setFormLoaiSP(new LoaiSanPham());
         this.row = -1;
-        //this.updateStatus();
+       
     }
 
     void editLoaiSP() {
         String maloaisp = (String) tbldsmaloai.getValueAt(this.row, 0);
         LoaiSanPham loaisp = loaispdao.selectById(maloaisp);
          this.setFormLoaiSP(loaisp);
-         //this.updateStatus();
+         
          
     }
 
