@@ -82,4 +82,17 @@ public class KhuyenMai {
         this.MoTa = MoTa;
     }
 
+    @Override
+    public String toString() {
+        return this.TenKM;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        KhuyenMai other = (KhuyenMai) obj;
+        return other.getMaKM().equals(this.getMaKM());
+    }
+    
+    
+
 }

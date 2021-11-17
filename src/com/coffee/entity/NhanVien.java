@@ -10,7 +10,7 @@ package com.coffee.entity;
  * @author MyLaptop
  */
 public class NhanVien {
-    private String maNV;
+    public String maNV;
     private String tenNV;
     private boolean gioiTinh = false;   
     private String diaChi;
