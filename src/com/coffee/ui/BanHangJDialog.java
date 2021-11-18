@@ -6,16 +6,25 @@
 package com.coffee.ui;
 
 import com.coffee.dao.LoaiSanPhamDAO;
+import com.coffee.dao.NhanVienDAO;
 import com.coffee.dao.SanPhamDAO;
 import com.coffee.entity.LoaiSanPham;
+import com.coffee.entity.NhanVien;
 import com.coffee.entity.SanPham;
+import com.coffee.utils.Auth;
 import com.coffee.utils.MsgBox;
+import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.swing.AbstractAction;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +34,8 @@ import javax.swing.table.DefaultTableModel;
  * @author MyLaptop
  */
 public class BanHangJDialog extends javax.swing.JDialog {
-
+    public static NhanVien user;
+    String maNV= "";
     /**
      * Creates new form BanHangJDialog
      */
@@ -33,6 +43,8 @@ public class BanHangJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         init();
+        
+        lblMaNV.setText(""+Auth.user.getMaNV());
     }
 
     /**
@@ -147,21 +159,21 @@ public class BanHangJDialog extends javax.swing.JDialog {
 
         tblThucDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Tên sản phẩm", "Đơn giá"
+                "Mã sản phẩm", "Tên sản phẩm", "Đơn giá"
             }
         ));
         jScrollPane2.setViewportView(tblThucDon);
@@ -204,31 +216,21 @@ public class BanHangJDialog extends javax.swing.JDialog {
 
         jLabel8.setText("Mã sản phẩm:");
 
-        lblMaSP.setText("ST01");
-
         jLabel10.setText("Đơn giá:");
-
-        lblDonGia.setText("500.000");
 
         tblOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Tên sản phẩm", "Số lượng", "Thành tiền"
             }
         ));
+        tblOrder.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblOrderKeyReleased(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblOrder);
 
         btnXoaMon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Delete.png"))); // NOI18N
@@ -261,8 +263,8 @@ public class BanHangJDialog extends javax.swing.JDialog {
                                 .addComponent(btnXoaMon))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,9 +296,13 @@ public class BanHangJDialog extends javax.swing.JDialog {
         btnThanhToan.setForeground(new java.awt.Color(255, 255, 255));
         btnThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Money.png"))); // NOI18N
         btnThanhToan.setText("Thanh Toán");
+        btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThanhToanActionPerformed(evt);
+            }
+        });
 
         lblTongTien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTongTien.setText("500.000");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -385,6 +391,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
     private void btnChuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuyenActionPerformed
         // TODO add your handling code here:
         int row = tblThucDon.getSelectedRow();
+        System.out.println("san pham"+row);
         if(row<0){
             MsgBox.alert(this, "Vui lòng chọn ít nhất một sản phẩm!");
         }
@@ -395,18 +402,17 @@ public class BanHangJDialog extends javax.swing.JDialog {
 //                tblThucDon.remove(row);
 //            }
               int selectedRowIndex = tblThucDon.getSelectedRow();
-              int selectedColIndex = tblThucDon.getSelectedColumn();
+              int[] selectedColIndex = tblThucDon.getSelectedColumns();
+              System.out.println("column"+selectedColIndex[0]);
               DefaultTableModel curriculumSubjectsModel = (DefaultTableModel)tblOrder.getModel();
               curriculumSubjectsModel.addRow(new Object[]
-                {tblThucDon.getValueAt(selectedRowIndex, selectedColIndex)});
-              tblOrder.setModel(curriculumSubjectsModel);
-              
-        
-        
+                {tblThucDon.getValueAt(selectedRowIndex, 1),
+                 
+                });
+//              tblOrder.setModel(curriculumSubjectsModel);
+                lblMaSP.setText(tblThucDon.getValueAt(selectedRowIndex, 0).toString());
+                lblDonGia.setText(tblThucDon.getValueAt(selectedRowIndex, 2).toString());
         }
-        
-        
-        
     }//GEN-LAST:event_btnChuyenActionPerformed
 
     private void btnXoaMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaMonActionPerformed
@@ -416,8 +422,39 @@ public class BanHangJDialog extends javax.swing.JDialog {
             MsgBox.alert(this, "Chưa chọn dòng nào trong bảng!");
             return;
         }
-        tblOrder.remove(row);
+        if(row>=0){   
+            DefaultTableModel tbl = (DefaultTableModel)tblOrder.getModel();
+            tbl.removeRow(row);
+            MsgBox.alert(this, "Xoá thành công món được chọn");
+        }
     }//GEN-LAST:event_btnXoaMonActionPerformed
+
+    private void tblOrderKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblOrderKeyReleased
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            System.out.println("ok");
+            DefaultTableModel tbl = (DefaultTableModel)tblOrder.getModel();
+            int row = tblOrder.getSelectedRow();
+            tbl.setValueAt(Float.valueOf(lblDonGia.getText())*Integer.valueOf((String) tblOrder.getValueAt(row, 1)), row, 2);
+            
+//            for(row=0; row<10; row++){
+////               lblTongTien.setText(Float.valueOf((String)tblOrder.getValueAt(row, 2))+Float.valueOf((String)tblOrder.getValueAt(row++, 2)).toString());
+////                lblTongTien.setText(tblOrder.getValueAt(row, 2)+tblOrder.getValueAt(row+1, 2).toString());   
+//                Integer a =(Integer) tblOrder.getValueAt(row, 2);
+//                Integer b =(Integer) tblOrder.getValueAt(row+1, 2);
+//                Integer c = a+b;
+//                lblTongTien.setText(""+c);
+//                lblTongTien.setText(tblOrder.getValueAt(row, 2)+tblOrder.getValueAt(row+1, 2).toString()); 
+//                row++;     
+//        }
+                  lblTongTien.setText(String.valueOf(tinhTien()));
+        }
+    }//GEN-LAST:event_tblOrderKeyReleased
+
+    private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
+        // TODO add your handling code here:
+        this.openThanhToan();
+    }//GEN-LAST:event_btnThanhToanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -502,6 +539,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
                 lblNgayInHD.setText(text);
             }
         }).start();
+        
     }
     
     LoaiSanPhamDAO lspdao = new LoaiSanPhamDAO();
@@ -532,6 +570,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
             List<SanPham> list = spdao.selectByLoaiSanPham(loaiSP.getMaLoaiSP());
             for (SanPham sp : list) {
                 Object[] row = {
+                    sp.getMaSP(),
                     sp.getTenSP(),
                     sp.getGia()
                 };
@@ -541,6 +580,18 @@ public class BanHangJDialog extends javax.swing.JDialog {
         catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
+    }
+    
+    void openThanhToan(){
+//        ThanhToanJDialog.setVisible setVisible = new ThanhToanJDialog.setVisible(true);
+    }
+    
+    public int tinhTien() {
+        int sum = 0;
+        for (int i = 0; i < tblOrder.getRowCount(); i++) {
+            sum += Double.valueOf(tblOrder.getValueAt(i, 2).toString());
+        }
+        return Integer.valueOf(sum);
     }
     
 //    void setForm(KhoaHoc kh){
