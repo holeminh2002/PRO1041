@@ -223,12 +223,32 @@ public class Dk_TV extends javax.swing.JDialog {
         jPanel3.setBackground(new java.awt.Color(189, 107, 9));
 
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/add-icon_1.png"))); // NOI18N
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/edit-icon.png"))); // NOI18N
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/close-icon.png"))); // NOI18N
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/new-file-icon.png"))); // NOI18N
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 204, 0));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/coffee-icon.png"))); // NOI18N
@@ -323,6 +343,22 @@ public class Dk_TV extends javax.swing.JDialog {
             this.edit();
         }
     }//GEN-LAST:event_tblThanhVienMouseClicked
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        this.insert();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        this.delete();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        this.update();
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        this.clearForm();
+    }//GEN-LAST:event_btnNewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -476,13 +512,13 @@ public class Dk_TV extends javax.swing.JDialog {
     void insert(){
        KhachHang kh  = getForm();
         try {
-//            if(check()){
+//           if(check()){
             khdao.insert(kh);
             this.fillTable();
             this.clearForm();
             MsgBox.alert(this, "Thêm mới thành công!");
-//            }
-        } 
+           }
+//        } 
         catch (Exception e) {
             MsgBox.alert(this, "Thêm mới thất bại!");
         }
@@ -498,8 +534,8 @@ public class Dk_TV extends javax.swing.JDialog {
 //            } else if(txtHoTen.getText().equals("")|| txtMaKH.getText().equals("")||txtEmail.getText().equals("")||txtSDT.getText().equals("")||txtDiaChi.getText().equals("")){
 //                 MsgBox.alert(this, "Mời bạn nhạp thông tin của khách hàng!");
 //                 return false;
-//            }
-//        }
+//           }
+//       }
 //        return true;
 //
 //    }
