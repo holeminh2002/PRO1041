@@ -452,6 +452,9 @@
                   <Image iconType="3" name="/com/coffee/icon/add-icon_1.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnEdit">
               <Properties>
@@ -459,6 +462,9 @@
                   <Image iconType="3" name="/com/coffee/icon/edit-icon.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnDelete">
               <Properties>
@@ -466,6 +472,9 @@
                   <Image iconType="3" name="/com/coffee/icon/close-icon.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnNew">
               <Properties>
@@ -473,6 +482,9 @@
                   <Image iconType="3" name="/com/coffee/icon/new-file-icon.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
