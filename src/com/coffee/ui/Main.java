@@ -27,6 +27,8 @@ public class Main extends javax.swing.JFrame {
         init();
     }
 
+    
+
     void openThongKe(int index) {
         if (Auth.isLogin()) {
             if (!Auth.isManager()) {

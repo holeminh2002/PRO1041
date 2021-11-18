@@ -150,6 +150,11 @@ public class QLsanphamDialog extends javax.swing.JDialog {
 
         cbbloaisp.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
         cbbloaisp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbloaisp.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbloaispItemStateChanged(evt);
+            }
+        });
         cbbloaisp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbloaispActionPerformed(evt);
@@ -292,8 +297,6 @@ public class QLsanphamDialog extends javax.swing.JDialog {
                     .addComponent(btnxoasp))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
-
-        lblmaloai.getAccessibleContext().setAccessibleName("Mã loại sản phẩm");
 
         lbltieude.setBackground(new java.awt.Color(238, 207, 161));
         lbltieude.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
@@ -543,8 +546,12 @@ public class QLsanphamDialog extends javax.swing.JDialog {
 
     private void cbbloaispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbloaispActionPerformed
         // TODO add your handling code here:
-        this.chonMaLoaiSP();
+          this.chonMaLoaiSP();
     }//GEN-LAST:event_cbbloaispActionPerformed
+
+    private void cbbloaispItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbloaispItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbloaispItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -744,19 +751,22 @@ public boolean check() {
     void setForm(SanPham sp){
         txtmasp.setText(sp.getMaSP());
         txttensp.setText(sp.getTenSP());
-        txtdongia.setText(String.valueOf(sp.getGia()));        
-        cbbloaisp.setSelectedItem(true);
+        txtdongia.setText(String.valueOf(sp.getGia())); 
+        cbbloaisp.setToolTipText(String.valueOf(sp.getMaLoaiSP()));
+        cbbloaisp.setSelectedItem(loaispdao.selectById(sp.getMaLoaiSP())); 
+        //cbbloaisp.setSelectedItem(true);
         if(sp.getHinhAnh() != null){
             lblhinhanh.setToolTipText(sp.getHinhAnh());
             lblhinhanh.setIcon(XImage.read(sp.getHinhAnh()));
         }
     }
     SanPham getForm(){
+        LoaiSanPham loaisp = new LoaiSanPham();
         SanPham sp = new SanPham();
         sp.setMaSP(txtmasp.getText());
         sp.setTenSP(txttensp.getText());
         sp.setGia(Double.valueOf(txtdongia.getText()));
-        //sp.setMaLoaiSP(cbbloaisp.getItemAt(1));
+        sp.setMaLoaiSP(cbbloaisp.getToolTipText());
         sp.setHinhAnh(lblhinhanh.getToolTipText());
         return sp;
     }   
@@ -771,7 +781,7 @@ public boolean check() {
         }
     }
    void chonMaLoaiSP(){
-       LoaiSanPham loaisanpham = (LoaiSanPham)cbbloaisp.getSelectedItem();      
+       LoaiSanPham  loaisanpham = (LoaiSanPham) cbbloaisp.getSelectedItem();      
         this.fillToTable();
         this.row = -1;
         

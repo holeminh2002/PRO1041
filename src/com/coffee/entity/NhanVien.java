@@ -5,6 +5,8 @@
  */
 package com.coffee.entity;
 
+import java.util.Date;
+
 /**
  *
  * @author MyLaptop
@@ -16,7 +18,7 @@ public class NhanVien {
     private String diaChi;
     private String sDT;
     private String email;
-    private String ngayVaoLam;
+    private Date ngayVaoLam;
     private boolean vaiTro = false;
     private String matKhau;
     private String hinh;
@@ -69,13 +71,15 @@ public class NhanVien {
         this.email = email;
     }
 
-    public String getNgayVaoLam() {
+    public Date getNgayVaoLam() {
         return ngayVaoLam;
     }
 
-    public void setNgayVaoLam(String ngayVaoLam) {
+    public void setNgayVaoLam(Date ngayVaoLam) {
         this.ngayVaoLam = ngayVaoLam;
     }
+
+    
 
     public boolean getVaiTro() {
         return vaiTro;
