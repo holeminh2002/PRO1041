@@ -19,10 +19,10 @@ import javax.swing.Timer;
  *
  * @author Dell
  */
-public class Main extends javax.swing.JFrame {
+public class TrangChu extends javax.swing.JFrame {
 
     
-    public Main() {
+    public TrangChu() {
         initComponents();
         init();
     }
@@ -89,6 +89,7 @@ public class Main extends javax.swing.JFrame {
         mnuQuanLy = new javax.swing.JMenu();
         mniqlnv = new javax.swing.JMenuItem();
         mniqlkh = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
         mniLuongNV = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         mnibanhang = new javax.swing.JMenuItem();
@@ -254,6 +255,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         mnuQuanLy.add(mniqlkh);
+        mnuQuanLy.add(jSeparator5);
 
         mniLuongNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Database.png"))); // NOI18N
         mniLuongNV.setText("Lương nhân viên");
@@ -536,14 +538,18 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -552,7 +558,7 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new TrangChu().setVisible(true);
             }
         });
     }
@@ -572,6 +578,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator7;
     private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JLabel lblDongHo;
