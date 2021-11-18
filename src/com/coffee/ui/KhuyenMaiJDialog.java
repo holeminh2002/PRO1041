@@ -70,7 +70,7 @@ public class KhuyenMaiJDialog extends javax.swing.JDialog {
 
         jLabel3.setText("Mô tả");
 
-        jLabel4.setText("Chiết khấu (%) :");
+        jLabel4.setText("Chiết khấu :");
 
         jLabel5.setText("Ngày bắt đầu :");
 
