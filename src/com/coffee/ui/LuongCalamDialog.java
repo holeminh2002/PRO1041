@@ -755,7 +755,7 @@ NhanVienDAO nvdao = new NhanVienDAO();
     
     
      void setFormLuongNV(ChiTietLuongNhanVien luong){
-        txtmacalam.setText(luong.getMaCaLV());
+        txtmacalam1.setText(luong.getMaCaLV());
         cbbnhanvien.setSelectedItem(false);
         txttongcalam.setText(String.valueOf(luong.getTongSoCaLamTrongThang()));
         txttongluong.setText(String.valueOf(luong.getThanhTien()));
@@ -764,7 +764,7 @@ NhanVienDAO nvdao = new NhanVienDAO();
      
     ChiTietLuongNhanVien getFormLuongNV(){
         ChiTietLuongNhanVien luong = new ChiTietLuongNhanVien();
-        luong.setMaCaLV(txtmacalam.getText());
+        luong.setMaCaLV(txtmacalam1.getText());
         luong.setMaNV(cbbnhanvien.getItemAt(1));
         luong.setTongSoCaLamTrongThang(Integer.valueOf(txttongcalam.getText()));
         luong.setThanhTien(Double.valueOf(txttongluong.getText()));

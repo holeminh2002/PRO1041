@@ -89,6 +89,7 @@ public class Main extends javax.swing.JFrame {
         mnuQuanLy = new javax.swing.JMenu();
         mniqlnv = new javax.swing.JMenuItem();
         mniqlkh = new javax.swing.JMenuItem();
+        mniLuongNV = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         mnibanhang = new javax.swing.JMenuItem();
         mnisp = new javax.swing.JMenuItem();
@@ -253,6 +254,15 @@ public class Main extends javax.swing.JFrame {
             }
         });
         mnuQuanLy.add(mniqlkh);
+
+        mniLuongNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Database.png"))); // NOI18N
+        mniLuongNV.setText("Lương nhân viên");
+        mniLuongNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLuongNVActionPerformed(evt);
+            }
+        });
+        mnuQuanLy.add(mniLuongNV);
         mnuQuanLy.add(jSeparator3);
 
         mnibanhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Payment.png"))); // NOI18N
@@ -398,44 +408,44 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnQLnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLnvActionPerformed
-        this.dispose();
+//        this.dispose();
         new QLnhanivenDialog(this, true).setVisible(true);
         
     }//GEN-LAST:event_btnQLnvActionPerformed
 
     private void btnQLkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLkhActionPerformed
-        this.dispose();
+//        this.dispose();
         new Dk_TV(this, true).setVisible(true);
         
     }//GEN-LAST:event_btnQLkhActionPerformed
 
     private void btnQLspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLspActionPerformed
-        this.dispose();
+//        this.dispose();
         new QLsanphamDialog(this, true).setVisible(true);
         
     }//GEN-LAST:event_btnQLspActionPerformed
 
     private void btnQLbhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLbhActionPerformed
-        this.dispose();
+//        this.dispose();
         new BanHangJDialog(this, true).setVisible(true);
         
     }//GEN-LAST:event_btnQLbhActionPerformed
 
     private void btnKhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhuyenmaiActionPerformed
-        this.dispose();
+//        this.dispose();
         new KhuyenMaiJDialog(this, true).setVisible(true);
         
     }//GEN-LAST:event_btnKhuyenmaiActionPerformed
 
     private void btnThongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongkeActionPerformed
-        this.dispose();
+//        this.dispose();
         new thongke(this, true).setVisible(true);
         
     }//GEN-LAST:event_btnThongkeActionPerformed
 
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
         Auth.clear();
-        this.dispose();
+//        this.dispose();
         new DangNhap(this, true).setVisible(true);
         
     }//GEN-LAST:event_btnDangXuatActionPerformed
@@ -507,6 +517,11 @@ public class Main extends javax.swing.JFrame {
                 + "\n + Số điện thoại: 0987654321");
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
+    private void mniLuongNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLuongNVActionPerformed
+        // TODO add your handling code here:
+        new LuongCalamDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_mniLuongNVActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -569,6 +584,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniHuongDan;
     private javax.swing.JMenuItem mniInfo;
     private javax.swing.JMenuItem mniKhachHang;
+    private javax.swing.JMenuItem mniLuongNV;
     private javax.swing.JMenuItem mniSanPham;
     private javax.swing.JMenuItem mnibanhang;
     private javax.swing.JMenuItem mnikhuyenmai;
