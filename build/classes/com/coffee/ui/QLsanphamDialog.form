@@ -320,9 +320,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="M&#xe3; lo&#x1ea1;i s&#x1ea3;n ph&#x1ea9;m"/>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="M&#xe3; lo&#x1ea1;i s&#x1ea3;n ph&#x1ea9;m"/>
-          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbldongia">
           <Properties>

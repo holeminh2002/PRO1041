@@ -5,6 +5,14 @@
  */
 package com.coffee.ui;
 
+import com.coffee.dao.KhachHangDAO;
+import com.coffee.dao.LoaiKhachHangDAO;
+import com.coffee.entity.KhachHang;
+import com.coffee.utils.Auth;
+import com.coffee.utils.MsgBox;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Asus
@@ -19,6 +27,10 @@ public class Dk_TV extends javax.swing.JDialog {
         initComponents();
         init();
     }
+    
+    KhachHangDAO khdao = new KhachHangDAO();
+    LoaiKhachHangDAO lkhdao = new LoaiKhachHangDAO();
+    int row = -1;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,6 +98,11 @@ public class Dk_TV extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
+        tblThanhVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblThanhVienMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblThanhVien);
 
         jPanel2.setBackground(new java.awt.Color(238, 207, 161));
@@ -115,14 +132,14 @@ public class Dk_TV extends javax.swing.JDialog {
 
         cboXH.setEditable(true);
         cboXH.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboXH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vàng", "Bạc" }));
+        cboXH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VIP", "DIAMOND", "GOLD", "SLIVER", " " }));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Điểm tích lũy");
 
         cboDiem.setEditable(true);
         cboDiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboDiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        cboDiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1000", "2000", "3000", "4000" }));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Địa chỉ");
@@ -299,6 +316,14 @@ public class Dk_TV extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tblThanhVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblThanhVienMouseClicked
+        if(evt.getClickCount()==1){
+            this.row = tblThanhVien.getSelectedRow();
+           
+            this.edit();
+        }
+    }//GEN-LAST:event_tblThanhVienMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -373,5 +398,110 @@ public class Dk_TV extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     void init(){
         setLocationRelativeTo(null);
+        this.fillTable();
+        this.row = -1;
     }
+    void fillTable(){
+        DefaultTableModel model = (DefaultTableModel) tblThanhVien.getModel();
+        model.setRowCount(0);
+        try{
+            List<KhachHang> list = khdao.selectAll();
+            for(KhachHang kh: list){
+                Object[]row = {
+                    kh.getTenKH(), kh.getMaKH(), kh.getMaLoaiKH(), kh.getDiemTichLuy(), kh.getSDT()
+                };
+                model.addRow(row);
+            }
+        }catch (Exception e) {
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu");
+        }
+    }
+    void setForm(KhachHang kh){
+        txtHoTen.setText(kh.getTenKH());
+        txtMaKH.setText(String.valueOf(kh.getMaKH()));
+        txtEmail.setText(kh.getEmail());
+        txtSDT.setText(kh.getSDT());
+        cboXH.setSelectedItem(true);
+        cboDiem.setSelectedItem(true);
+        txtDiaChi.setText(kh.getDiaChi());
+    }
+    KhachHang getForm(){
+        KhachHang kh = new KhachHang();
+        kh.setTenKH(txtHoTen.getText());
+        kh.setMaKH(Integer.valueOf(txtMaKH.getText()));
+        kh.setEmail(txtEmail.getText());
+        kh.setSDT(txtSDT.getText());
+        kh.setDiaChi(txtDiaChi.getText());
+        return kh;
+    }
+    void clearForm(){
+        this.setForm(new KhachHang());
+        this.row = -1;
+    }
+    void edit(){
+        Integer makh = (Integer) tblThanhVien.getValueAt(this.row, 1);
+        KhachHang kh = khdao.selectById(makh);
+        this.setForm(kh);       
+    }
+    void delete(){
+        if(!Auth.isManager()){
+            MsgBox.alert(this, "Bạn không có quyền xóa nhân viên này!");
+        }
+        else{
+            if(MsgBox.confirm(this, "Bạn có muốn xóa hay không?")){
+                Integer MaKH = Integer.valueOf(txtMaKH.getText());
+                try {
+                    khdao.delete(MaKH);
+                    this.fillTable();
+                    this.clearForm();
+                    MsgBox.alert(this, "Xóa thành công!");
+                } 
+                catch (Exception e) {
+                    MsgBox.alert(this, "Xóa thất bại!");
+                }
+            }
+        }
+    }
+    void update(){
+        KhachHang kh  = getForm();
+        try {
+            khdao.update(kh);
+            this.fillTable();
+            MsgBox.alert(this, "Cập nhật thành công!");
+        } 
+        catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại!");
+        }
+    }
+    void insert(){
+       KhachHang kh  = getForm();
+        try {
+//            if(check()){
+            khdao.insert(kh);
+            this.fillTable();
+            this.clearForm();
+            MsgBox.alert(this, "Thêm mới thành công!");
+//            }
+        } 
+        catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
+
+    }
+    
+//    public boolean check() {
+//    List<KhachHang> list =khdao.selectAll();
+//        for (KhachHang kh : list) {
+//            if (txtMaKH.getText().equalsIgnoreCase((kh.getMaKH()))){
+//                 MsgBox.alert(this, "Mã khách hàng đã bị trùng!");
+//                return false;
+//            } else if(txtHoTen.getText().equals("")|| txtMaKH.getText().equals("")||txtEmail.getText().equals("")||txtSDT.getText().equals("")||txtDiaChi.getText().equals("")){
+//                 MsgBox.alert(this, "Mời bạn nhạp thông tin của khách hàng!");
+//                 return false;
+//            }
+//        }
+//        return true;
+//
+//    }
+    
 }
