@@ -2,10 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/E:/Javanetbeans/Java3/PRO1041/src/com/coffee/dao/HoaDonDAO.java</file>
             <file>file:/E:/Javanetbeans/Java3/PRO1041/src/com/coffee/ui/ThongKe.java</file>
             <file>file:/E:/Javanetbeans/Java3/PRO1041/src/com/coffee/dao/ThongKeDAO.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
     </open-files>
 </project-private>

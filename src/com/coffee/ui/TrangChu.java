@@ -27,6 +27,8 @@ public class TrangChu extends javax.swing.JFrame {
         init();
     }
 
+    
+
     void openThongKe(int index) {
         if (Auth.isLogin()) {
             if (!Auth.isManager()) {
@@ -109,6 +111,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblTrangThai.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
         lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Info.png"))); // NOI18N
         lblTrangThai.setText("Hệ thống quản lý cà phê - dự án 1");
 
@@ -138,6 +141,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel1.setMinimumSize(new java.awt.Dimension(1920, 1200));
         jLabel1.setPreferredSize(new java.awt.Dimension(1920, 1200));
 
+        btnQLnv.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         btnQLnv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/User group.png"))); // NOI18N
         btnQLnv.setText("Quản lý nhân viên");
         btnQLnv.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +150,7 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
+        btnQLkh.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         btnQLkh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Clien list.png"))); // NOI18N
         btnQLkh.setText("Quản lý khách hàng");
         btnQLkh.addActionListener(new java.awt.event.ActionListener() {
@@ -154,6 +159,7 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
+        btnThongke.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         btnThongke.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Scroll list.png"))); // NOI18N
         btnThongke.setText("Thống kê");
         btnThongke.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +168,7 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
+        btnQLsp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         btnQLsp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/coffee-icon (1).png"))); // NOI18N
         btnQLsp.setText("Quản lý sản phẩm");
         btnQLsp.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +177,7 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
+        btnDangXuat.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Log out.png"))); // NOI18N
         btnDangXuat.setText("Đăng xuất");
         btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
@@ -178,6 +186,7 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
+        btnQLbh.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         btnQLbh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Payment.png"))); // NOI18N
         btnQLbh.setText("Quản lý bán hàng");
         btnQLbh.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +195,7 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
+        btnKhuyenmai.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         btnKhuyenmai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Favourites.png"))); // NOI18N
         btnKhuyenmai.setText("Chương trình khuyến mãi");
         btnKhuyenmai.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +206,8 @@ public class TrangChu extends javax.swing.JFrame {
 
         mnuHeThong.setText("Hệ thống");
 
+        mniDangXuat.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        mniDangXuat.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mniDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Log out.png"))); // NOI18N
         mniDangXuat.setText("Đăng xuất");
         mniDangXuat.addActionListener(new java.awt.event.ActionListener() {
@@ -205,6 +217,8 @@ public class TrangChu extends javax.swing.JFrame {
         });
         mnuHeThong.add(mniDangXuat);
 
+        mniDoiMK.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_SHIFT, java.awt.event.InputEvent.CTRL_MASK));
+        mniDoiMK.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mniDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Refresh.png"))); // NOI18N
         mniDoiMK.setText("Đổi mật khẩu");
         mniDoiMK.addActionListener(new java.awt.event.ActionListener() {
@@ -215,6 +229,8 @@ public class TrangChu extends javax.swing.JFrame {
         mnuHeThong.add(mniDoiMK);
         mnuHeThong.add(jSeparator1);
 
+        mniAccount.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        mniAccount.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mniAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Unknown person.png"))); // NOI18N
         mniAccount.setText("Xem thông tin tài khoản");
         mniAccount.addActionListener(new java.awt.event.ActionListener() {
@@ -225,6 +241,8 @@ public class TrangChu extends javax.swing.JFrame {
         mnuHeThong.add(mniAccount);
         mnuHeThong.add(jSeparator2);
 
+        mniExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        mniExit.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mniExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Stop.png"))); // NOI18N
         mniExit.setText("Thoát");
         mniExit.addActionListener(new java.awt.event.ActionListener() {
@@ -238,6 +256,8 @@ public class TrangChu extends javax.swing.JFrame {
 
         mnuQuanLy.setText("Quản lý");
 
+        mniqlnv.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_MASK));
+        mniqlnv.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mniqlnv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/User group.png"))); // NOI18N
         mniqlnv.setText("Quản lý nhân viên");
         mniqlnv.addActionListener(new java.awt.event.ActionListener() {
@@ -247,6 +267,8 @@ public class TrangChu extends javax.swing.JFrame {
         });
         mnuQuanLy.add(mniqlnv);
 
+        mniqlkh.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK));
+        mniqlkh.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mniqlkh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Clien list.png"))); // NOI18N
         mniqlkh.setText("Quản lý thông tin KH");
         mniqlkh.addActionListener(new java.awt.event.ActionListener() {
@@ -257,6 +279,8 @@ public class TrangChu extends javax.swing.JFrame {
         mnuQuanLy.add(mniqlkh);
         mnuQuanLy.add(jSeparator5);
 
+        mniLuongNV.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_MASK));
+        mniLuongNV.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mniLuongNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Database.png"))); // NOI18N
         mniLuongNV.setText("Lương nhân viên");
         mniLuongNV.addActionListener(new java.awt.event.ActionListener() {
@@ -267,6 +291,8 @@ public class TrangChu extends javax.swing.JFrame {
         mnuQuanLy.add(mniLuongNV);
         mnuQuanLy.add(jSeparator3);
 
+        mnibanhang.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
+        mnibanhang.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mnibanhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Payment.png"))); // NOI18N
         mnibanhang.setText("Quản lý bán hàng");
         mnibanhang.addActionListener(new java.awt.event.ActionListener() {
@@ -276,6 +302,8 @@ public class TrangChu extends javax.swing.JFrame {
         });
         mnuQuanLy.add(mnibanhang);
 
+        mnisp.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK));
+        mnisp.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mnisp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/coffee-icon (1).png"))); // NOI18N
         mnisp.setText("Quản lý sản phẩm");
         mnisp.addActionListener(new java.awt.event.ActionListener() {
@@ -286,6 +314,8 @@ public class TrangChu extends javax.swing.JFrame {
         mnuQuanLy.add(mnisp);
         mnuQuanLy.add(jSeparator4);
 
+        mnikhuyenmai.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
+        mnikhuyenmai.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mnikhuyenmai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Favourites.png"))); // NOI18N
         mnikhuyenmai.setText("Chương trình khuyến mãi");
         mnikhuyenmai.addActionListener(new java.awt.event.ActionListener() {
@@ -299,6 +329,8 @@ public class TrangChu extends javax.swing.JFrame {
 
         mnuThongKe.setText("Thống kê");
 
+        mniDoanhThu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        mniDoanhThu.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mniDoanhThu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Coins.png"))); // NOI18N
         mniDoanhThu.setText("Thống kê doanh thu");
         mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
@@ -308,6 +340,8 @@ public class TrangChu extends javax.swing.JFrame {
         });
         mnuThongKe.add(mniDoanhThu);
 
+        mniKhachHang.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
+        mniKhachHang.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mniKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/User.png"))); // NOI18N
         mniKhachHang.setText("Thống kê khách hàng");
         mniKhachHang.addActionListener(new java.awt.event.ActionListener() {
@@ -317,6 +351,8 @@ public class TrangChu extends javax.swing.JFrame {
         });
         mnuThongKe.add(mniKhachHang);
 
+        mniSanPham.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
+        mniSanPham.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mniSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/coffee-icon (1).png"))); // NOI18N
         mniSanPham.setText("Thống kê sản phẩm");
         mniSanPham.addActionListener(new java.awt.event.ActionListener() {
@@ -330,6 +366,8 @@ public class TrangChu extends javax.swing.JFrame {
 
         mnuTroGiup.setText("Trợ giúp");
 
+        mniHuongDan.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.ALT_MASK));
+        mniHuongDan.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mniHuongDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Globe.png"))); // NOI18N
         mniHuongDan.setText("Hướng dẫn sử dụng");
         mniHuongDan.addActionListener(new java.awt.event.ActionListener() {
@@ -340,6 +378,8 @@ public class TrangChu extends javax.swing.JFrame {
         mnuTroGiup.add(mniHuongDan);
         mnuTroGiup.add(jSeparator7);
 
+        mniInfo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.ALT_MASK));
+        mniInfo.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         mniInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Info.png"))); // NOI18N
         mniInfo.setText("Thông tin cty");
         mniInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -350,6 +390,8 @@ public class TrangChu extends javax.swing.JFrame {
         mnuTroGiup.add(mniInfo);
         mnuTroGiup.add(jSeparator9);
 
+        jMenuItem15.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem15.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Mail.png"))); // NOI18N
         jMenuItem15.setText("Email liên hệ QC");
         jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
@@ -377,7 +419,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(btnThongke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnQLbh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnKhuyenmai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                    .addComponent(btnKhuyenmai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnQLkh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE))

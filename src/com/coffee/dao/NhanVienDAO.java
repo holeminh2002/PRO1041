@@ -78,7 +78,7 @@ public class NhanVienDAO extends CoffeeDAO<NhanVien, String> {
                     entity.setDiaChi(rs.getString("DiaChi"));
                     entity.setsDT(rs.getString("SDT"));
                     entity.setEmail(rs.getString("Email"));
-                    entity.setNgayVaoLam(rs.getString("NgayVaoLam"));
+                    entity.setNgayVaoLam(rs.getDate("NgayVaoLam"));
                     entity.setVaiTro(rs.getBoolean("VaiTro"));
                     entity.setMatKhau(rs.getString("MatKhau"));
                     entity.setHinh(rs.getString("Hinh"));
