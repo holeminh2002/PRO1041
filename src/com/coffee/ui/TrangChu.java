@@ -33,7 +33,7 @@ public class TrangChu extends javax.swing.JFrame {
                 MsgBox.alert(this, "Bạn không có quyền xem thông tin thống kê");
             } else {
                 this.dispose();
-                thongke tkwin = new thongke(this,true);
+                ThongKe tkwin = new ThongKe(this,true);
                 tkwin.selectTab(index);
                 tkwin.setVisible(true);
                 
@@ -441,7 +441,7 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnThongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongkeActionPerformed
 //        this.dispose();
-        new thongke(this, true).setVisible(true);
+        new ThongKe(this, true).setVisible(true);
         
     }//GEN-LAST:event_btnThongkeActionPerformed
 

@@ -4,21 +4,96 @@
  * and open the template in the editor.
  */
 package com.coffee.ui;
+
+import com.coffee.dao.HoaDonDAO;
+import com.coffee.dao.ThongKeDAO;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author HOME
  */
 public class ThongKe extends javax.swing.JDialog {
 
-    /**
-     * Creates new form thongke
-     */
+    ThongKeDAO dao = new ThongKeDAO();
+    
+    public void init() {
+        fill_cboDoanhThu();
+        fill_tableDoanhThu();
+        fill_cboKH();
+        fill_tableKH();
+        fill_cboSP();
+        fill_tableSP();
+    }
+
     public ThongKe(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        init();
     }
 
+    void fill_cboDoanhThu() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboNam.getModel();
+        model.removeAllElements();
+        List<Integer> list = HoaDonDAO.selectYear();
+        for (Integer year : list) {
+            model.addElement(year);
+        }
+    }
+//    public List<Object[]> getDoanhThu(int nam){
+//        String sql ="{CALL sp_ThongKeDoanhThu(?)}";
+//        String[] cols = {"MaHD", "MaNV", "MaKH ", "NgayInHD", "TongTien", "DiemTichLuy", "GiamGia", "TienKhachDua", "TienThua ", "MaKM"};
+//        return this.getListOfArray(sql, cols, nam);
+//    }
+
+    void fill_tableDoanhThu() {
+        DefaultTableModel model = (DefaultTableModel) tblDoanhThu.getModel();
+        model.setRowCount(0);
+        int Nam = (Integer) cboNam.getSelectedItem();
+        List<Object[]> list = dao.getDoanhThu(Nam);
+        for (Object[] row : list) {
+            model.addRow(row);
+        }
+    }
+
+    void fill_cboKH() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboKH.getModel();
+        model.removeAllElements();
+        List<Integer> list = HoaDonDAO.selectMonth();
+        for (Integer year : list) {
+            model.addElement(year);
+        }
+    }
+
+    void fill_tableKH() {
+        DefaultTableModel model = (DefaultTableModel) tblKH.getModel();
+        model.setRowCount(0);
+        int thang = (Integer) cboKH.getSelectedItem();
+        List<Object[]> list = dao.getKH(thang);
+        for (Object[] row : list) {
+            model.addRow(row);
+        }
+    }
+    void fill_cboSP(){
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboSP.getModel();
+        model.removeAllElements();
+        List<Integer> list = HoaDonDAO.selectMonth();
+        for (Integer year : list) {
+            model.addElement(year);
+        }
+    }
+    void fill_tableSP(){
+        DefaultTableModel model = (DefaultTableModel) tblSP.getModel();
+        model.setRowCount(0);
+        int thang = (Integer) cboSP.getSelectedItem();
+        List<Object[]> list = dao.getSP(thang);
+        for (Object[] row : list) {
+            model.addRow(row);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,19 +109,20 @@ public class ThongKe extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jToggleButton4 = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblDoanhThu = new javax.swing.JTable();
         jToggleButton13 = new javax.swing.JToggleButton();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cboNam = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tblKH = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        cboKH = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        tblSP = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        cboSP = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -55,7 +131,7 @@ public class ThongKe extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(238, 207, 161));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê doanh thu"));
 
-        jToggleButton4.setBackground(new java.awt.Color(204, 0, 0));
+        jToggleButton4.setBackground(new java.awt.Color(0, 255, 204));
         jToggleButton4.setText("IN BÁO CÁO");
         jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,17 +139,17 @@ public class ThongKe extends javax.swing.JDialog {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Ngày", "Mã Hóa Đơn", "Mã Nhân Viên", "Số Lượng", "Tên Hàng Hóa", "Mã Hầng Hóa", "Tổng Tiền ", "GIảm GIá (%)"
+                "MaHD ", "MaNV ", "Mã Nhân Viên", "MaKH ", "NgayInHD ", "TongTien ", "DiemTichLuy ", "GiamGia ", "TienKhachDua ", "TienThua ", "MaKM "
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblDoanhThu);
 
-        jToggleButton13.setBackground(new java.awt.Color(204, 0, 0));
+        jToggleButton13.setBackground(new java.awt.Color(0, 255, 204));
         jToggleButton13.setText("GỬI MAIL");
         jToggleButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,30 +157,47 @@ public class ThongKe extends javax.swing.JDialog {
             }
         });
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboNamActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("Năm :");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(199, Short.MAX_VALUE)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(jToggleButton4)
-                .addGap(18, 18, 18)
-                .addComponent(jToggleButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(cboNam, 0, 603, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jToggleButton4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jToggleButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jToggleButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cboNam, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE))
         );
@@ -113,9 +206,7 @@ public class ThongKe extends javax.swing.JDialog {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,22 +218,23 @@ public class ThongKe extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(238, 207, 161));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê khách hàng"));
 
-        jLabel6.setText("Tháng:");
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblKH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Tháng", "Mã Khách Hàng", "Tên Khách Hàng", "Số Lượng SP Đã Mua"
+                "Tháng", "Mã Khách Hàng", "Tên Khách Hàng", "Số Lượng SP Đã Mua", "Điểm Tích Lũy", "Xếp Hạng"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tblKH);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng 1/2021", "Tháng 2/2021", "..." }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setText("Tháng :");
+
+        cboKH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cboKHActionPerformed(evt);
             }
         });
 
@@ -150,21 +242,24 @@ public class ThongKe extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(cboKH, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(471, 471, 471)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboKH, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
         );
@@ -174,22 +269,23 @@ public class ThongKe extends javax.swing.JDialog {
         jPanel4.setBackground(new java.awt.Color(238, 207, 161));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê sản phẩm"));
 
-        jLabel9.setText("Tháng:");
-
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tblSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Tháng", "Mã Loại SP", "Tên Loại SP", "Mã Sản Phẩm", "Tên Sản Phẩm", "Số Lượng Bán Ra"
+                "Tháng", "Tên Loại SP", "Mã Sản Phẩm", "Tên Sản Phẩm", "Số Lượng Bán Ra"
             }
         ));
-        jScrollPane5.setViewportView(jTable5);
+        jScrollPane5.setViewportView(tblSP);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng 1/2021", "Tháng 2/2021", "..." }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("Tháng :");
+
+        cboSP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                cboSPActionPerformed(evt);
             }
         });
 
@@ -197,21 +293,24 @@ public class ThongKe extends javax.swing.JDialog {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 935, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cboSP, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboSP, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
         );
@@ -222,7 +321,9 @@ public class ThongKe extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 972, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,22 +335,25 @@ public class ThongKe extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton4ActionPerformed
+    private void cboNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamActionPerformed
+        fill_cboDoanhThu();
+    }//GEN-LAST:event_cboNamActionPerformed
 
     private void jToggleButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton13ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton13ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-
+    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jToggleButton4ActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    private void cboKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboKHActionPerformed
+        fill_cboKH();
+    }//GEN-LAST:event_cboKHActionPerformed
+
+    private void cboSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSPActionPerformed
+        fill_cboSP();
+    }//GEN-LAST:event_cboSPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,11 +401,12 @@ public class ThongKe extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JComboBox<String> cboKH;
+    private javax.swing.JComboBox<String> cboNam;
+    private javax.swing.JComboBox<String> cboSP;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
@@ -309,12 +414,12 @@ public class ThongKe extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable5;
     private javax.swing.JToggleButton jToggleButton13;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JTabbedPane tabs;
+    private javax.swing.JTable tblDoanhThu;
+    private javax.swing.JTable tblKH;
+    private javax.swing.JTable tblSP;
     // End of variables declaration//GEN-END:variables
 
     void selectTab(int index) {

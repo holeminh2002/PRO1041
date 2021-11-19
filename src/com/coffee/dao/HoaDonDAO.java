@@ -101,5 +101,33 @@ public class HoaDonDAO extends CoffeeDAO<HoaDon, Integer>{
         }
         return list;
     }
+    public static List<Integer> selectYear(){
+        String sql = "SELECT DISTINCT year(NgayInHD) as Nam FROM HoaDon ORDER BY nam DESC";
+    List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = XJdbc.query(sql);
+            while (rs.next()) {
+                list.add(rs.getInt(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static List<Integer> selectMonth(){
+        String sql = "SELECT DISTINCT month(NgayInHD) as thang FROM HoaDon ORDER BY thang DESC";
+    List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = XJdbc.query(sql);
+            while (rs.next()) {
+                list.add(rs.getInt(1));
+            }
+            rs.getStatement().getConnection().close();
+            return list;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     
 }
