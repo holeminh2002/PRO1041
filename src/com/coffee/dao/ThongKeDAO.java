@@ -51,11 +51,18 @@ public class ThongKeDAO {
         String[]cols = {"ChuyenDe","SoHV","ThapNhat","CaoNhat","TrungBinh"};
         return this.getListOfArray(sql, cols);
     }
+//    public List<Object[]> getDoanhThu(int nam){
+//        String sql ="{CALL sp_doanhthu(?)}";
+//        String[] cols = {"MaHD", "MaNV", "MaKH", "NgayInHD", "TongTien", "DiemTichLuy", "GiamGia", "TienKhachDua", "TienThua", "MaKM"};
+//        return this.getListOfArray(sql, cols, nam);
+//    }
+    
     public List<Object[]> getDoanhThu(int nam){
-        String sql ="{CALL sp_doanhthu(?)}";
-        String[] cols = {"MaHD", "MaNV", "MaKH", "NgayInHD", "TongTien", "DiemTichLuy", "GiamGia", "TienKhachDua", "TienThua", "MaKM"};
+        String sql ="{CALL sp_doanhthu_new(?)}";
+        String[] cols = {"MaHD", "MaNV", "SoLuong", "TenSP", "MaSP", "TongTien"};
         return this.getListOfArray(sql, cols, nam);
     }
+    
     public List<Object[]> getKH(int thang){
         String sql ="{CALL sp_khachhang(?)}";
         String[] cols = {"NgayInHD", "MaKH", "TenKH", "SoLuong", "DiemTichLuy", "MaLoaiKH"};

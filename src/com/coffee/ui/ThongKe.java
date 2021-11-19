@@ -144,7 +144,7 @@ public class ThongKe extends javax.swing.JDialog {
 
             },
             new String [] {
-                "MaHD ", "MaNV ", "Mã Nhân Viên", "MaKH ", "NgayInHD ", "TongTien ", "DiemTichLuy ", "GiamGia ", "TienKhachDua ", "TienThua ", "MaKM "
+                "MaHD ", "MaNV ", "Số Lượng", "Tên Sản Phẩm", "Mã Sản Phẩm", "Tổng Tiền"
             }
         ));
         jScrollPane2.setViewportView(tblDoanhThu);

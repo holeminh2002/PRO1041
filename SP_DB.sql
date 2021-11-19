@@ -1,4 +1,4 @@
-drop proc sp_doanhthu
+drop proc sp_doanhthu;
 Create proc sp_doanhthu(@year int)
 as begin
  select 
@@ -45,6 +45,19 @@ as begin
 	where MONTH(HD.NgayInHD) = @thang
 end
 
-
+Create proc sp_doanhthu_new(@year int)
+as begin
+ select 
+	hd.MaHD ,
+	hd.MaNV ,
+	ctbh.SoLuong ,
+	sp.TenSP,
+	sp.MaSP,
+	hd.TongTien
+  from hoadon hd
+  inner join ChiTietBanHang ctbh on hd.MaHD = ctbh.MaHD
+  inner join SanPham sp on sp.MaSP = ctbh.MaSP
+ where year(NgayInHD) = @year    
+end
 
 
