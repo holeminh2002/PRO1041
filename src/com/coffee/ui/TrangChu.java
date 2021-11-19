@@ -459,7 +459,7 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnQLkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLkhActionPerformed
 //        this.dispose();
-        new Dk_TV(this, true).setVisible(true);
+        new DangKyThanhVienDialog(this, true).setVisible(true);
         
     }//GEN-LAST:event_btnQLkhActionPerformed
 
@@ -519,7 +519,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_mniqlnvActionPerformed
 
     private void mniqlkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniqlkhActionPerformed
-        new Dk_TV(this, true).setVisible(true);
+        new DangKyThanhVienDialog(this, true).setVisible(true);
     }//GEN-LAST:event_mniqlkhActionPerformed
 
     private void mnibanhangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnibanhangActionPerformed

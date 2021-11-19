@@ -19,12 +19,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Asus
  */
-public class Dk_TV extends javax.swing.JDialog {
+public class DangKyThanhVienDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form Dk_TV
      */
-    public Dk_TV(java.awt.Frame parent, boolean modal) {
+    public DangKyThanhVienDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         init();
@@ -389,21 +389,23 @@ public class Dk_TV extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dk_TV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangKyThanhVienDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dk_TV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangKyThanhVienDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dk_TV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangKyThanhVienDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dk_TV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangKyThanhVienDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Dk_TV dialog = new Dk_TV(new javax.swing.JFrame(), true);
+                DangKyThanhVienDialog dialog = new DangKyThanhVienDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -483,8 +485,8 @@ public class Dk_TV extends javax.swing.JDialog {
         kh.setEmail(txtEmail.getText());
         kh.setSDT(txtSDT.getText());
         kh.setDiaChi(txtDiaChi.getText());
-//        kh.setMaLoaiKH((String) cboXH.getSelectedItem());
-//        kh.setDiemTichLuy((Double) cboDiem.getSelectedItem());
+        kh.setMaLoaiKH((String) cboXH.getSelectedItem());
+        kh.setDiemTichLuy((Double) cboDiem.getSelectedItem());
         return kh;
     }
     void clearForm(){

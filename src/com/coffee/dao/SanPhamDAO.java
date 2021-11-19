@@ -38,7 +38,9 @@ public class SanPhamDAO extends CoffeeDAO<SanPham, String>{
                 model.getTenSP(), 
                 model.getMaLoaiSP(), 
                 model.getHinhAnh(),
-                model.getGia());
+                model.getGia(),
+                model.getMaSP());
+               
     }
 
     

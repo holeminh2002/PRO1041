@@ -33,7 +33,7 @@ public class KhachHangDAO extends CoffeeDAO<KhachHang, Integer> {
 
     
     public void update(KhachHang model) {
-        String sql="UPDATE KhachHang SET MaLoaiKH, TenKH, DiaChi, Email, SDT, DiemTichLuy=? WHERE MaKH=?";
+        String sql="UPDATE KhachHang SET MaLoaiKH=?, TenKH=?, DiaChi=?, Email=?, SDT=?, DiemTichLuy=? WHERE MaKH=?";
         XJdbc.update(sql, 
                 model.getMaLoaiKH(), 
                 model.getTenKH(), 
