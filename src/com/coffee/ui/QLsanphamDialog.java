@@ -561,15 +561,15 @@ public class QLsanphamDialog extends javax.swing.JDialog {
           this.chonMaLoaiSP();
     }//GEN-LAST:event_cbbloaispActionPerformed
 
-<<<<<<< HEAD
+
     private void cbbloaispItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbloaispItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbloaispItemStateChanged
-=======
+
     private void txttenloaispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttenloaispActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttenloaispActionPerformed
->>>>>>> ac590d9cd0d34445dda7ab0ea4db68e63f492ee3
+
 
     /**
      * @param args the command line arguments
