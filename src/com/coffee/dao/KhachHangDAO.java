@@ -22,7 +22,7 @@ public class KhachHangDAO extends CoffeeDAO<KhachHang, Integer> {
     public void insert(KhachHang model) {
         String sql="INSERT INTO KhachHang (MaKH, MaLoaiKH, TenKH, DiaChi, Email, SDT, DiemTichLuy) VALUES (?, ?, ?, ?, ?, ?, ?)";
         XJdbc.update(sql, 
-                model.getMaKH(), 
+                model.getMaKH(),
                 model.getMaLoaiKH(), 
                 model.getTenKH(), 
                 model.getDiaChi(), 

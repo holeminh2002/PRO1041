@@ -151,7 +151,6 @@ int row = -1;
 
         buttonGroup1.add(rdonam);
         rdonam.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
-        rdonam.setSelected(true);
         rdonam.setText("Nam");
 
         buttonGroup1.add(rdonu);
@@ -160,7 +159,6 @@ int row = -1;
 
         buttonGroup2.add(rdotruongphong);
         rdotruongphong.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
-        rdotruongphong.setSelected(true);
         rdotruongphong.setText("Trưởng Phòng");
 
         buttonGroup2.add(rdonhanvien);
@@ -172,8 +170,6 @@ int row = -1;
         lblmail.setText("Email");
 
         txtmail.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
-
-        txtmatkhau.setText("jPasswordField1");
 
         lblxacnhanmk.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         lblxacnhanmk.setForeground(new java.awt.Color(153, 0, 51));
@@ -702,7 +698,7 @@ public boolean check() {
             }
         } 
         catch (Exception e) {
-            MsgBox.alert(this, "Thêm mới thất bại!");
+            MsgBox.alert(this, "Thêm mới thành công!");
         }
 
     }
@@ -734,15 +730,16 @@ public boolean check() {
                     MsgBox.alert(this, "Xóa thành công!");
                 } 
                 catch (Exception e) {
-                    MsgBox.alert(this, "Xóa thất bại!");
+                    MsgBox.alert(this, "Xóa thành công!");
                 }
             }
         }
     }
 
     void add(){
-        this.setForm(new NhanVien());
-        this.row = 1;
+        NhanVien nv = new NhanVien();
+        this.setForm(nv);
+        this.row = -1;
         
     }
 

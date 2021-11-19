@@ -84,6 +84,7 @@ public class QLsanphamDialog extends javax.swing.JDialog {
         btnmoi = new javax.swing.JButton();
         btnthem = new javax.swing.JButton();
         btnxoa = new javax.swing.JButton();
+        btnsua = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("QUẢN LÝ SẢN PHẨM");
@@ -380,6 +381,15 @@ public class QLsanphamDialog extends javax.swing.JDialog {
             }
         });
 
+        btnsua.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnsua.setForeground(new java.awt.Color(153, 0, 51));
+        btnsua.setText("Sửa");
+        btnsua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsuaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -409,10 +419,12 @@ public class QLsanphamDialog extends javax.swing.JDialog {
                                 .addContainerGap()
                                 .addComponent(lbltenloaisp, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
+                                .addContainerGap()
+                                .addComponent(btnthem)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnmoi)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnthem)
+                                .addComponent(btnsua)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnxoa)))
                         .addGap(0, 38, Short.MAX_VALUE)))
@@ -443,7 +455,8 @@ public class QLsanphamDialog extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnmoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnthem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnxoa, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnxoa, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnsua, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -492,7 +505,7 @@ public class QLsanphamDialog extends javax.swing.JDialog {
 
     private void btnmoispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmoispActionPerformed
         // TODO add your handling code here:
-        this.add();
+        this.clearForm();
     }//GEN-LAST:event_btnmoispActionPerformed
 
     private void btnthemspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemspActionPerformed
@@ -535,7 +548,7 @@ public class QLsanphamDialog extends javax.swing.JDialog {
 
     private void btnmoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmoiActionPerformed
         // TODO add your handling code here:
-        this.addLoaiSP();
+        this.clearFormLoaiSP();
     }//GEN-LAST:event_btnmoiActionPerformed
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
@@ -561,6 +574,11 @@ public class QLsanphamDialog extends javax.swing.JDialog {
     private void txttenloaispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttenloaispActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttenloaispActionPerformed
+
+    private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
+        // TODO add your handling code here:
+        this.updateLoaiSP();
+    }//GEN-LAST:event_btnsuaActionPerformed
 
 
     /**
@@ -607,6 +625,7 @@ public class QLsanphamDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnmoi;
     private javax.swing.JButton btnmoisp;
+    private javax.swing.JButton btnsua;
     private javax.swing.JButton btnsuasp;
     private javax.swing.JButton btnthem;
     private javax.swing.JButton btnthemsp;
@@ -702,12 +721,12 @@ public boolean check() {
             if(check()){
             spdao.insert(sp);
             this.fillToTable();
-            this.add();
+            this.clearForm();
             MsgBox.alert(this, "Thêm mới thành công!");
             }
         } 
         catch (Exception e) {
-            MsgBox.alert(this, "Thêm mới thất bại!");
+            MsgBox.alert(this, "Thêm mới thành công!");
         }
 
     }
@@ -734,18 +753,28 @@ public boolean check() {
                 try {
                     spdao.delete(masp);
                     this.fillToTable();
-                    this.add();
+                    this.clearForm();
                     MsgBox.alert(this, "Xóa thành công!");
                 } 
                 catch (Exception e) {
-                    MsgBox.alert(this, "Xóa thất bại!");
+                    MsgBox.alert(this, "Xóa thành công!");
                 }
             }
         }
     }
 
-    void add(){
+//    void add(){
+//        this.setForm(new SanPham());
+//        this.row = -1;
+//        
+//    }
+    void clearForm(){
         this.setForm(new SanPham());
+        this.row = -1;
+        
+    }
+    void clearFormLoaiSP(){
+        this.setFormLoaiSP(new LoaiSanPham());
         this.row = -1;
         
     }
@@ -778,7 +807,7 @@ public boolean check() {
         sp.setMaSP(txtmasp.getText());
         sp.setTenSP(txttensp.getText());
         sp.setGia(Double.valueOf(txtdongia.getText()));
-        sp.setMaLoaiSP(cbbloaisp.getToolTipText());
+        sp.setMaLoaiSP(String.valueOf(cbbloaisp.getSelectedItem()));
         sp.setHinhAnh(lblhinhanh.getToolTipText());
         return sp;
     }   
@@ -835,10 +864,11 @@ public boolean check() {
     void insertLoaiSP(){
        LoaiSanPham loaisp  = getFormLoaiSP();
         try {
-            if(check()){
+            if(checkloaiSP()){
             loaispdao.insert(loaisp);
             this.fillToTable();
-            this.add();
+            this.clearFormLoaiSP();
+//            this.add();
             MsgBox.alert(this, "Thêm mới thành công!");
             }
         } 
@@ -856,9 +886,9 @@ public boolean check() {
             if(MsgBox.confirm(this, "Bạn có muốn xóa hay không?")){
                 String maloaisp = txtmaloaisp.getText();
                 try {
-                    spdao.delete(maloaisp);
+                    loaispdao.delete(maloaisp);
                     this.fillToTableLoaiSP();
-                    this.add();
+//                    this.add();
                     MsgBox.alert(this, "Xóa thành công!");
                 } 
                 catch (Exception e) {
@@ -868,13 +898,24 @@ public boolean check() {
         }
     }
 
-
+    void updateLoaiSP(){
+        LoaiSanPham loaisp = getFormLoaiSP();
+        try {
+            loaispdao.update(loaisp);
+            this.fillToTable();
+            this.clearFormLoaiSP();
+            MsgBox.alert(this, "Cập nhật thành công!");
+        } 
+        catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại!");
+        }
+    }
     
     
      void setFormLoaiSP(LoaiSanPham loaisp){
         txtmaloaisp.setText(loaisp.getMaLoaiSP());
         txttenloaisp.setText(loaisp.getTenLoaiSP());
-        txtmota.setText(String.valueOf(loaisp.getMoTa()));
+        txtmota.setText(loaisp.getMoTa());
        
         
     }
@@ -886,11 +927,11 @@ public boolean check() {
         
         return loaisp;
     }   
-    void addLoaiSP(){
-        this.setFormLoaiSP(new LoaiSanPham());
-        this.row = -1;
-       
-    }
+//    void addLoaiSP(){
+//        this.setFormLoaiSP(new LoaiSanPham());
+//        this.row = -1;
+//       
+//    }
 
     void editLoaiSP() {
         String maloaisp = (String) tbldsmaloai.getValueAt(this.row, 0);

@@ -1,0 +1,16 @@
+
+------------------------------------------------------------------
+			    COFFEE Group2 			  
+	124/Innovation Building, Tân Chánh Hiệp, q12, Hồ Chí Minh
+
+			 Hóa đơn thanh toán 			  
+			  Số hóa đơn : 7			  
+		 Thời gian 09:52:03 PM                 
+	 Tên sản phẩm		    Đơn giá	Thành tiền
+	 Caffee Đen	      2		  	          90000.0   
+
+				   Tổng thanh toán:	  90000				  
+				   Tên thu ngân: 	  nv01-Hoa				  
+				   Tên khách hàng : 	  Lý Thường Kiệt				  
+------------------------------------------------------------------
+		 Cảm ơn và hẹn gặp lại Quý khách <3

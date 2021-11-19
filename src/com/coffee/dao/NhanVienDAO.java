@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class NhanVienDAO extends CoffeeDAO<NhanVien, String> {
     public void insert(NhanVien model){
-        String sql="INSERT INTO NhanVien (MaNV, TenNV, GioiTinh, DiaChi, SDT, Email, NgayVaoLam, VaiTro, MatKhau, Hinh) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql="INSERT INTO NhanVien (MaNV, TenNV, GioiTinh, DiaChi, SDT, Email, NgayVaoLam, VaiTro, MatKhau, Hinh) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         XJdbc.update(sql, 
                 model.getMaNV(), 
                 model.getTenNV(), 

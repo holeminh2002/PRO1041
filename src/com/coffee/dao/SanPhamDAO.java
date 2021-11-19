@@ -21,7 +21,7 @@ public class SanPhamDAO extends CoffeeDAO<SanPham, String>{
 
     
     public void insert(SanPham model) {
-       String sql="INSERT INTO SanPham (MaSP, TenSP, MaLoaiSP, HinhAnh, Gia) VALUES (?, ?, ?, ?)";
+       String sql="INSERT INTO SanPham (MaSP, TenSP, MaLoaiSP, HinhAnh, Gia) VALUES (?, ?, ?, ?,?)";
         XJdbc.update(sql, 
                 model.getMaSP(), 
                 model.getTenSP(), 
