@@ -556,7 +556,7 @@ public class Dk_TV extends javax.swing.JDialog {
 //        return true;
 //
 //    }
-//    LoaiKhachHangDAO lkhdao = new LoaiKhachHangDAO();
+
     
     
 }

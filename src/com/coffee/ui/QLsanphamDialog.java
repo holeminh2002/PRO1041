@@ -149,12 +149,7 @@ public class QLsanphamDialog extends javax.swing.JDialog {
         txtdongia.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
 
         cbbloaisp.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
-        cbbloaisp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbbloaisp.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbbloaispItemStateChanged(evt);
-            }
-        });
+        cbbloaisp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DONGOT", "CAFFE", "DOUONG" }));
         cbbloaisp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbloaispActionPerformed(evt);
@@ -393,6 +388,9 @@ public class QLsanphamDialog extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
@@ -406,13 +404,7 @@ public class QLsanphamDialog extends javax.swing.JDialog {
                                     .addComponent(txtmaloaisp)
                                     .addComponent(txttenloaisp)
                                     .addComponent(lblmota, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))))
-                        .addGap(0, 38, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(lbltenloaisp, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -423,7 +415,7 @@ public class QLsanphamDialog extends javax.swing.JDialog {
                                 .addComponent(btnthem)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnxoa)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 38, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -558,7 +550,7 @@ public class QLsanphamDialog extends javax.swing.JDialog {
 
     private void cbbloaispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbloaispActionPerformed
         // TODO add your handling code here:
-          this.chonMaLoaiSP();
+//          this.chonMaLoaiSP();
     }//GEN-LAST:event_cbbloaispActionPerformed
 
 
@@ -654,21 +646,21 @@ public class QLsanphamDialog extends javax.swing.JDialog {
 private void init() {
         this.setLocationRelativeTo(null);
       // this.setIconImage(Images.getAppIcon());
-       this.fillComboBoxMaLoaiSP();
+//       this.fillComboBoxMaLoaiSP();
        this.fillToTable();
        this.fillToTableLoaiSP();
       // this.updateStatus();
        this.row = -1;
     }
     
-    void fillComboBoxMaLoaiSP(){
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbloaisp.getModel();
-        model.removeAllElements();
-        List<LoaiSanPham> list = loaispdao.selectAll();
-        for(LoaiSanPham loaisp : list){
-             model.addElement(loaisp);
-        }
-}
+//    void fillComboBoxMaLoaiSP(){
+//        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbloaisp.getModel();
+//        model.removeAllElements();
+//        List<LoaiSanPham> list = loaispdao.selectAll();
+//        for(LoaiSanPham loaisp : list){
+//             model.addElement(loaisp);
+//        }
+//}
      
     
     
@@ -767,16 +759,18 @@ public boolean check() {
     }
 
     void setForm(SanPham sp){
+        int r = tbldssanpham.getSelectedRow();
         txtmasp.setText(sp.getMaSP());
         txttensp.setText(sp.getTenSP());
         txtdongia.setText(String.valueOf(sp.getGia())); 
-        cbbloaisp.setToolTipText(String.valueOf(sp.getMaLoaiSP()));
-        cbbloaisp.setSelectedItem(loaispdao.selectById(sp.getMaLoaiSP())); 
+//        cbbloaisp.setToolTipText(String.valueOf(sp.getMaLoaiSP()));
+//        cbbloaisp.setSelectedItem(loaispdao.selectById(sp.getMaLoaiSP())); 
         //cbbloaisp.setSelectedItem(true);
         if(sp.getHinhAnh() != null){
             lblhinhanh.setToolTipText(sp.getHinhAnh());
             lblhinhanh.setIcon(XImage.read(sp.getHinhAnh()));
         }
+        cbbloaisp.setSelectedItem(tbldssanpham.getValueAt(r, 2));
     }
     SanPham getForm(){
         LoaiSanPham loaisp = new LoaiSanPham();
@@ -798,12 +792,12 @@ public boolean check() {
             lblhinhanh.setToolTipText(file.getName()); 
         }
     }
-   void chonMaLoaiSP(){
-       LoaiSanPham  loaisanpham = (LoaiSanPham) cbbloaisp.getSelectedItem();      
-        this.fillToTable();
-        this.row = -1;
-        
-    }
+//   void chonMaLoaiSP(){
+//       LoaiSanPham  loaisanpham = (LoaiSanPham) cbbloaisp.getSelectedItem();      
+//        this.fillToTable();
+//        this.row = -1;
+//        
+//    }
      
    
      void fillToTableLoaiSP() {
