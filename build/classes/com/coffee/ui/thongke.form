@@ -85,7 +85,6 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -104,25 +103,13 @@
                                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-=======
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="199" max="32767" attributes="0"/>
-                          <Component id="jComboBox3" min="-2" pref="299" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                          <Component id="jToggleButton4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jToggleButton13" min="-2" pref="87" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
                       </Group>
-                      <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-<<<<<<< HEAD
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jToggleButton4" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
@@ -132,12 +119,6 @@
                                   <Component id="cboNam" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-=======
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jToggleButton4" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="jToggleButton13" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="jComboBox3" alignment="1" max="32767" attributes="0"/>
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" pref="299" max="32767" attributes="0"/>
@@ -167,15 +148,9 @@
                     <Component class="javax.swing.JTable" name="tblDoanhThu">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-<<<<<<< HEAD
                           <Table columnCount="11" rowCount="0">
                             <Column editable="true" title="MaHD " type="java.lang.Object"/>
                             <Column editable="true" title="MaNV " type="java.lang.Object"/>
-=======
-                          <Table columnCount="8" rowCount="0">
-                            <Column editable="true" title="Ng&#xe0;y" type="java.lang.Object"/>
-                            <Column editable="true" title="M&#xe3; H&#xf3;a &#x110;&#x1a1;n" type="java.lang.Object"/>
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
                             <Column editable="true" title="M&#xe3; Nh&#xe2;n Vi&#xea;n" type="java.lang.Object"/>
                             <Column editable="true" title="MaKH " type="java.lang.Object"/>
                             <Column editable="true" title="NgayInHD " type="java.lang.Object"/>
@@ -264,11 +239,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton13ActionPerformed"/>
                   </Events>
                 </Component>
-<<<<<<< HEAD
                 <Component class="javax.swing.JComboBox" name="cboNam">
-=======
-                <Component class="javax.swing.JComboBox" name="jComboBox3">
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
@@ -279,17 +250,13 @@
                       </StringArray>
                     </Property>
                   </Properties>
-<<<<<<< HEAD
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboNamActionPerformed"/>
                   </Events>
-=======
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-<<<<<<< HEAD
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -298,8 +265,6 @@
                     <Property name="text" type="java.lang.String" value="N&#x103;m :"/>
                   </Properties>
                 </Component>
-=======
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
               </SubComponents>
             </Container>
           </SubComponents>
@@ -326,7 +291,6 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -339,50 +303,24 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-=======
-                  <Component id="jScrollPane3" alignment="0" pref="798" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" pref="237" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-<<<<<<< HEAD
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cboKH" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-=======
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
                       <Component id="jScrollPane3" pref="300" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-<<<<<<< HEAD
-=======
-            <Component class="javax.swing.JLabel" name="jLabel6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Th&#xe1;ng:"/>
-              </Properties>
-            </Component>
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
             <Container class="javax.swing.JScrollPane" name="jScrollPane3">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -393,11 +331,7 @@
                 <Component class="javax.swing.JTable" name="tblKH">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-<<<<<<< HEAD
                       <Table columnCount="6" rowCount="0">
-=======
-                      <Table columnCount="4" rowCount="0">
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
                         <Column editable="true" title="Th&#xe1;ng" type="java.lang.Object"/>
                         <Column editable="true" title="M&#xe3; Kh&#xe1;ch H&#xe0;ng" type="java.lang.Object"/>
                         <Column editable="true" title="T&#xea;n Kh&#xe1;ch H&#xe0;ng" type="java.lang.Object"/>
@@ -497,7 +431,6 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -510,32 +443,16 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-=======
-                  <Component id="jScrollPane5" alignment="0" pref="798" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" min="-2" pref="237" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-<<<<<<< HEAD
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cboSP" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-=======
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel9" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane5" pref="300" max="32767" attributes="0"/>
@@ -544,14 +461,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-<<<<<<< HEAD
-=======
-            <Component class="javax.swing.JLabel" name="jLabel9">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Th&#xe1;ng:"/>
-              </Properties>
-            </Component>
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
             <Container class="javax.swing.JScrollPane" name="jScrollPane5">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -562,11 +471,7 @@
                 <Component class="javax.swing.JTable" name="tblSP">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-<<<<<<< HEAD
                       <Table columnCount="5" rowCount="0">
-=======
-                      <Table columnCount="6" rowCount="0">
->>>>>>> c9f0acc18a3e5481e7fd38983cc7e4de80097fba
                         <Column editable="true" title="Th&#xe1;ng" type="java.lang.Object"/>
                         <Column editable="true" title="T&#xea;n Lo&#x1ea1;i SP" type="java.lang.Object"/>
                         <Column editable="true" title="M&#xe3; S&#x1ea3;n Ph&#x1ea9;m" type="java.lang.Object"/>

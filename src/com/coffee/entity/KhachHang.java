@@ -73,4 +73,15 @@ public class KhachHang {
     public void setDiemTichLuy(double DiemTichLuy) {
         this.DiemTichLuy = DiemTichLuy;
     }
+
+    @Override
+    public String toString() {
+        return this.TenKH;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        KhachHang other = (KhachHang) obj;
+        return other.getMaLoaiKH().equals(this.getMaLoaiKH());
+    }
 }

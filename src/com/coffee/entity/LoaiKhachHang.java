@@ -37,4 +37,9 @@ public class LoaiKhachHang {
     public void setDiemTichLuy(int DiemTichLuy) {
         this.DiemTichLuy = DiemTichLuy;
     }
+
+    @Override
+    public String toString() {
+        return this.MaLoaiKH;
+    }
 }

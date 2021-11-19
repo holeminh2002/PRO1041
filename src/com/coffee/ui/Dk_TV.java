@@ -8,9 +8,11 @@ package com.coffee.ui;
 import com.coffee.dao.KhachHangDAO;
 import com.coffee.dao.LoaiKhachHangDAO;
 import com.coffee.entity.KhachHang;
+import com.coffee.entity.LoaiKhachHang;
 import com.coffee.utils.Auth;
 import com.coffee.utils.MsgBox;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -133,6 +135,11 @@ public class Dk_TV extends javax.swing.JDialog {
         cboXH.setEditable(true);
         cboXH.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cboXH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VIP", "DIAMOND", "GOLD", "SLIVER", " " }));
+        cboXH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboXHActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Điểm tích lũy");
@@ -360,6 +367,11 @@ public class Dk_TV extends javax.swing.JDialog {
         this.clearForm();
     }//GEN-LAST:event_btnNewActionPerformed
 
+    private void cboXHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboXHActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cboXHActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -453,12 +465,15 @@ public class Dk_TV extends javax.swing.JDialog {
         }
     }
     void setForm(KhachHang kh){
+        int r = tblThanhVien.getSelectedRow();
         txtHoTen.setText(kh.getTenKH());
         txtMaKH.setText(String.valueOf(kh.getMaKH()));
         txtEmail.setText(kh.getEmail());
         txtSDT.setText(kh.getSDT());
-        cboXH.setSelectedItem(true);
-        cboDiem.setSelectedItem(true);
+//        cboXH.setSelectedItem(true);
+        cboXH.setSelectedItem(tblThanhVien.getValueAt(r, 2));
+//        cboDiem.setSelectedItem(true);
+        cboDiem.setSelectedItem(tblThanhVien.getValueAt(r, 3));
         txtDiaChi.setText(kh.getDiaChi());
     }
     KhachHang getForm(){
@@ -468,6 +483,8 @@ public class Dk_TV extends javax.swing.JDialog {
         kh.setEmail(txtEmail.getText());
         kh.setSDT(txtSDT.getText());
         kh.setDiaChi(txtDiaChi.getText());
+//        kh.setMaLoaiKH((String) cboXH.getSelectedItem());
+//        kh.setDiemTichLuy((Double) cboDiem.getSelectedItem());
         return kh;
     }
     void clearForm(){
@@ -539,5 +556,7 @@ public class Dk_TV extends javax.swing.JDialog {
 //        return true;
 //
 //    }
+//    LoaiKhachHangDAO lkhdao = new LoaiKhachHangDAO();
+    
     
 }

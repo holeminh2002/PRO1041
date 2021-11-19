@@ -82,6 +82,7 @@ public class KhuyenMai {
         this.MoTa = MoTa;
     }
 
+    
     @Override
     public String toString() {
         return this.TenKM;

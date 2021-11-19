@@ -93,4 +93,8 @@ public class KhachHangDAO extends CoffeeDAO<KhachHang, Integer> {
         return list;
     }
     
+    public List<KhachHang> selectByLoaiKhachHang(String tenkh){
+        String sql="SELECT * FROM KhachHang WHERE TenKH=?";
+        return this.selectBySql(sql, tenkh);
+    }
 }
