@@ -17,12 +17,23 @@ import com.coffee.entity.NhanVien;
 import com.coffee.entity.SanPham;
 import com.coffee.utils.Auth;
 import com.coffee.utils.MsgBox;
+import java.awt.Desktop;
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.DefaultComboBoxModel;
@@ -70,6 +81,8 @@ public class BanHangJDialog extends javax.swing.JDialog {
         lblMaHD = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cboTenKH = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        lblGio = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -124,6 +137,10 @@ public class BanHangJDialog extends javax.swing.JDialog {
             }
         });
 
+        jLabel9.setText("Giờ:");
+
+        lblGio.setText("07/11/2021  8:00PM");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -140,37 +157,47 @@ public class BanHangJDialog extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblMaHD)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboTenKH, 0, 141, Short.MAX_VALUE)))))
+                                .addComponent(cboTenKH, 0, 141, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblMaHD))
+                                    .addComponent(lblGio, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblNgayInHD, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNgayInHD, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblGio, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(lblMaHD))
-                        .addGap(49, 49, 49)
+                        .addGap(19, 19, 19)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(cboTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblMaNV, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMaNV, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addComponent(lblMaHD))
                 .addContainerGap())
         );
 
@@ -314,7 +341,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblDonGia))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -367,7 +394,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnThanhToan)
                                 .addContainerGap())
@@ -388,25 +415,27 @@ public class BanHangJDialog extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(jLabel4))
-                            .addComponent(lblDiemTichLuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblDiemTichLuy, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(cboChietKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboChietKhau, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(11, 11, 11)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblTongTien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addComponent(btnThanhToan))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -536,7 +565,91 @@ public class BanHangJDialog extends javax.swing.JDialog {
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
-        this.openThanhToan();
+        int codeno;
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String dbUrl = "jdbc:sqlserver://localhost:1433;database=QL_coffee_Group2_update;user=sa;password=123";
+            Connection con = DriverManager.getConnection(dbUrl);
+            Statement s = con.createStatement();
+            String select = "Select  Max(MaHD) from HoaDon";
+            ResultSet rs = s.executeQuery(select);
+            rs.next();
+            codeno = rs.getInt(1);
+        } catch (Exception e) {
+            codeno = 0;
+        }
+        codeno++;
+        //THEM HOA DON VAO SQL SERVER DE SAU NAY CAP NHAT LAI DUOC MaHD
+        Date aa = new Date();
+        SimpleDateFormat cc = new SimpleDateFormat(" hh:mm:ss ");
+        SimpleDateFormat bb = new SimpleDateFormat(" MM.dd.yyyy ");
+
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String dbUrl = "jdbc:sqlserver://localhost:1433;database=QL_coffee_Group2_update;user=sa;password=123";
+            Connection con = DriverManager.getConnection(dbUrl);
+            PreparedStatement s = con.prepareStatement("insert into HoaDon values(" + codeno + ",'" + lblMaNV.getText() + "'," + codeno + ",'"+lblNgayInHD.getText()+"'," + lblTongTien.getText() + "," + 1000 + "," + null +","+500000+","+20000+","+null+ ");");
+            s.executeUpdate();
+//            JOptionPane.showMessageDialog(this, "Xuất hóa đơn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            con.close();
+            //
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, " xuất hóa đơn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+        String tensp = "";
+        String sl = "";
+//        String dg = "";
+        String tt = "";
+        String nhanvien = "";
+        String ngay = lblNgayInHD.getText();
+        
+        String gio = lblGio.getText();
+        DefaultTableModel def = (DefaultTableModel) tblOrder.getModel();
+        int i = def.getRowCount();
+
+        String str2 = "";
+        for (int k = 0; k < i; k++) {
+            tensp = def.getValueAt(k, 0).toString();
+            sl = def.getValueAt(k, 1).toString();
+//            dg = def.getValueAt(k, 2).toString();
+            tt = def.getValueAt(k, 2).toString();
+            String str22 = "\t " + tensp + "\t   " + sl + "\t\t" + tt + "   \n";
+            str2 += str22;
+        }
+
+        String str1 = "-------------------------------------------------------------------------------------------------------\n"
+                + "\t\t\t    Coffee Group2			  \n"
+                +"\t Innovation Building, Tân Chánh Hiệp, q12, Hồ Chí Minh\n"
+                +"\n"
+                + "\t\t\t Hóa đơn thanh toán 			  \n"
+                + "\t\t\t Số hóa đơn : " + codeno + "			  \n"
+                + "\t\t Ngày " + ngay + " \t " + gio + "                 \n\n"
+                + "\t Tên sản phẩm\tSố lượng\t\tThành tiền\n";
+        String str3 ="\n" 
+                +"\t\t\t\t   Tổng thanh toán:\t  " + lblTongTien.getText() + "				  \n"
+                + "\t\t\t\t   Tên thu ngân: \t  " + lblMaNV.getText() + "				  \n"
+                + "\t\t\t\t   Tên khách hàng : \t  " + cboTenKH.getSelectedItem()+ "				  \n"
+                + "-------------------------------------------------------------------------------------------------------\n"
+                + "\t\t Cảm ơn và hẹn gặp lại Quý khách <3";
+        
+        File f = new File("D:\\Fall 2021\\PRO1041\\PRO1041\\dsHoaDon\\" + codeno + ".txt");
+        try {
+            //            FileWriter a = new FileWriter(f,true); Ghi de len cai cu
+            FileWriter a = new FileWriter(f);
+            Desktop desktop = Desktop.getDesktop();
+            
+            desktop.open(f);
+
+            BufferedWriter b = new BufferedWriter(a);
+            b.newLine();
+            b.write(str1 + str2 + str3);
+            
+            b.close();
+            a.close();
+
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void cboTenKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTenKHActionPerformed
@@ -608,6 +721,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -617,6 +731,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDiemTichLuy;
     private javax.swing.JLabel lblDonGia;
+    private javax.swing.JLabel lblGio;
     private javax.swing.JLabel lblMaHD;
     private javax.swing.JLabel lblMaNV;
     private javax.swing.JLabel lblMaSP;
@@ -631,15 +746,41 @@ public class BanHangJDialog extends javax.swing.JDialog {
         this.fillComboBoxTenKH();
         this.fillComboBoxChietKhau();
         
-        new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Date now = new Date();
-                SimpleDateFormat formater = new SimpleDateFormat("hh:mm:ss a");
-                String text= formater.format(now);
-                lblNgayInHD.setText(text);
-            }
-        }).start();
+//        new Timer(1000, new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                Date now = new Date();
+//                SimpleDateFormat formater = new SimpleDateFormat("hh:mm:ss a");
+//                String text= formater.format(now);
+//                lblNgayInHD.setText(text);
+//            }
+//        }).start();
+        Date a = new Date();
+        SimpleDateFormat b = new SimpleDateFormat(" dd.MM.yyyy ");
+        SimpleDateFormat c = new SimpleDateFormat(" hh:mm:ss ");
+        lblNgayInHD.setText("" + b.format(a));
+//        txtGio.setText("" + c.format(a));
+       new Thread(){
+           public void run()
+           {
+            while(true){
+                Calendar ca= new GregorianCalendar();
+                int hour = ca.get(Calendar.HOUR);
+                int minute = ca.get(Calendar.MINUTE);
+                int second=ca.get(Calendar.SECOND);
+                int PM_AM = ca.get(Calendar.AM_PM);
+                String day_night;
+                if(PM_AM==1){
+                    day_night="PM";
+                }
+                else{
+                    day_night="AM";
+                }
+                String time= hour+ ":"+minute+":"+second+" "+day_night;
+                lblGio.setText(time);
+            }   
+           }
+       }.start();
         
     }
     
@@ -722,9 +863,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
         }
     }
     
-    void openThanhToan(){
-//        ThanhToanJDialog.setVisible setVisible = new ThanhToanJDialog.setVisible(true);
-    }
+    
     
     public int tinhTien() {
         int sum = 0;
