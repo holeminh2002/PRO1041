@@ -8,15 +8,20 @@ package com.coffee.ui;
 import com.coffee.dao.NhanVienDAO;
 import com.coffee.entity.NhanVien;
 import com.coffee.utils.Auth;
+import com.coffee.utils.Helper;
 import com.coffee.utils.MsgBox;
 import com.coffee.utils.XDate;
 import com.coffee.utils.XImage;
+import static java.awt.Color.pink;
+import static java.awt.Color.red;
+import static java.awt.Color.white;
 import java.io.File;
 import static java.nio.file.Files.list;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -281,11 +286,13 @@ int row = -1;
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblmail, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtmail, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdotruongphong)
-                    .addComponent(rdonhanvien)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rdotruongphong)
+                        .addComponent(rdonhanvien))
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
+                .addGap(23, 23, 23))
         );
 
         btnmoi.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -501,17 +508,37 @@ int row = -1;
 
     private void btnmoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmoiActionPerformed
         // TODO add your handling code here:
-        this.add();
+        this.clearForm();
     }//GEN-LAST:event_btnmoiActionPerformed
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
         // TODO add your handling code here:
-        this.insert();
+        //this.insert();
+          if (Helper.checkNullText(txtmanv)  && Helper.checkNullPass(txtmatkhau) && Helper.checkNullPass(txtxacnhanmk)
+                && Helper.checkNullText(txttennv)) {
+            if (Helper.checkMaNV(txtmanv)
+                    && Helper.checkPass(txtmatkhau) 
+                    && Helper.checkConfirmPass(txtmatkhau, txtxacnhanmk)
+                    && Helper.checkName(txttennv)) {
+                if (checkTrungMa(txtmanv)) {
+                    this.insert();
+                }
+            }
+        }
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
         // TODO add your handling code here:
-        this.update();
+        //this.update();
+         if (Helper.checkNullPass(txtmatkhau)
+                && Helper.checkNullPass(txtxacnhanmk)
+                && Helper.checkNullText(txttennv)) {
+            if (Helper.checkPass(txtmatkhau)
+                    && Helper.checkConfirmPass(txtmatkhau, txtxacnhanmk)
+                    && Helper.checkName(txttennv)) {
+                this.update();
+            }
+        }
     }//GEN-LAST:event_btnsuaActionPerformed
 
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
@@ -657,6 +684,7 @@ int row = -1;
                         nv.getGioiTinh()?"Nam":"Nữ",
                         nv.getDiaChi(),nv.getsDT(),
                         nv.getEmail(),
+                        //nv.getNgayVaoLam(),
                        XDate.toString(nv.getNgayVaoLam(),"dd-MM-yyyy"),
                         nv.getVaiTro()?"Trưởng Phòng":"Nhân Viên",
                         nv.getMatKhau(),
@@ -669,7 +697,8 @@ int row = -1;
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-public boolean check() {
+    
+/*public boolean check() {
     List<NhanVien> list = nvdao.selectAll();
         for (NhanVien nv : list) {
             if (txtmanv.getText().equalsIgnoreCase(nv.getMaNV())) {
@@ -702,9 +731,29 @@ public boolean check() {
         }
 
     }
+    }*/
+private void insert() {
+        NhanVien nv = getForm();
+        String confirm = new String(txtxacnhanmk.getPassword());
+        if (confirm.equals(nv.getMatKhau())) {
+            nvdao.insert(nv);
+            this.fillToTable();
+            this.clearForm();
+            MsgBox.alert(this, "Lưu nhân viên thành công");
+        }
+    }
+ private void update() {
+        NhanVien nv = getForm();
+        String confirm = new String(txtxacnhanmk.getPassword());
+        if (confirm.equals(nv.getMatKhau())) {
+            nvdao.update(nv);
+            this.fillToTable();
+            this.clearForm();
+            MsgBox.alert(this, "Cập nhật nhân viên thành công");
+        }
     }
 
-    void update(){
+    /*void update(){
         NhanVien nv  = getForm();
         try {
             nvdao.update(nv);
@@ -714,7 +763,7 @@ public boolean check() {
         catch (Exception e) {
             MsgBox.alert(this, "Cập nhật thất bại!");
         }
-    }
+    }*/
 
     void delete(){
         if(!Auth.isManager()){
@@ -726,7 +775,7 @@ public boolean check() {
                 try {
                     nvdao.delete(manv);
                     this.fillToTable();
-                    this.add();
+                    this.clearForm();
                     MsgBox.alert(this, "Xóa thành công!");
                 } 
                 catch (Exception e) {
@@ -736,9 +785,8 @@ public boolean check() {
         }
     }
 
-    void add(){
-        NhanVien nv = new NhanVien();
-        this.setForm(nv);
+    void clearForm(){
+        this.setForm(new NhanVien());
         this.row = -1;
         
     }
@@ -785,10 +833,11 @@ public boolean check() {
         NhanVien nv = new NhanVien();
         nv.setMaNV(txtmanv.getText());
         nv.setMatKhau(txtmatkhau.getText());
+        nv.setMatKhau(txtxacnhanmk.getText());
         nv.setTenNV(txttennv.getText());
         nv.setVaiTro(rdotruongphong.isSelected());
         nv.setGioiTinh(rdonam.isSelected());
-        nv.setsDT(txtsdt.getText());
+        nv.setsDT(txtsdt.getText());       
         nv.setNgayVaoLam(XDate.toDate(txtngayvaolam.getText(),"dd-MM-yyyy"));
         nv.setEmail(txtmail.getText());
         nv.setDiaChi(txtdiachi.getText());
@@ -803,6 +852,16 @@ public boolean check() {
             ImageIcon icon = XImage.read(file.getName()); 
            lblhinhanh.setIcon(icon);
             lblhinhanh.setToolTipText(file.getName()); 
+        }
+    }
+       public boolean checkTrungMa(JTextField txt) {
+        txt.setBackground(white);
+        if (nvdao.selectById(txt.getText()) == null) {
+            return true;
+        } else {
+            txt.setBackground(red);
+            MsgBox.alert(this, txt.getName() + " đã bị tồn tại.");
+            return false;
         }
     }
 }

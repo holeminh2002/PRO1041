@@ -633,7 +633,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
                 + "-------------------------------------------------------------------------------------------------------\n"
                 + "\t\t Cảm ơn và hẹn gặp lại Quý khách <3";
         
-        File f = new File("D:\\Fall 2021\\PRO1041\\PRO1041\\dsHoaDon\\" + codeno + ".txt");
+        File f = new File("D:\\FALL 2021\\DUAN1-UDPM(PRO1041)\\PRO1041\\dsHoaDon\\" + codeno + ".txt");
         try {
             //            FileWriter a = new FileWriter(f,true); Ghi de len cai cu
             FileWriter a = new FileWriter(f);

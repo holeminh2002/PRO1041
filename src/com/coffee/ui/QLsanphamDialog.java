@@ -11,14 +11,19 @@ import com.coffee.entity.LoaiSanPham;
 import com.coffee.entity.NhanVien;
 import com.coffee.entity.SanPham;
 import com.coffee.utils.Auth;
+import com.coffee.utils.Helper;
 import com.coffee.utils.MsgBox;
 import com.coffee.utils.XImage;
+import static java.awt.Color.pink;
+import static java.awt.Color.red;
+import static java.awt.Color.white;
 import java.io.File;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -510,12 +515,38 @@ public class QLsanphamDialog extends javax.swing.JDialog {
 
     private void btnthemspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemspActionPerformed
         // TODO add your handling code here:
-        this.insert();
+        //this.insert();
+         if(Helper.checkNullText(txtmasp)&&
+                Helper.checkNullText(txttensp)&&
+                Helper.checkNullText(txtdongia)&&                              
+                checkNullHinh()){
+            if(Helper.checkMaSP(txtmasp)&&
+                    Helper.checkTenSP(txttensp)&&
+                    Helper.checkDonGia(txtdongia)){
+                
+                if(checkTrungMa(txtmasp)){
+                    insert();
+                }
+            }
+        }
     }//GEN-LAST:event_btnthemspActionPerformed
 
     private void btnsuaspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaspActionPerformed
         // TODO add your handling code here:
-        this.update();
+        //this.update();
+         if(Helper.checkNullText(txtmasp)&&
+                Helper.checkNullText(txttensp)&&
+                Helper.checkNullText(txtdongia)&&                              
+                checkNullHinh()){
+            if(Helper.checkMaSP(txtmasp)&&
+                    Helper.checkTenSP(txttensp)&&
+                    Helper.checkDonGia(txtdongia)){
+                
+                if(checkTrungMa(txtmasp)){
+                    update();
+                }
+            }
+        }
     }//GEN-LAST:event_btnsuaspActionPerformed
 
     private void btnxoaspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaspActionPerformed
@@ -701,7 +732,7 @@ private void init() {
     }
     
    
-public boolean check() {
+/*public boolean check() {
     List<SanPham> list = spdao.selectAll();
         for (SanPham sp : list) {
             if (txtmasp.getText().equalsIgnoreCase(sp.getMaSP())) {
@@ -742,7 +773,32 @@ public boolean check() {
             MsgBox.alert(this, "Cập nhật thất bại!");
         }
     }
+*/
+    private void insert() {
+        SanPham sp = getForm();
+        try {
+            spdao.insert(sp);
+            this.fillToTable();
+            this.clearForm();
+            MsgBox.alert(this, "Thêm thành công");
+        } catch (Exception e) {
+            e.printStackTrace();
+            MsgBox.alert(this, "Thêm không thành công");
+        }
+    }
 
+    private void update() {
+        SanPham sp = getForm();
+        try {
+            spdao.update(sp);
+            this.fillToTable();
+            this.clearForm();
+            MsgBox.alert(this, "Sửa thành công");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Sửa không thành công");
+        }
+    }
+    
     void delete(){
         if(!Auth.isManager()){
             MsgBox.alert(this, "Bạn không có quyền xóa sản phẩm này!");
@@ -941,5 +997,22 @@ public boolean check() {
          
     }
 
-    
+  public boolean checkTrungMa(JTextField txt) {
+        txt.setBackground(white);
+        if (spdao.selectById(txt.getText()) == null) {
+            return true;
+        } else {
+            txt.setBackground(red);
+            MsgBox.alert(this, txt.getName() + " đã bị tồn tại.");
+            return false;
+        }
+    }  
+  public boolean checkNullHinh(){
+        if(lblhinhanh.getToolTipText()!=null){
+            return true;
+        }else{
+            MsgBox.alert(this, "Không được để trống hình.");
+            return false;
+        }
+    }
 }
