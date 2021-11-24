@@ -7,8 +7,30 @@ package com.coffee.ui;
 
 import com.coffee.dao.HoaDonDAO;
 import com.coffee.dao.ThongKeDAO;
+import com.mysql.cj.Session;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.net.PasswordAuthentication;
+import java.util.Date;
 import java.util.List;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -94,7 +116,39 @@ public class ThongKe extends javax.swing.JDialog {
             model.addRow(row);
         }
     }
-
+    
+    public void exportExcel(JTable table) {
+ JFileChooser chooser = new JFileChooser();
+ int i = chooser.showSaveDialog(chooser);
+ if (i == JFileChooser.APPROVE_OPTION) {
+  File file = chooser.getSelectedFile();
+  try {
+   FileWriter out = new FileWriter(file + ".xls");
+   BufferedWriter bwrite = new BufferedWriter(out);
+   DefaultTableModel model = (DefaultTableModel) table.getModel();
+   // ten Cot
+   for (int j = 0; j < table.getColumnCount(); j++) {
+    bwrite.write(model.getColumnName(j) + "\t");
+   }
+   bwrite.write("\n");
+   // Lay du lieu dong
+   for (int j = 0; j < table.getRowCount(); j++) {
+    for (int k = 0; k < table.getColumnCount(); k++) {
+     bwrite.write(model.getValueAt(j, k) + "\t");
+    }
+    bwrite.write("\n");
+   }
+   bwrite.close();
+   JOptionPane.showMessageDialog(null, "Lưu file thành công!");
+//   HSSFFont hSSFFont = (HSSFFont) workbook.createFont();
+//hSSFFont.setFontName(HSSFFont.FONT_ARIAL);
+//hSSFFont.setCharSet(HSSFFont.ANSI_CHARSET);
+  } catch (Exception e2) {
+   JOptionPane.showMessageDialog(null, "Lỗi khi lưu file!");
+  }
+ }
+}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -107,10 +161,10 @@ public class ThongKe extends javax.swing.JDialog {
         tabs = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jToggleButton4 = new javax.swing.JToggleButton();
+        btnInBaoCao = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDoanhThu = new javax.swing.JTable();
-        jToggleButton13 = new javax.swing.JToggleButton();
+        btnGuiMail = new javax.swing.JToggleButton();
         cboNam = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -123,6 +177,8 @@ public class ThongKe extends javax.swing.JDialog {
         tblSP = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         cboSP = new javax.swing.JComboBox<>();
+        txtAttach = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -131,14 +187,15 @@ public class ThongKe extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(238, 207, 161));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê doanh thu"));
 
-        jToggleButton4.setBackground(new java.awt.Color(0, 255, 204));
-        jToggleButton4.setText("IN BÁO CÁO");
-        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnInBaoCao.setBackground(new java.awt.Color(0, 255, 204));
+        btnInBaoCao.setText("IN BÁO CÁO");
+        btnInBaoCao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton4ActionPerformed(evt);
+                btnInBaoCaoActionPerformed(evt);
             }
         });
 
+        tblDoanhThu.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         tblDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -149,11 +206,11 @@ public class ThongKe extends javax.swing.JDialog {
         ));
         jScrollPane2.setViewportView(tblDoanhThu);
 
-        jToggleButton13.setBackground(new java.awt.Color(0, 255, 204));
-        jToggleButton13.setText("GỬI MAIL");
-        jToggleButton13.addActionListener(new java.awt.event.ActionListener() {
+        btnGuiMail.setBackground(new java.awt.Color(0, 255, 204));
+        btnGuiMail.setText("GỬI MAIL");
+        btnGuiMail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton13ActionPerformed(evt);
+                btnGuiMailActionPerformed(evt);
             }
         });
 
@@ -175,16 +232,16 @@ public class ThongKe extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 925, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(cboNam, 0, 603, Short.MAX_VALUE)
+                        .addComponent(cboNam, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jToggleButton4)
+                        .addComponent(btnInBaoCao)
                         .addGap(18, 18, 18)
-                        .addComponent(jToggleButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGuiMail, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -193,24 +250,28 @@ public class ThongKe extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jToggleButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnInBaoCao, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGuiMail, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cboNam, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tabs.addTab("DOANH THU", jPanel6);
@@ -317,6 +378,13 @@ public class ThongKe extends javax.swing.JDialog {
 
         tabs.addTab("SẢN PHẨM", jPanel4);
 
+        jButton1.setText("Chọn File");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -324,12 +392,22 @@ public class ThongKe extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 972, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(txtAttach, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAttach, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(jButton1))
+                .addContainerGap())
         );
 
         pack();
@@ -339,13 +417,66 @@ public class ThongKe extends javax.swing.JDialog {
         fill_cboDoanhThu();
     }//GEN-LAST:event_cboNamActionPerformed
 
-    private void jToggleButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton13ActionPerformed
+    private void btnGuiMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiMailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton13ActionPerformed
+        try {
+            Properties p = new Properties();
+            p.put("mail.smtp.auth", "true");
+            p.put("mail.smtp.starttls.enable", "true");
+            p.put("mail.smtp.host", "smtp.gmail.com");
+            p.put("mail.smtp.port", 587);
+            String accountName = "thuongntmps18777@fpt.edu.vn";
+            String accountPassword = "";
+            javax.mail.Session s = javax.mail.Session.getInstance(p,
+                    new javax.mail.Authenticator() {
+                        protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                            return new javax.mail.PasswordAuthentication(accountName, accountPassword);
+                        }});          
+            String from = "thuongntmps18777@fpt.edu.vn";
+            String to = "thuongntmps18777@fpt.edu.vn";
+//            String subject = txtSubject.getText();
+            String body = "Thống kê doanh thu";
+            
+            Message msg = new MimeMessage(s);
+            
+            msg.setFrom(new InternetAddress(from));
+//            String ccEmails = "thuongntmps18777@fpt.edu.vn,maithuong0001@gmail.com";
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+//            msg.setSubject(subject);
+//            msg.setText(body);
+            msg.setSentDate(new Date());
+            
+            //3. dinh nghia loai noi dung cua message
+            MimeBodyPart textPart = new MimeBodyPart();
+            textPart.setContent(body, "text/plain");
+            Multipart mp = new MimeMultipart();
+            mp.addBodyPart(textPart);      
+            
+            String strAttach   = txtAttach.getText().trim();
+            if (!strAttach.equals(""))
+            {                                    
+                MimeBodyPart attachFilePart = new MimeBodyPart();
+                FileDataSource fds = new FileDataSource(strAttach);
+                attachFilePart.setDataHandler(new DataHandler(fds));
+                attachFilePart.setFileName(fds.getName());
+                mp.addBodyPart(attachFilePart);
+            }
+                          
+            msg.setContent(mp);
+            
+            Transport.send(msg);
+            
+            JOptionPane.showMessageDialog(null, "Mail was sent successfully.", "Message", 
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } catch (MessagingException ex) {
+            Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }//GEN-LAST:event_btnGuiMailActionPerformed
 
-    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+    private void btnInBaoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInBaoCaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton4ActionPerformed
+        
+    }//GEN-LAST:event_btnInBaoCaoActionPerformed
 
     private void cboKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboKHActionPerformed
         fill_cboKH();
@@ -354,6 +485,20 @@ public class ThongKe extends javax.swing.JDialog {
     private void cboSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSPActionPerformed
         fill_cboSP();
     }//GEN-LAST:event_cboSPActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fChooser = new JFileChooser();
+        fChooser.setMultiSelectionEnabled(false);
+        int selecttion = fChooser.showDialog(null,"Open");
+        
+        if ( selecttion == fChooser.APPROVE_OPTION ){
+            File fAttach = fChooser.getSelectedFile();
+            txtAttach.setText(fAttach.getPath());
+        }
+        else
+            txtAttach.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,9 +546,12 @@ public class ThongKe extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnGuiMail;
+    private javax.swing.JToggleButton btnInBaoCao;
     private javax.swing.JComboBox<String> cboKH;
     private javax.swing.JComboBox<String> cboNam;
     private javax.swing.JComboBox<String> cboSP;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -414,12 +562,11 @@ public class ThongKe extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JToggleButton jToggleButton13;
-    private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblDoanhThu;
     private javax.swing.JTable tblKH;
     private javax.swing.JTable tblSP;
+    private javax.swing.JLabel txtAttach;
     // End of variables declaration//GEN-END:variables
 
     void selectTab(int index) {

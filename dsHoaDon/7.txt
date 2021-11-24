@@ -5,12 +5,11 @@
 
 			 Hóa đơn thanh toán 			  
 			 Số hóa đơn : 7			  
-		 Ngày  20.11.2021  	 11:2:36 AM                 
+		 Ngày  20.11.2021  	 11:37:24 AM                 
 
 	 Tên sản phẩm	Số lượng		Thành tiền
-	 Bánh kem vanila	   1		150000.0   
 
-				   Tổng thanh toán:	  150000				  
+				   Tổng thanh toán:	  				  
 				   Tên thu ngân: 	  nv01-Hoa				  
 				   Tên khách hàng : 	  Lý Thường Kiệt				  
 -------------------------------------------------------------------------------------------------------

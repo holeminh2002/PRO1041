@@ -12,7 +12,18 @@ import com.coffee.entity.LoaiKhachHang;
 import com.coffee.utils.Auth;
 import com.coffee.utils.MsgBox;
 import java.util.List;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -69,6 +80,7 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
         btnDelete = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnGuiMail = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -324,6 +336,13 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
+        btnGuiMail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Mail.png"))); // NOI18N
+        btnGuiMail.setText("Gửi Mail");
+        btnGuiMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuiMailActionPerformed(evt);
+            }
+        });
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -334,12 +353,18 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(336, 336, 336)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnGuiMail)
+                .addGap(104, 104, 104))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnGuiMail)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -375,6 +400,45 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_cboXHActionPerformed
+
+    private void btnGuiMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiMailActionPerformed
+        // TODO add your handling code here:
+        try {
+            Properties p = new Properties();
+            p.put("mail.smtp.auth", "true");
+            p.put("mail.smtp.starttls.enable", "true");
+            p.put("mail.smtp.host", "smtp.gmail.com");
+            p.put("mail.smtp.port", 587);
+            String accountName = "thuongntmps18777@fpt.edu.vn";
+            String accountPassword = "";
+            Session s = Session.getInstance(p,
+                    new javax.mail.Authenticator() {
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(accountName, accountPassword);
+                        }});          
+            String from = "thuongntmps18777@fpt.edu.vn";
+            String to = "thuongntmps18777@fpt.edu.vn,huebtaps18781@fpt.edu.vn,minhhlps18682@fpt.edu.vn,nhatnmps18727@fpt.edu.vn,khaptnps18767@fpt.edu.vn,khanhnpps18747@fpt.edu.vn";
+            String subject = "Welcome to Coffee GROUP2";
+            String body = "Coffee Group 2 moi quy khach hang than thiet tham khao cac chuong trinh khuyen mai ap dung"
+                    + "trong thang 11"
+                    + "\n Khuyen mai 11/11"
+                    + "\n Khuyen mai 20/11"
+                    + "\n Khuyen mai dành cho khach hang co the HS/SV"
+                    + "\n Cac chuong trinh tren sale off 20% tren tong hoa don thanh toan, *KM co hieu luc 3 ngay sau khuyen mai"
+                    + "\n\n Rat han hanh duoc phuc vu quy khach!"
+                    ;
+            Message msg = new MimeMessage(s);
+            msg.setFrom(new InternetAddress(from));
+            msg.setRecipients(Message.RecipientType.CC, InternetAddress.parse(to));
+            msg.setSubject(subject);
+            msg.setText(body);
+            Transport.send(msg);
+            JOptionPane.showMessageDialog(null, "Mail was sent successfully.", "Message", 
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } catch (MessagingException ex) {
+            Logger.getLogger(DangKyThanhVienDialog.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnGuiMailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -425,6 +489,7 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnGuiMail;
     private javax.swing.JButton btnNew;
     private javax.swing.JComboBox<String> cboDiem;
     private javax.swing.JComboBox<String> cboXH;
