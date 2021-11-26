@@ -7,6 +7,7 @@ package com.coffee.ui;
 
 import com.coffee.utils.Auth;
 import com.coffee.utils.MsgBox;
+import com.coffee.utils.XImage;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,7 +29,7 @@ public class TrangChu extends javax.swing.JFrame {
     void openThongKe1(){
         if (Auth.isLogin()) {
             if (!Auth.isManager()) {
-                MsgBox.alert(this, "Bạn không có quyền xem thông tin nhân viên");
+                MsgBox.alert(this, "Bạn không có quyền xem thông tin thống kê");
             } else {
                 this.dispose();
                 new ThongKe(this, true).setVisible(true);
@@ -672,6 +673,7 @@ public class TrangChu extends javax.swing.JFrame {
     void init() {
         setLocationRelativeTo(null);
         startDongHo();
+          
 //        new ChaoJDialog(this, true).setVisible(true);
         new DangNhap(this, true).setVisible(true);
     }

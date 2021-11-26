@@ -188,3 +188,67 @@ insert ChiTietLuongNhanVien values('CS1','NV01_Hue',30,2400000,N'Tháng 10/2021'
 ('CT1','TP_Thuong',10,1000000,N'Tháng 10/2021');
 
 select * from NhanVien
+drop proc sp_doanhthu;
+Create proc sp_doanhthu(@year int)
+as begin
+ select 
+	MaHD ,
+	MaNV ,
+	MaKH ,
+	NgayInHD ,
+	TongTien,
+	DiemTichLuy ,
+	GiamGia ,
+	TienKhachDua ,
+	TienThua ,
+	MaKM 
+  from hoadon  
+ where year(NgayInHD) = @year    
+end
+exec sp_doanhthu 2019;
+drop proc sp_khachhang
+create proc sp_khachhang(@thang int)
+as begin
+	Select CONVERT(varchar,HD.NgayInHD, 103) as NgayInHD,
+	HD.MaKH as MaKH,
+	KH.TenKH as TenKH,
+	CT.SoLuong as SoLuong, 
+	KH.DiemTichLuy as DiemTichLuy, 
+	KH.MaLoaiKH as MaLoaiKH
+	from HoaDon HD
+	inner join KhachHang KH on HD.MaKH = KH.MaKH
+	inner join ChiTietBanHang CT on CT.MaHD = HD.MaHD
+	where MONTH(HD.NgayInHD) = @thang
+end
+exec sp_khachhang 10;
+create proc sp_sanpham(@thang int)
+as begin
+	Select CONVERT(varchar,HD.NgayInHD, 103) as NgayInHD,
+	LSP.TenLoaiSP as TenLoaiSP,
+	SP.MaSP as MaSP,
+	SP.TenSP as TenSP,
+	CT.SoLuong as SoLuong
+	from HoaDon HD
+	inner join ChiTietBanHang CT on HD.MaHD = CT.MaHD
+	inner join SanPham SP on SP.MaSP = CT.MaSP
+	inner join LoaiSanPham LSP on LSP.MaLoaiSP = SP.MaLoaiSP
+	where MONTH(HD.NgayInHD) = @thang
+end
+exec sp_sanpham 10;
+Create proc sp_doanhthu_new(@year int)
+as begin
+ select 
+	hd.MaHD ,
+	hd.MaNV ,
+	ctbh.SoLuong ,
+	sp.TenSP,
+	sp.MaSP,
+	hd.TongTien
+  from hoadon hd
+  inner join ChiTietBanHang ctbh on hd.MaHD = ctbh.MaHD
+  inner join SanPham sp on sp.MaSP = ctbh.MaSP
+ where year(NgayInHD) = @year    
+end
+
+exec sp_doanhthu_new 2019;
+

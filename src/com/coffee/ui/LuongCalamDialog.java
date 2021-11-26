@@ -285,10 +285,10 @@ NhanVienDAO nvdao = new NhanVienDAO();
         txttongluong.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
 
         cbbnhanvien.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
-        cbbnhanvien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbbnhanvien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbbnhanvienActionPerformed(evt);
+        cbbnhanvien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NV01_Hue", "NV02_Khanh", "NV03_Minh", "NV04_Nhat", "NV05_Kha", "TP_Thuong" }));
+        cbbnhanvien.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbnhanvienItemStateChanged(evt);
             }
         });
 
@@ -493,10 +493,10 @@ NhanVienDAO nvdao = new NhanVienDAO();
         }
     }//GEN-LAST:event_tbldsluongnvMouseClicked
 
-    private void cbbnhanvienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbnhanvienActionPerformed
+    private void cbbnhanvienItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbnhanvienItemStateChanged
         // TODO add your handling code here:
-        this.fillComboBoxMaNV();
-    }//GEN-LAST:event_cbbnhanvienActionPerformed
+        //this.fillComboBoxMaNV();
+    }//GEN-LAST:event_cbbnhanvienItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -582,24 +582,26 @@ NhanVienDAO nvdao = new NhanVienDAO();
   private void init() {
         this.setLocationRelativeTo(null);
       // this.setIconImage(Images.getAppIcon());
-       this.fillComboBoxMaNV();
+       //this.fillComboBoxMaNV();
        this.fillToTableCaLamViec();
        this.fillToTableLuongNV();
       // this.updateStatus();
        this.row = -1;
     }
-    void fillComboBoxMaNV(){
+   /* void fillComboBoxMaNV(){
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbnhanvien.getModel();
         model.removeAllElements();
         List<NhanVien> list = nvdao.selectAll();
         for(NhanVien nv : list){
              model.addElement(nv);
         }
-}  
+}  */
+  
    void fillToTableCaLamViec() {
         DefaultTableModel model = (DefaultTableModel) tbldscalam.getModel();
         model.setRowCount(0);
         try {
+          
             List<CaLamViec> list = calamdao.selectAll();
             for (CaLamViec calam : list) {
                 Object[] row = {
@@ -701,6 +703,7 @@ NhanVienDAO nvdao = new NhanVienDAO();
         DefaultTableModel model = (DefaultTableModel) tbldsluongnv.getModel();
         model.setRowCount(0);
         try {
+            //NhanVien cd = (NhanVien) cbbnhanvien.getSelectedItem();
             List<ChiTietLuongNhanVien> list = luongdao.selectAll();
             for (ChiTietLuongNhanVien luong : list) {
                 Object[] row = {
@@ -720,8 +723,8 @@ NhanVienDAO nvdao = new NhanVienDAO();
         try {
            
            luongdao.insert(luong);
-            this.fillToTableCaLamViec();
-            this.addCaLam();
+            this.fillToTableLuongNV();
+            this.addLuongNV();
             MsgBox.alert(this, "Thêm mới thành công!");
             
         } 
@@ -733,15 +736,15 @@ NhanVienDAO nvdao = new NhanVienDAO();
     
     void deleteLuongNV(){
         if(!Auth.isManager()){
-            MsgBox.alert(this, "Bạn không có quyền xóa luong của nhân viên này!");
+            MsgBox.alert(this, "Bạn không có quyền xóa lương của nhân viên này!");
         }
         else{
             if(MsgBox.confirm(this, "Bạn có muốn xóa hay không?")){
                 String macalam = txtmacalam.getText();
                 try {
                     calamdao.delete(macalam);
-                    this.fillToTableCaLamViec();
-                    this.addCaLam();
+                    this.fillToTableLuongNV();
+                    this.addLuongNV();
                     MsgBox.alert(this, "Xóa thành công!");
                 } 
                 catch (Exception e) {
@@ -756,7 +759,9 @@ NhanVienDAO nvdao = new NhanVienDAO();
     
      void setFormLuongNV(ChiTietLuongNhanVien luong){
         txtmacalam1.setText(luong.getMaCaLV());
-        cbbnhanvien.setSelectedItem(false);
+        //String manhanvien = tbldsluongnv.getValueAt(row,1).toString();
+        cbbnhanvien.setSelectedItem(tbldsluongnv.getValueAt(row, 1));
+        //cbbnhanvien.setSelectedItem(false);
         txttongcalam.setText(String.valueOf(luong.getTongSoCaLamTrongThang()));
         txttongluong.setText(String.valueOf(luong.getThanhTien()));
         txtkiluong.setText(luong.getKyLuong());       
@@ -765,7 +770,7 @@ NhanVienDAO nvdao = new NhanVienDAO();
     ChiTietLuongNhanVien getFormLuongNV(){
         ChiTietLuongNhanVien luong = new ChiTietLuongNhanVien();
         luong.setMaCaLV(txtmacalam1.getText());
-        luong.setMaNV(cbbnhanvien.getItemAt(1));
+        luong.setMaNV(String.valueOf(cbbnhanvien.getSelectedItem()));
         luong.setTongSoCaLamTrongThang(Integer.valueOf(txttongcalam.getText()));
         luong.setThanhTien(Double.valueOf(txttongluong.getText()));
         luong.setKyLuong(txtkiluong.getText());            
@@ -778,7 +783,7 @@ NhanVienDAO nvdao = new NhanVienDAO();
     }
 
     void editLuongNV() {
-        String macalam = (String) tbldscalam.getValueAt(this.row, 0);
+        String macalam = (String) tbldsluongnv.getValueAt(this.row, 0);
        ChiTietLuongNhanVien luong = luongdao.selectById(macalam);
          this.setFormLuongNV(luong);
          //this.updateStatus();

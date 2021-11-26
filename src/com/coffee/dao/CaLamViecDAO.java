@@ -54,7 +54,7 @@ public class CaLamViecDAO extends CoffeeDAO<CaLamViec, String> {
     }
 
     
-    public List<CaLamViec> selectAll() {
+    public List<CaLamViec> selectAll(){
         String sql="SELECT * FROM CaLamViec";
         return this.selectBySql(sql);
     }
