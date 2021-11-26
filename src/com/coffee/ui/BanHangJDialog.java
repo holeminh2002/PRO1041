@@ -17,6 +17,7 @@ import com.coffee.entity.NhanVien;
 import com.coffee.entity.SanPham;
 import com.coffee.utils.Auth;
 import com.coffee.utils.MsgBox;
+import com.coffee.utils.XJdbc;
 import java.awt.Desktop;
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
@@ -131,9 +132,9 @@ public class BanHangJDialog extends javax.swing.JDialog {
         jLabel2.setText("Tên khách hàng:");
 
         cboTenKH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "anonymous" }));
-        cboTenKH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboTenKHActionPerformed(evt);
+        cboTenKH.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboTenKHItemStateChanged(evt);
             }
         });
 
@@ -521,20 +522,22 @@ public class BanHangJDialog extends javax.swing.JDialog {
 //                for (int i = 0; i < tblOrder.getRowCount(); i++) {
 //                    sum += Double.valueOf(tblOrder.getValueAt(i, 2).toString());
 //                }
-                  
+//                  int sum = (int) (Integer.valueOf(lblTongTien.getText())-Double.valueOf(tblOrder.getValueAt(row, 2).toString()));
+//                  lblTongTien.setText(""+ sum);
+//                 if (lblTongTien.getText().equals("0")) {
+//                 lblTongTien.setText(""); 
+//        }
                   tbl.removeRow(row);
                   MsgBox.alert(this, "Xoá thành công món được chọn");
-        }
-        if(row>=0){
-//                  int sum = Integer.parseInt(lblTongTien.getText());
-                    int sum = 0;
-                  for (int i = 0; i < tblOrder.getRowCount(); i++) {
-                    sum -= Double.valueOf(tblOrder.getValueAt(i, 2).toString());
-                }
-                 lblTongTien.setText(""+ sum);
-                 if (lblTongTien.getText().equals("0")) {
-                 lblTongTien.setText("");
-        }
+                  this.tinhTien();
+//        if(row>=0){
+////                  int sum = Integer.parseInt(lblTongTien.getText());
+//                    
+////                  for (int i = 0; i < tblOrder.getRowCount(); i++) {
+////                    sum -= Double.valueOf(tblOrder.getValueAt(i, 2).toString());
+////                }
+//                 
+//        }
         }
 
     }//GEN-LAST:event_btnXoaMonActionPerformed
@@ -557,9 +560,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
 //                lblTongTien.setText(tblOrder.getValueAt(row, 2)+tblOrder.getValueAt(row+1, 2).toString()); 
 //                row++;     
 //        }
-                  lblTongTien.setText(String.valueOf(tinhTien()));
-                  
-                  
+            this.tinhTien();
         }
     }//GEN-LAST:event_tblOrderKeyReleased
 
@@ -588,7 +589,8 @@ public class BanHangJDialog extends javax.swing.JDialog {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String dbUrl = "jdbc:sqlserver://localhost:1433;database=QL_coffee_Group2_update;user=sa;password=123";
             Connection con = DriverManager.getConnection(dbUrl);
-            PreparedStatement s = con.prepareStatement("insert into HoaDon values(" + codeno + ",'" + lblMaNV.getText() + "'," + codeno + ",'"+lblNgayInHD.getText()+"'," + lblTongTien.getText() + "," + 1000 + "," + null +","+500000+","+20000+","+null+ ");");
+            PreparedStatement s = con.prepareStatement("insert into HoaDon values(" + (codeno+1) + ",'" + lblMaNV.getText() + "'," + codeno + ",'"+lblNgayInHD.getText()+"'," + lblTongTien.getText() + "," + 1000 + "," + null +","+500000+","+20000+","+null+ ");");
+//            PreparedStatement s = con.prepareStatement("insert into HoaDon values(" + (codeno+1) + ",'" + lblMaNV.getText() + "'," + codeno + ",'"+lblNgayInHD.getText()+"'," + lblTongTien.getText() + "," + 1000 + "," + null +","+500000+","+20000+","+null+ ");");
             s.executeUpdate();
 //            JOptionPane.showMessageDialog(this, "Xuất hóa đơn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             con.close();
@@ -633,7 +635,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
                 + "-------------------------------------------------------------------------------------------------------\n"
                 + "\t\t Cảm ơn và hẹn gặp lại Quý khách <3";
         
-        File f = new File("D:\\FALL 2021\\DUAN1-UDPM(PRO1041)\\PRO1041\\dsHoaDon\\" + codeno + ".txt");
+        File f = new File("./dsHoaDon/" + codeno + ".txt");
         try {
             //            FileWriter a = new FileWriter(f,true); Ghi de len cai cu
             FileWriter a = new FileWriter(f);
@@ -652,15 +654,17 @@ public class BanHangJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
-    private void cboTenKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTenKHActionPerformed
-        // TODO add your handling code here:
-        this.chonTenKH();
-    }//GEN-LAST:event_cboTenKHActionPerformed
-
     private void cboChietKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboChietKhauActionPerformed
         // TODO add your handling code here:
         this.chonGiamGia();
+        
     }//GEN-LAST:event_cboChietKhauActionPerformed
+
+    private void cboTenKHItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTenKHItemStateChanged
+        // TODO add your handling code here:
+        double diemtichluy = (double) XJdbc.value("Select DiemTichLuy from KhachHang where TenKH like ?", cboTenKH.getSelectedItem().toString());
+        lblDiemTichLuy.setText(String.valueOf(diemtichluy));
+    }//GEN-LAST:event_cboTenKHItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -742,6 +746,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     void init(){
         setLocationRelativeTo(null);
+        cbotenkh=new DefaultComboBoxModel();
         this.fillComboBoxLoaiSanPham();
         this.fillComboBoxTenKH();
         this.fillComboBoxChietKhau();
@@ -825,17 +830,21 @@ public class BanHangJDialog extends javax.swing.JDialog {
     }
     
     KhachHangDAO khdao = new KhachHangDAO();
+    DefaultComboBoxModel cbotenkh;
     
-    void chonTenKH(){
-        KhachHang tenKH = (KhachHang) cboTenKH.getSelectedItem();
-    }
+//    void chonTenKH(){
+//        KhachHang tenKH = (KhachHang) cboTenKH.getSelectedItem();
+//    }
     void fillComboBoxTenKH(){
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTenKH.getModel();
-        model.removeAllElements();
+        cbotenkh.removeAllElements();
         List<KhachHang> list = khdao.selectAll();
         for(KhachHang tenkh: list){
-            model.addElement(tenkh);
+            cbotenkh.addElement(tenkh.getTenKH().toString());
         }
+        cboTenKH.setModel(cbotenkh);
+        String tenkh = cboTenKH.getItemAt(0).toString();
+        double diemtichluy = (double) XJdbc.value("Select DiemTichLuy from KhachHang where TenKH like ?", tenkh);
+        lblDiemTichLuy.setText(String.valueOf(diemtichluy));
     }
     void fillLabel() {
         try {
@@ -852,25 +861,28 @@ public class BanHangJDialog extends javax.swing.JDialog {
     KhuyenMaiDAO kmdao = new KhuyenMaiDAO();
     
     void chonGiamGia(){
-        KhuyenMai tenKM = (KhuyenMai) cboChietKhau.getSelectedItem();
+//        KhuyenMai tenKM = (KhuyenMai) cboChietKhau.getSelectedItem();
     }
     void fillComboBoxChietKhau(){
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboChietKhau.getModel();
         model.removeAllElements();
         List<KhuyenMai> list = kmdao.selectAll();
         for(KhuyenMai giamgia: list){
-            model.addElement(giamgia);
+            model.addElement(giamgia.getGiamGia());
         }
     }
     
     
     
-    public int tinhTien() {
-        int sum = 0;
-        for (int i = 0; i < tblOrder.getRowCount(); i++) {
-            sum += Double.valueOf(tblOrder.getValueAt(i, 2).toString());
-        }
-        return Integer.valueOf(sum);
+    public void tinhTien() {
+        double sum = 0;
+                  
+                  for(int i=0; i< tblOrder.getRowCount(); i++){
+                      System.out.println(""+tblOrder.getValueAt(i, 2).toString());
+                      sum += Double.valueOf(tblOrder.getValueAt(i, 2).toString());
+                  }
+                  double sauchietkhau = sum*Double.valueOf(cboChietKhau.getSelectedItem().toString());
+                  lblTongTien.setText(String.valueOf(sum-Double.valueOf(lblDiemTichLuy.getText())-sauchietkhau));
     }
     
 //    void setForm(KhoaHoc kh){

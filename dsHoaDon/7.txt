@@ -5,11 +5,12 @@
 
 			 Hóa đơn thanh toán 			  
 			 Số hóa đơn : 7			  
-		 Ngày  20.11.2021  	 11:37:24 AM                 
+		 Ngày  26.11.2021  	 11:36:53 AM                 
 
 	 Tên sản phẩm	Số lượng		Thành tiền
+	 Trà Sữa Trân Châu	   1		55000.0   
 
-				   Tổng thanh toán:	  				  
+				   Tổng thanh toán:	  47500.0				  
 				   Tên thu ngân: 	  nv01-Hoa				  
 				   Tên khách hàng : 	  Lý Thường Kiệt				  
 -------------------------------------------------------------------------------------------------------

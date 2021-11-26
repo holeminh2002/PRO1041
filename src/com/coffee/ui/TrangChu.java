@@ -465,7 +465,8 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnQLnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLnvActionPerformed
 //        this.dispose();
-        openQLNV();
+//        openQLNV();
+        new QLnhanivenDialog(this, true).setVisible(true);
     }//GEN-LAST:event_btnQLnvActionPerformed
 
     private void btnQLkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLkhActionPerformed

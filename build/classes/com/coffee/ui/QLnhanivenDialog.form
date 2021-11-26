@@ -178,7 +178,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="lblmanhanvien" min="-2" pref="107" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -187,13 +187,13 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="lblmatkhau" min="-2" pref="107" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txtmatkhau" min="-2" pref="158" max="-2" attributes="0"/>
+                                              <Component id="txtmatkhau" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="lblmail" min="-2" pref="107" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -207,7 +207,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="lblxacnhanmk" min="-2" pref="107" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txtxacnhanmk" min="-2" pref="158" max="-2" attributes="0"/>
+                                              <Component id="txtxacnhanmk" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>

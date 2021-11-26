@@ -409,14 +409,15 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
             p.put("mail.smtp.starttls.enable", "true");
             p.put("mail.smtp.host", "smtp.gmail.com");
             p.put("mail.smtp.port", 587);
-            String accountName = "thuongntmps18777@fpt.edu.vn";
-            String accountPassword = "";
+            String accountName = "thuongntmps18777@fpt.edu.vn"; //Đổi thành mail của người gửi
+            String accountPassword = "01633260802tH@@"; //Gõ mật khẩu của mail bên trên vào dấu ""
             Session s = Session.getInstance(p,
                     new javax.mail.Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
                             return new PasswordAuthentication(accountName, accountPassword);
                         }});          
-            String from = "thuongntmps18777@fpt.edu.vn";
+            String from = "thuongntmps18777@fpt.edu.vn"; //Đổi thành mail của người gửi
+            //Đổi thành mail của những người nhận mail
             String to = "thuongntmps18777@fpt.edu.vn,huebtaps18781@fpt.edu.vn,minhhlps18682@fpt.edu.vn,nhatnmps18727@fpt.edu.vn,khaptnps18767@fpt.edu.vn,khanhnpps18747@fpt.edu.vn";
             String subject = "Welcome to Coffee GROUP2";
             String body = "Coffee Group 2 moi quy khach hang than thiet tham khao cac chuong trinh khuyen mai ap dung"

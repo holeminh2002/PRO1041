@@ -201,7 +201,7 @@ public class ThongKe extends javax.swing.JDialog {
 
             },
             new String [] {
-                "MaHD ", "MaNV ", "Số Lượng", "Tên Sản Phẩm", "Mã Sản Phẩm", "Tổng Tiền"
+                "MaHD ", "MaNV ", "So Luong", "Ten San Pham", "Ma San Pham", "Tong Tien"
             }
         ));
         jScrollPane2.setViewportView(tblDoanhThu);
@@ -425,16 +425,16 @@ public class ThongKe extends javax.swing.JDialog {
             p.put("mail.smtp.starttls.enable", "true");
             p.put("mail.smtp.host", "smtp.gmail.com");
             p.put("mail.smtp.port", 587);
-            String accountName = "thuongntmps18777@fpt.edu.vn";
-            String accountPassword = "";
+            String accountName = "thuongntmps18777@fpt.edu.vn"; //Đổi thành mail của người gửi
+            String accountPassword = "01633260802tH@@"; //Gõ mật khẩu của mail bên trên vào dấu ""
             javax.mail.Session s = javax.mail.Session.getInstance(p,
                     new javax.mail.Authenticator() {
                         protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
                             return new javax.mail.PasswordAuthentication(accountName, accountPassword);
                         }});          
-            String from = "thuongntmps18777@fpt.edu.vn";
-            String to = "thuongntmps18777@fpt.edu.vn";
-//            String subject = txtSubject.getText();
+            String from = "thuongntmps18777@fpt.edu.vn"; //Đổi thành mail của người gửi
+            String to = "thuongntmps18777@fpt.edu.vn"; //Đổi thành mail của người nhận
+            String subject = "THỐNG KÊ DOANH THU";
             String body = "Thống kê doanh thu";
             
             Message msg = new MimeMessage(s);
@@ -442,7 +442,7 @@ public class ThongKe extends javax.swing.JDialog {
             msg.setFrom(new InternetAddress(from));
 //            String ccEmails = "thuongntmps18777@fpt.edu.vn,maithuong0001@gmail.com";
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-//            msg.setSubject(subject);
+            msg.setSubject(subject);
 //            msg.setText(body);
             msg.setSentDate(new Date());
             
@@ -475,7 +475,7 @@ public class ThongKe extends javax.swing.JDialog {
 
     private void btnInBaoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInBaoCaoActionPerformed
         // TODO add your handling code here:
-        
+        this.exportExcel(tblDoanhThu);
     }//GEN-LAST:event_btnInBaoCaoActionPerformed
 
     private void cboKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboKHActionPerformed

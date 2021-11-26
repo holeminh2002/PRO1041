@@ -37,10 +37,11 @@ public class QLnhanivenDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.init();
-       
+
     }
-NhanVienDAO nvdao = new NhanVienDAO();
-int row = -1;
+    NhanVienDAO nvdao = new NhanVienDAO();
+    int row = -1;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -191,7 +192,7 @@ int row = -1;
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(lblmanhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -199,10 +200,10 @@ int row = -1;
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(lblmatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtmatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtmatkhau)))
                                 .addGap(55, 55, 55))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(lblmail, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -214,7 +215,7 @@ int row = -1;
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(lblxacnhanmk, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtxacnhanmk, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtxacnhanmk)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -514,10 +515,10 @@ int row = -1;
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
         // TODO add your handling code here:
         //this.insert();
-          if (Helper.checkNullText(txtmanv)  && Helper.checkNullPass(txtmatkhau) && Helper.checkNullPass(txtxacnhanmk)
+        if (Helper.checkNullText(txtmanv) && Helper.checkNullPass(txtmatkhau) && Helper.checkNullPass(txtxacnhanmk)
                 && Helper.checkNullText(txttennv)) {
             if (Helper.checkMaNV(txtmanv)
-                    && Helper.checkPass(txtmatkhau) 
+                    && Helper.checkPass(txtmatkhau)
                     && Helper.checkConfirmPass(txtmatkhau, txtxacnhanmk)
                     && Helper.checkName(txttennv)) {
                 if (checkTrungMa(txtmanv)) {
@@ -530,7 +531,7 @@ int row = -1;
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
         // TODO add your handling code here:
         //this.update();
-         if (Helper.checkNullPass(txtmatkhau)
+        if (Helper.checkNullPass(txtmatkhau)
                 && Helper.checkNullPass(txtxacnhanmk)
                 && Helper.checkNullText(txttennv)) {
             if (Helper.checkPass(txtmatkhau)
@@ -548,9 +549,9 @@ int row = -1;
 
     private void tbldsnhanvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbldsnhanvienMouseClicked
         // TODO add your handling code here:
-         if(evt.getClickCount()==1){
+        if (evt.getClickCount() == 1) {
             this.row = tbldsnhanvien.getSelectedRow();
-           
+
             this.edit();
         }
     }//GEN-LAST:event_tbldsnhanvienMouseClicked
@@ -570,8 +571,8 @@ int row = -1;
     }//GEN-LAST:event_btnChonAnhActionPerformed
 
     private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
-        
-        
+
+
     }//GEN-LAST:event_btnhomeActionPerformed
 
     /**
@@ -617,7 +618,7 @@ int row = -1;
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChonAnh;
     private javax.swing.JButton btnhome;
@@ -663,42 +664,51 @@ int row = -1;
     private javax.swing.JPasswordField txtxacnhanmk;
     // End of variables declaration//GEN-END:variables
 
- private void init() {
+    private void init() {
         this.setLocationRelativeTo(null);
-       //this.setIconImage(XImage.getAppIcon());
-       
-       this.fillToTable();
-     
-       this.row = -1;
+        //this.setIconImage(XImage.getAppIcon());
+
+        this.fillToTable();
+
+        this.row = -1;
     }
-    
+
     void fillToTable() {
         DefaultTableModel model = (DefaultTableModel) tbldsnhanvien.getModel();
         model.setRowCount(0);
         try {
             List<NhanVien> list = nvdao.selectAll();
             for (NhanVien nv : list) {
+                String password = "";
+                for (int i=0; i<nv.getMatKhau().length(); i++) {
+                    if(i==0){
+                        password += nv.getMatKhau().charAt(i);
+                    }
+                    else{
+                        password += "*";
+                    }
+                    
+                }
                 Object[] row = {
-                   nv.getMaNV()
-                        ,nv.getTenNV(),
-                        nv.getGioiTinh()?"Nam":"Nữ",
-                        nv.getDiaChi(),nv.getsDT(),
-                        nv.getEmail(),
-                        //nv.getNgayVaoLam(),
-                       XDate.toString(nv.getNgayVaoLam(),"dd-MM-yyyy"),
-                        nv.getVaiTro()?"Trưởng Phòng":"Nhân Viên",
-                        nv.getMatKhau(),
-                        nv.getHinh()
+                    nv.getMaNV(),
+                     nv.getTenNV(),
+                    nv.getGioiTinh() ? "Nam" : "Nữ",
+                    nv.getDiaChi(), nv.getsDT(),
+                    nv.getEmail(),
+                    //nv.getNgayVaoLam(),
+                    XDate.toString(nv.getNgayVaoLam(), "dd-MM-yyyy"),
+                    nv.getVaiTro() ? "Trưởng Phòng" : "Nhân Viên",
+                    password,
+                    nv.getHinh()
                 };
                 model.addRow(row);
             }
-        } 
-        catch (Exception e) {
+        } catch (Exception e) {
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
-/*public boolean check() {
+
+    /*public boolean check() {
     List<NhanVien> list = nvdao.selectAll();
         for (NhanVien nv : list) {
             if (txtmanv.getText().equalsIgnoreCase(nv.getMaNV())) {
@@ -732,7 +742,7 @@ int row = -1;
 
     }
     }*/
-private void insert() {
+    private void insert() {
         NhanVien nv = getForm();
         String confirm = new String(txtxacnhanmk.getPassword());
         if (confirm.equals(nv.getMatKhau())) {
@@ -742,7 +752,8 @@ private void insert() {
             MsgBox.alert(this, "Lưu nhân viên thành công");
         }
     }
- private void update() {
+
+    private void update() {
         NhanVien nv = getForm();
         String confirm = new String(txtxacnhanmk.getPassword());
         if (confirm.equals(nv.getMatKhau())) {
@@ -764,72 +775,73 @@ private void insert() {
             MsgBox.alert(this, "Cập nhật thất bại!");
         }
     }*/
-
-    void delete(){
-        if(!Auth.isManager()){
+    void delete() {
+        if (!Auth.isManager()) {
             MsgBox.alert(this, "Bạn không có quyền xóa nhân viên này!");
-        }
-        else{
-            if(MsgBox.confirm(this, "Bạn có muốn xóa hay không?")){
+        } else {
+            if (MsgBox.confirm(this, "Bạn có muốn xóa hay không?")) {
                 String manv = txtmanv.getText();
                 try {
                     nvdao.delete(manv);
                     this.fillToTable();
                     this.clearForm();
                     MsgBox.alert(this, "Xóa thành công!");
-                } 
-                catch (Exception e) {
+                } catch (Exception e) {
                     MsgBox.alert(this, "Xóa thành công!");
                 }
             }
         }
     }
 
-    void clearForm(){
+    void clearForm() {
         this.setForm(new NhanVien());
         this.row = -1;
-        
+
     }
 
     void edit() {
         String manv = (String) tbldsnhanvien.getValueAt(this.row, 0);
-         NhanVien nv = nvdao.selectById(manv);
-         this.setForm(nv);
-        
-         
+        NhanVien nv = nvdao.selectById(manv);
+        this.setForm(nv);
+
     }
 
-    void setForm(NhanVien nv){
+    void setForm(NhanVien nv) {
         txtmanv.setText(nv.getMaNV());
         txtmatkhau.setText(nv.getMatKhau());
         txtxacnhanmk.setText(nv.getMatKhau());
         txttennv.setText(nv.getTenNV());
-        String vaitro = tbldsnhanvien.getValueAt(row,7).toString();
-         if(vaitro.equals("Trưởng Phòng")){
+        String vaitro = tbldsnhanvien.getValueAt(row, 7).toString();
+        if (vaitro.equals("Trưởng Phòng")) {
             rdotruongphong.setSelected(true);
-         }else{
-             
-             rdonhanvien.setSelected(true);
-         }
-      
-        String gioitinh = tbldsnhanvien.getValueAt(row,2).toString();
-         if(gioitinh.equals("Nam")){
+        } else {
+
+            rdonhanvien.setSelected(true);
+        }
+
+        String gioitinh = tbldsnhanvien.getValueAt(row, 2).toString();
+        if (gioitinh.equals("Nam")) {
             rdonam.setSelected(true);
-         }else{
-             
-             rdonu.setSelected(true);
-         }
-       
-         txtsdt.setText(nv.getsDT());
-         txtngayvaolam.setText(XDate.toString(nv.getNgayVaoLam(),"dd-MM-yyyy"));
-         txtmail.setText(nv.getEmail());
-         txtdiachi.setText(nv.getDiaChi());
-        if(nv.getHinh() != null){
+        } else {
+
+            rdonu.setSelected(true);
+        }
+
+        txtsdt.setText(nv.getsDT());
+        System.out.println("" + nv.getNgayVaoLam());
+        txtngayvaolam.setText(XDate.toString(nv.getNgayVaoLam(), "dd-MM-yyyy"));
+
+        txtmail.setText(nv.getEmail());
+        txtdiachi.setText(nv.getDiaChi());
+        if (nv.getHinh() != null) {
             lblhinhanh.setToolTipText(nv.getHinh());
-            lblhinhanh.setIcon(XImage.read(nv.getHinh()));
+            lblhinhanh.setIcon(new ImageIcon(XImage.read("./logos/" + nv.getHinh(), 241, 235)));
+        } else {
+            lblhinhanh.setIcon(null);
         }
     }
-    NhanVien getForm(){
+
+    NhanVien getForm() {
         NhanVien nv = new NhanVien();
         nv.setMaNV(txtmanv.getText());
         nv.setMatKhau(txtmatkhau.getText());
@@ -837,24 +849,25 @@ private void insert() {
         nv.setTenNV(txttennv.getText());
         nv.setVaiTro(rdotruongphong.isSelected());
         nv.setGioiTinh(rdonam.isSelected());
-        nv.setsDT(txtsdt.getText());       
-        nv.setNgayVaoLam(XDate.toDate(txtngayvaolam.getText(),"dd-MM-yyyy"));
+        nv.setsDT(txtsdt.getText());
+        nv.setNgayVaoLam(XDate.toDate(txtngayvaolam.getText(), "dd-MM-yyyy"));
         nv.setEmail(txtmail.getText());
         nv.setDiaChi(txtdiachi.getText());
         nv.setHinh(lblhinhanh.getToolTipText());
         return nv;
-    }   
-    
-     void chonAnh() {
-        if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+    }
+
+    void chonAnh() {
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
-            XImage.save(file); 
-            ImageIcon icon = XImage.read(file.getName()); 
-           lblhinhanh.setIcon(icon);
-            lblhinhanh.setToolTipText(file.getName()); 
+            XImage.save(file);
+            ImageIcon icon = new ImageIcon(XImage.read("./logos/" + file.getName(), 241, 235));
+            lblhinhanh.setIcon(icon);
+            lblhinhanh.setToolTipText(file.getName());
         }
     }
-       public boolean checkTrungMa(JTextField txt) {
+
+    public boolean checkTrungMa(JTextField txt) {
         txt.setBackground(white);
         if (nvdao.selectById(txt.getText()) == null) {
             return true;
