@@ -25,7 +25,18 @@ public class TrangChu extends javax.swing.JFrame {
         initComponents();
         init();
     }
-
+    void openThongKe1(){
+        if (Auth.isLogin()) {
+            if (!Auth.isManager()) {
+                MsgBox.alert(this, "Bạn không có quyền xem thông tin nhân viên");
+            } else {
+                this.dispose();
+                new ThongKe(this, true).setVisible(true);
+            }
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
+    }
     void openThongKe(int index) {
         if (Auth.isLogin()) {
             if (!Auth.isManager()) {
@@ -495,7 +506,7 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnThongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongkeActionPerformed
 //        this.dispose();
-        new ThongKe(this, true).setVisible(true);
+        openThongKe1();
 
     }//GEN-LAST:event_btnThongkeActionPerformed
 
