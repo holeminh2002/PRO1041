@@ -410,7 +410,7 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
             p.put("mail.smtp.host", "smtp.gmail.com");
             p.put("mail.smtp.port", 587);
             String accountName = "thuongntmps18777@fpt.edu.vn"; //Đổi thành mail của người gửi
-            String accountPassword = "01633260802tH@@"; //Gõ mật khẩu của mail bên trên vào dấu ""
+            String accountPassword = ""; //Gõ mật khẩu của mail bên trên vào dấu ""
             Session s = Session.getInstance(p,
                     new javax.mail.Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
