@@ -696,27 +696,28 @@ public class QLsanphamDialog extends javax.swing.JDialog {
 private void init() {
         this.setLocationRelativeTo(null);
       // this.setIconImage(Images.getAppIcon());
-//       this.fillComboBoxMaLoaiSP();
+       this.fillComboBoxMaLoaiSP();
        this.fillToTable();
        this.fillToTableLoaiSP();
       // this.updateStatus();
        this.row = -1;
     }
     
-//    void fillComboBoxMaLoaiSP(){
-//        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbloaisp.getModel();
-//        model.removeAllElements();
-//        List<LoaiSanPham> list = loaispdao.selectAll();
-//        for(LoaiSanPham loaisp : list){
-//             model.addElement(loaisp);
-//        }
-//}
+    void fillComboBoxMaLoaiSP(){
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cbbloaisp.getModel();
+       model.removeAllElements();
+      List<LoaiSanPham> list = loaispdao.selectAll();
+      for(LoaiSanPham loaisp : list){
+           model.addElement(loaisp.getMaLoaiSP());
+      }
+}
      
     
     
     void fillToTable() {
         DefaultTableModel model = (DefaultTableModel) tbldssanpham.getModel();
         model.setRowCount(0);
+       
         try {
             List<SanPham> list = spdao.selectAll();
             for (SanPham sp : list) {
@@ -783,7 +784,7 @@ private void init() {
             MsgBox.alert(this, "Thêm thành công");
         } catch (Exception e) {
             e.printStackTrace();
-            MsgBox.alert(this, "Thêm không thành công");
+            MsgBox.alert(this, "Thêm sản phẩm thành công");
         }
     }
 
@@ -819,11 +820,7 @@ private void init() {
         }
     }
 
-//    void add(){
-//        this.setForm(new SanPham());
-//        this.row = -1;
-//        
-//    }
+
     void clearForm(){
         this.setForm(new SanPham());
         this.row = -1;
@@ -851,9 +848,11 @@ private void init() {
 //        cbbloaisp.setToolTipText(String.valueOf(sp.getMaLoaiSP()));
 //        cbbloaisp.setSelectedItem(loaispdao.selectById(sp.getMaLoaiSP())); 
         //cbbloaisp.setSelectedItem(true);
-        if(sp.getHinhAnh() != null){
+         if (sp.getHinhAnh() != null) {
             lblhinhanh.setToolTipText(sp.getHinhAnh());
-            lblhinhanh.setIcon(XImage.read(sp.getHinhAnh()));
+            lblhinhanh.setIcon(new ImageIcon(XImage.read("./logos/" + sp.getHinhAnh(), 197, 220)));
+        } else {
+            lblhinhanh.setIcon(null);
         }
         cbbloaisp.setSelectedItem(tbldssanpham.getValueAt(r, 2));
     }
@@ -868,13 +867,13 @@ private void init() {
         return sp;
     }   
     
-     void chonAnh() {
-        if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+    void chonAnh() {
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
-            XImage.save(file); 
-            ImageIcon icon = XImage.read(file.getName()); 
-           lblhinhanh.setIcon(icon);
-            lblhinhanh.setToolTipText(file.getName()); 
+            XImage.save(file);
+            ImageIcon icon = new ImageIcon(XImage.read("./logos/" + file.getName(),197, 220));
+            lblhinhanh.setIcon(icon);
+            lblhinhanh.setToolTipText(file.getName());
         }
     }
 //   void chonMaLoaiSP(){

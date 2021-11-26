@@ -5,11 +5,12 @@
 
 			 Hóa đơn thanh toán 			  
 			 Số hóa đơn : 4			  
-		 Ngày  20.11.2021  	 0:13:14 PM                 
+		 Ngày  26.11.2021  	 1:33:31 PM                 
 
 	 Tên sản phẩm	Số lượng		Thành tiền
+	 Bánh Cake	   2		200000.0   
 
-				   Tổng thanh toán:	  				  
+				   Tổng thanh toán:	  158000.0				  
 				   Tên thu ngân: 	  nv01-Hoa				  
 				   Tên khách hàng : 	  Lý Thường Kiệt				  
 -------------------------------------------------------------------------------------------------------
