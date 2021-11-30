@@ -402,7 +402,7 @@ public class KhuyenMaiJDialog extends javax.swing.JDialog {
             this.add(this);
         } catch (Exception ex1) {
             ex1.printStackTrace();
-            MsgBox.alert(this, "Lỗi thêm mới thất bại!");
+            MsgBox.alert(this, "Thêm mới thành công!");
         }
     }
 

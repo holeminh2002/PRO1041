@@ -36,7 +36,7 @@ public class ChiTietLuongDAO extends CoffeeDAO<ChiTietLuongNhanVien, String> {
 
     @Override
     public void update(ChiTietLuongNhanVien luong) {
-        String sql="IUPDATE ChiTietLuongNhanVien set MaNV =?,TongSoCaLamTrongThang= ? , ThanhTien= ?,KyLuong=? WHERE MaCaLV =? ";
+        String sql="UPDATE ChiTietLuongNhanVien set MaNV =?,TongSoCaLamTrongThang= ? , ThanhTien= ?,KyLuong=? WHERE MaCaLV =? ";
         XJdbc.update(sql,                
                 luong.getMaNV(),
                 luong.getTongSoCaLamTrongThang(),

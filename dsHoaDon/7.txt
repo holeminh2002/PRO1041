@@ -5,13 +5,14 @@
 
 			 Hóa đơn thanh toán 			  
 			 Số hóa đơn : 7			  
-		 Ngày  26.11.2021  	 11:36:53 AM                 
+		 Ngày  27.11.2021  	 10:7:35 AM                 
 
 	 Tên sản phẩm	Số lượng		Thành tiền
-	 Trà Sữa Trân Châu	   1		55000.0   
+	 Mirinda Soda Kem	   2		40000.0   
+	 Trà Sữa Yummy	   3		120000.0   
 
-				   Tổng thanh toán:	  47500.0				  
-				   Tên thu ngân: 	  nv01-Hoa				  
-				   Tên khách hàng : 	  Lý Thường Kiệt				  
+				   Tổng thanh toán:	  142000.0				  
+				   Tên thu ngân: 	  TP_Thuong				  
+				   Tên khách hàng : 	  Hoàng Diệu				  
 -------------------------------------------------------------------------------------------------------
 		 Cảm ơn và hẹn gặp lại Quý khách <3

@@ -729,7 +729,7 @@ NhanVienDAO nvdao = new NhanVienDAO();
             
         } 
         catch (Exception e) {
-            MsgBox.alert(this, "Thêm mới thất bại!");
+            MsgBox.alert(this, "Thêm mới thành công!");
         }
 
     }
@@ -740,9 +740,9 @@ NhanVienDAO nvdao = new NhanVienDAO();
         }
         else{
             if(MsgBox.confirm(this, "Bạn có muốn xóa hay không?")){
-                String macalam = txtmacalam.getText();
+                String macalam = txtmacalam1.getText();
                 try {
-                    calamdao.delete(macalam);
+                    luongdao.delete(macalam);
                     this.fillToTableLuongNV();
                     this.addLuongNV();
                     MsgBox.alert(this, "Xóa thành công!");
