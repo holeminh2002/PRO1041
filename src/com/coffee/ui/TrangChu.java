@@ -671,6 +671,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel pnlTrangThai;
     // End of variables declaration//GEN-END:variables
     void init() {
+        setIconImage(XImage.getAppIcon());
+        setSize(1000, 600);
         setLocationRelativeTo(null);
         startDongHo();
           

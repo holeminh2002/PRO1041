@@ -14,7 +14,7 @@ public class XImage {
      * Ảnh biểu tượng của ứng dụng, xuất hiện trên mọi cửa sổ
      */
    public static Image getAppIcon(){
-      URL url = XImage.class.getResource("com/coffee/icon/coffee-icon.png");
+      URL url = XImage.class.getResource("/com/coffee/icon/logocaffee.jpg");
       return new ImageIcon(url).getImage();
     }
 

@@ -164,6 +164,7 @@ insert KhachHang values('VIP', N'Lê Đại Hành', 'q1, tp.HCM','hanh@gmail.com
 ('SILVER', N'Hồ Xuân Hương', 'h.Củ Chi, tp.HCM','huong@gmail.com','012345670',800),
 ('SILVER', N'Cù Thiện Ân', 'q1, tp.HCM','an@gmail.com','0123456710',1600),
 ('SILVER', N'Vũ Thị Giáng Hương', 'q.2, tp.HCM','huongg@gmail.com','012345611',2400);
+insert KhachHang values('VIP', N'Anonymous', 'q9, tp.HCM','null','0123456789',0);
 
 insert HoaDon values('NV01_Hue', 1,'2021-10-01',500000,2000,null,1000000,500000,null);
 insert HoaDon values('NV02_Khanh', 4,'2021-10-02',20000,2400,null,100000,80000,null),

@@ -79,7 +79,7 @@
                                   <Group type="102" attributes="0">
                                       <Component id="lblmacalam" min="-2" pref="83" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="txtmacalam" max="32767" attributes="0"/>
+                                      <Component id="txtmacalam" pref="132" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -88,17 +88,17 @@
                                           <Component id="lbltongtien" min="-2" pref="83" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtgiobd" min="-2" pref="124" max="-2" attributes="0"/>
-                                          <Component id="txttencalam" min="-2" pref="124" max="-2" attributes="0"/>
-                                          <Component id="txttongtien" min="-2" pref="132" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txttongtien" pref="132" max="32767" attributes="0"/>
+                                          <Component id="txttencalam" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtgiobd" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblgioketthuc" min="-2" pref="83" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtgiokt" min="-2" pref="103" max="-2" attributes="0"/>
+                              <Component id="txtgiokt" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
@@ -389,34 +389,30 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lbltongluong" min="-2" pref="86" max="-2" attributes="0"/>
-                                      <EmptySpace pref="30" max="32767" attributes="0"/>
-                                      <Component id="txttongluong" min="-2" pref="156" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="lblkiluong" max="32767" attributes="0"/>
+                                      <Component id="lblmacalam1" pref="76" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="lblkiluong" max="32767" attributes="0"/>
-                                          <Component id="lblmacalam1" pref="76" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtmacalam1" pref="156" max="32767" attributes="0"/>
-                                          <Component id="txtkiluong" max="32767" attributes="0"/>
-                                      </Group>
+                                  <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtmacalam1" max="32767" attributes="0"/>
+                                      <Component id="txtkiluong" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lbltongca" min="-2" pref="157" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lbltongca" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                                      <Component id="lblmanv" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                                      <Component id="lbltongluong" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txttongcalam" min="-2" pref="106" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblmanv" min="-2" pref="98" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="cbbnhanvien" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txttongluong" max="32767" attributes="0"/>
+                                      <Component id="cbbnhanvien" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txttongcalam" alignment="0" min="-2" pref="262" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -454,11 +450,11 @@
                       <Component id="lblmacalam1" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblmanv" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="cbbnhanvien" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblmanv" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="cbbnhanvien" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbltongca" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="txttongcalam" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>

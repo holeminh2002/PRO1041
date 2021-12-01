@@ -680,7 +680,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
 
     private void cboChietKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboChietKhauActionPerformed
         // TODO add your handling code here:
-        this.chonGiamGia();
+//        this.chonGiamGia();
         
     }//GEN-LAST:event_cboChietKhauActionPerformed
 
@@ -869,6 +869,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
         for(KhachHang tenkh: list){
             cbotenkh.addElement(tenkh.getTenKH().toString());
         }
+        
         cboTenKH.setModel(cbotenkh);
         String tenkh = cboTenKH.getItemAt(0).toString();
         double diemtichluy = (double) XJdbc.value("Select DiemTichLuy from KhachHang where TenKH like ?", tenkh);
@@ -888,15 +889,15 @@ public class BanHangJDialog extends javax.swing.JDialog {
     
     KhuyenMaiDAO kmdao = new KhuyenMaiDAO();
     
-    void chonGiamGia(){
-        KhuyenMai tenKM = (KhuyenMai) cboChietKhau.getSelectedItem();
-    }
+//    void chonGiamGia(){
+//        KhuyenMai tenKM = (KhuyenMai) cboChietKhau.getSelectedItem();
+//    }
     void fillComboBoxChietKhau(){
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboChietKhau.getModel();
         model.removeAllElements();
         List<KhuyenMai> list = kmdao.selectAll();
         for(KhuyenMai giamgia: list){
-            model.addElement(giamgia.getGiamGia());
+            model.addElement(giamgia.getTenKM());
         }
     }
     
@@ -909,8 +910,10 @@ public class BanHangJDialog extends javax.swing.JDialog {
                       System.out.println(""+tblOrder.getValueAt(i, 2).toString());
                       sum += Double.valueOf(tblOrder.getValueAt(i, 2).toString());
                   }
-                  double sauchietkhau = sum*Double.valueOf(cboChietKhau.getSelectedItem().toString());
-                  lblTongTien.setText(String.valueOf(sum-Double.valueOf(lblDiemTichLuy.getText())-sauchietkhau));
+//                  double sauchietkhau = sum*Double.valueOf(cboChietKhau.getSelectedItem().toString());
+//                  lblTongTien.setText(String.valueOf(sum-Double.valueOf(lblDiemTichLuy.getText())-sauchietkhau));
+                  
+                  lblTongTien.setText(String.valueOf(sum-Double.valueOf(lblDiemTichLuy.getText())));
     }
     
 //    void setForm(KhoaHoc kh){
