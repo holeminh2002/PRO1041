@@ -79,7 +79,8 @@ public class DangNhap extends javax.swing.JDialog {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setAlignmentX(2.0F);
 
-        txtUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtUser.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        txtUser.setForeground(new java.awt.Color(153, 51, 0));
         txtUser.setBorder(null);
         txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,7 +88,7 @@ public class DangNhap extends javax.swing.JDialog {
             }
         });
 
-        txtPass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtPass.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         txtPass.setBorder(null);
         txtPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +119,7 @@ public class DangNhap extends javax.swing.JDialog {
 
         btnHuy.setBackground(new java.awt.Color(153, 153, 153));
         btnHuy.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        btnHuy.setText("Hủy");
+        btnHuy.setText("Kết thúc");
         btnHuy.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnHuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

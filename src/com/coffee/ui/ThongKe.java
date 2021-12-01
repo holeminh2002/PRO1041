@@ -185,9 +185,10 @@ public class ThongKe extends javax.swing.JDialog {
         tabs.setBackground(new java.awt.Color(238, 207, 161));
 
         jPanel1.setBackground(new java.awt.Color(238, 207, 161));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê doanh thu"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thống kê doanh thu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18), new java.awt.Color(153, 51, 0))); // NOI18N
 
         btnInBaoCao.setBackground(new java.awt.Color(0, 255, 204));
+        btnInBaoCao.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         btnInBaoCao.setText("IN BÁO CÁO");
         btnInBaoCao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,17 +196,19 @@ public class ThongKe extends javax.swing.JDialog {
             }
         });
 
-        tblDoanhThu.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        tblDoanhThu.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         tblDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "MaHD ", "MaNV ", "So Luong", "Ten San Pham", "Ma San Pham", "Tong Tien"
+                "MaHD ", "MaNV ", "Số Lượng", "Tên Sản Phẩm", "Mã Sản Phẩm", "Tổng Tiền"
             }
         ));
+        tblDoanhThu.setRowHeight(20);
         jScrollPane2.setViewportView(tblDoanhThu);
 
+        cboNam.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
         cboNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboNam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,10 +216,11 @@ public class ThongKe extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel1.setText("Năm :");
 
         btnGuiMail.setBackground(new java.awt.Color(0, 255, 204));
+        btnGuiMail.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         btnGuiMail.setText("GỬI MAIL");
         btnGuiMail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,13 +238,13 @@ public class ThongKe extends javax.swing.JDialog {
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                         .addComponent(cboNam, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61)
                         .addComponent(btnInBaoCao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGuiMail, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(107, 107, 107)))
+                        .addComponent(btnGuiMail)
+                        .addGap(103, 103, 103)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -253,7 +257,7 @@ public class ThongKe extends javax.swing.JDialog {
                     .addComponent(btnInBaoCao, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuiMail, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -271,8 +275,9 @@ public class ThongKe extends javax.swing.JDialog {
         tabs.addTab("DOANH THU", jPanel6);
 
         jPanel2.setBackground(new java.awt.Color(238, 207, 161));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê khách hàng"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thống kê khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18), new java.awt.Color(153, 51, 0))); // NOI18N
 
+        tblKH.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         tblKH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -281,11 +286,13 @@ public class ThongKe extends javax.swing.JDialog {
                 "Tháng", "Mã Khách Hàng", "Tên Khách Hàng", "Số Lượng SP Đã Mua", "Điểm Tích Lũy", "Xếp Hạng"
             }
         ));
+        tblKH.setRowHeight(20);
         jScrollPane3.setViewportView(tblKH);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel2.setText("Tháng :");
 
+        cboKH.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
         cboKH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -316,14 +323,15 @@ public class ThongKe extends javax.swing.JDialog {
                     .addComponent(cboKH, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))
         );
 
         tabs.addTab("KHÁCH HÀNG", jPanel2);
 
         jPanel4.setBackground(new java.awt.Color(238, 207, 161));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê sản phẩm"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thống kê sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18), new java.awt.Color(153, 51, 0))); // NOI18N
 
+        tblSP.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         tblSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -332,11 +340,13 @@ public class ThongKe extends javax.swing.JDialog {
                 "Tháng", "Tên Loại SP", "Mã Sản Phẩm", "Tên Sản Phẩm", "Số Lượng Bán Ra"
             }
         ));
+        tblSP.setRowHeight(20);
         jScrollPane5.setViewportView(tblSP);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel3.setText("Tháng :");
 
+        cboSP.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
         cboSP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -367,12 +377,13 @@ public class ThongKe extends javax.swing.JDialog {
                     .addComponent(cboSP, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))
         );
 
         tabs.addTab("SẢN PHẨM", jPanel4);
 
         jButton1.setBackground(new java.awt.Color(0, 255, 204));
+        jButton1.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jButton1.setText("Chọn File");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
