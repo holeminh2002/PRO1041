@@ -5,6 +5,7 @@
  */
 package com.coffee.ui;
 
+import com.itextpdf.text.*;
 import com.coffee.dao.KhachHangDAO;
 import com.coffee.dao.KhuyenMaiDAO;
 import com.coffee.dao.LoaiSanPhamDAO;
@@ -17,6 +18,7 @@ import com.coffee.entity.NhanVien;
 import com.coffee.entity.SanPham;
 import com.coffee.utils.Auth;
 import com.coffee.utils.MsgBox;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
@@ -24,6 +26,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -35,6 +39,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -60,6 +66,81 @@ public class BanHangJDialog extends javax.swing.JDialog {
         init();
         
 //        lblMaNV.setText(""+Auth.user.getMaNV());
+    }
+    void inbill() throws FileNotFoundException, DocumentException{
+                int codeno;
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String dbUrl = "jdbc:sqlserver://localhost:1433;database=QL_coffee_Group2_update;user=sa;password=123";
+            Connection con = DriverManager.getConnection(dbUrl);
+            Statement s = con.createStatement();
+            String select = "Select  Max(MaHD) from HoaDon";
+            ResultSet rs = s.executeQuery(select);
+            rs.next();
+            codeno = rs.getInt(1);
+        } catch (Exception e) {
+            codeno = 0;
+        }
+        codeno++;
+        //THEM HOA DON VAO SQL SERVER DE SAU NAY CAP NHAT LAI DUOC MaHD
+        Date aa = new Date();
+        SimpleDateFormat cc = new SimpleDateFormat(" hh:mm:ss ");
+        SimpleDateFormat bb = new SimpleDateFormat(" MM.dd.yyyy ");
+
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String dbUrl = "jdbc:sqlserver://localhost:1433;database=QL_coffee_Group2_update;user=sa;password=123";
+            Connection con = DriverManager.getConnection(dbUrl);
+            PreparedStatement s = con.prepareStatement("insert into HoaDon values(" + codeno + ",'" + lblMaNV.getText() + "'," + codeno + ",'"+lblNgayInHD.getText()+"'," + lblTongTien.getText() + "," + 1000 + "," + null +","+500000+","+20000+","+null+ ");");
+            s.executeUpdate();
+//            JOptionPane.showMessageDialog(this, "Xuất hóa đơn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            con.close();
+            //
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, " xuất hóa đơn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+        String tensp = "";
+        String sl = "";
+//        String dg = "";
+        String tt = "";
+        String nhanvien = "";
+        String ngay = lblNgayInHD.getText();
+        
+        String gio = lblGio.getText();
+        DefaultTableModel def = (DefaultTableModel) tblOrder.getModel();
+        int i = def.getRowCount();
+
+        String str2 = "";
+        for (int k = 0; k < i; k++) {
+            tensp = def.getValueAt(k, 0).toString();
+            sl = def.getValueAt(k, 1).toString();
+//            dg = def.getValueAt(k, 2).toString();
+            tt = def.getValueAt(k, 2).toString();
+            String str22 = "\t " + tensp + "\t   " + sl + "\t\t" + tt + "   \n";
+            str2 += str22;
+        }
+
+        String str1 = "-------------------------------------------------------------------------------------------------------\n"
+                + "\t\t\t    Coffee Group2			  \n"
+                +"\t Innovation Building, Tân Chánh Hiệp, q12, Hồ Chí Minh\n"
+                +"\n"
+                + "\t\t\t Hóa đơn thanh toán 			  \n"
+                + "\t\t\t Số hóa đơn : " + codeno + "			  \n"
+                + "\t\t Ngày " + ngay + " \t " + gio + "                 \n\n"
+                + "\t Tên sản phẩm\tSố lượng\t\tThành tiền\n";
+        String str3 ="\n" 
+                +"\t\t\t\t   Tổng thanh toán:\t  " + lblTongTien.getText() + "				  \n"
+                + "\t\t\t\t   Tên thu ngân: \t  " + lblMaNV.getText() + "				  \n"
+                + "\t\t\t\t   Tên khách hàng : \t  " + cboTenKH.getSelectedItem()+ "				  \n"
+                + "-------------------------------------------------------------------------------------------------------\n"
+                + "\t\t Cảm ơn và hẹn gặp lại Quý khách <3";
+
+        Document doc = new Document();
+        PdfWriter.getInstance(doc, new FileOutputStream("bill.pdf"));
+        doc.open();
+        doc.add(new Paragraph(str1 + str2 + str3));
+        doc.close();
     }
 
     /**
@@ -564,92 +645,100 @@ public class BanHangJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_tblOrderKeyReleased
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
-        // TODO add your handling code here:
-        int codeno;
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String dbUrl = "jdbc:sqlserver://localhost:1433;database=QL_coffee_Group2_update;user=sa;password=123";
-            Connection con = DriverManager.getConnection(dbUrl);
-            Statement s = con.createStatement();
-            String select = "Select  Max(MaHD) from HoaDon";
-            ResultSet rs = s.executeQuery(select);
-            rs.next();
-            codeno = rs.getInt(1);
-        } catch (Exception e) {
-            codeno = 0;
-        }
-        codeno++;
-        //THEM HOA DON VAO SQL SERVER DE SAU NAY CAP NHAT LAI DUOC MaHD
-        Date aa = new Date();
-        SimpleDateFormat cc = new SimpleDateFormat(" hh:mm:ss ");
-        SimpleDateFormat bb = new SimpleDateFormat(" MM.dd.yyyy ");
 
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String dbUrl = "jdbc:sqlserver://localhost:1433;database=QL_coffee_Group2_update;user=sa;password=123";
-            Connection con = DriverManager.getConnection(dbUrl);
-            PreparedStatement s = con.prepareStatement("insert into HoaDon values(" + codeno + ",'" + lblMaNV.getText() + "'," + codeno + ",'"+lblNgayInHD.getText()+"'," + lblTongTien.getText() + "," + 1000 + "," + null +","+500000+","+20000+","+null+ ");");
-            s.executeUpdate();
-//            JOptionPane.showMessageDialog(this, "Xuất hóa đơn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            con.close();
-            //
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, " xuất hóa đơn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-
+            //        int codeno;
+//        try {
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//            String dbUrl = "jdbc:sqlserver://localhost:1433;database=QL_coffee_Group2_update;user=sa;password=123";
+//            Connection con = DriverManager.getConnection(dbUrl);
+//            Statement s = con.createStatement();
+//            String select = "Select  Max(MaHD) from HoaDon";
+//            ResultSet rs = s.executeQuery(select);
+//            rs.next();
+//            codeno = rs.getInt(1);
+//        } catch (Exception e) {
+//            codeno = 0;
+//        }
+//        codeno++;
+//        //THEM HOA DON VAO SQL SERVER DE SAU NAY CAP NHAT LAI DUOC MaHD
+//        Date aa = new Date();
+//        SimpleDateFormat cc = new SimpleDateFormat(" hh:mm:ss ");
+//        SimpleDateFormat bb = new SimpleDateFormat(" MM.dd.yyyy ");
+//
+//        try {
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//            String dbUrl = "jdbc:sqlserver://localhost:1433;database=QL_coffee_Group2_update;user=sa;password=123";
+//            Connection con = DriverManager.getConnection(dbUrl);
+//            PreparedStatement s = con.prepareStatement("insert into HoaDon values(" + codeno + ",'" + lblMaNV.getText() + "'," + codeno + ",'"+lblNgayInHD.getText()+"'," + lblTongTien.getText() + "," + 1000 + "," + null +","+500000+","+20000+","+null+ ");");
+//            s.executeUpdate();
+////            JOptionPane.showMessageDialog(this, "Xuất hóa đơn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+//            con.close();
+//            //
+//        } catch (Exception ex) {
+//            JOptionPane.showMessageDialog(this, " xuất hóa đơn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+//
+//        }
+//        String tensp = "";
+//        String sl = "";
+////        String dg = "";
+//        String tt = "";
+//        String nhanvien = "";
+//        String ngay = lblNgayInHD.getText();
+//        
+//        String gio = lblGio.getText();
+//        DefaultTableModel def = (DefaultTableModel) tblOrder.getModel();
+//        int i = def.getRowCount();
+//
+//        String str2 = "";
+//        for (int k = 0; k < i; k++) {
+//            tensp = def.getValueAt(k, 0).toString();
+//            sl = def.getValueAt(k, 1).toString();
+////            dg = def.getValueAt(k, 2).toString();
+//            tt = def.getValueAt(k, 2).toString();
+//            String str22 = "\t " + tensp + "\t   " + sl + "\t\t" + tt + "   \n";
+//            str2 += str22;
+//        }
+//
+//        String str1 = "-------------------------------------------------------------------------------------------------------\n"
+//                + "\t\t\t    Coffee Group2			  \n"
+//                +"\t Innovation Building, Tân Chánh Hiệp, q12, Hồ Chí Minh\n"
+//                +"\n"
+//                + "\t\t\t Hóa đơn thanh toán 			  \n"
+//                + "\t\t\t Số hóa đơn : " + codeno + "			  \n"
+//                + "\t\t Ngày " + ngay + " \t " + gio + "                 \n\n"
+//                + "\t Tên sản phẩm\tSố lượng\t\tThành tiền\n";
+//        String str3 ="\n" 
+//                +"\t\t\t\t   Tổng thanh toán:\t  " + lblTongTien.getText() + "				  \n"
+//                + "\t\t\t\t   Tên thu ngân: \t  " + lblMaNV.getText() + "				  \n"
+//                + "\t\t\t\t   Tên khách hàng : \t  " + cboTenKH.getSelectedItem()+ "				  \n"
+//                + "-------------------------------------------------------------------------------------------------------\n"
+//                + "\t\t Cảm ơn và hẹn gặp lại Quý khách <3";
+//        
+//        File f = new File("\\PRO1041\\dsHoaDon\\" + codeno + ".txt");
+//        try {
+//            //            FileWriter a = new FileWriter(f,true); Ghi de len cai cu
+//            FileWriter a = new FileWriter(f);
+//            Desktop desktop = Desktop.getDesktop();
+//            
+//            desktop.open(f);
+//
+//            BufferedWriter b = new BufferedWriter(a);
+//            b.newLine();
+//            b.write(str1 + str2 + str3);
+//            
+//            b.close();
+//            a.close();
+//
+//        } catch (Exception e) {
+//        }
+    inbill();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BanHangJDialog.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DocumentException ex) {
+            Logger.getLogger(BanHangJDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String tensp = "";
-        String sl = "";
-//        String dg = "";
-        String tt = "";
-        String nhanvien = "";
-        String ngay = lblNgayInHD.getText();
-        
-        String gio = lblGio.getText();
-        DefaultTableModel def = (DefaultTableModel) tblOrder.getModel();
-        int i = def.getRowCount();
-
-        String str2 = "";
-        for (int k = 0; k < i; k++) {
-            tensp = def.getValueAt(k, 0).toString();
-            sl = def.getValueAt(k, 1).toString();
-//            dg = def.getValueAt(k, 2).toString();
-            tt = def.getValueAt(k, 2).toString();
-            String str22 = "\t " + tensp + "\t   " + sl + "\t\t" + tt + "   \n";
-            str2 += str22;
-        }
-
-        String str1 = "-------------------------------------------------------------------------------------------------------\n"
-                + "\t\t\t    Coffee Group2			  \n"
-                +"\t Innovation Building, Tân Chánh Hiệp, q12, Hồ Chí Minh\n"
-                +"\n"
-                + "\t\t\t Hóa đơn thanh toán 			  \n"
-                + "\t\t\t Số hóa đơn : " + codeno + "			  \n"
-                + "\t\t Ngày " + ngay + " \t " + gio + "                 \n\n"
-                + "\t Tên sản phẩm\tSố lượng\t\tThành tiền\n";
-        String str3 ="\n" 
-                +"\t\t\t\t   Tổng thanh toán:\t  " + lblTongTien.getText() + "				  \n"
-                + "\t\t\t\t   Tên thu ngân: \t  " + lblMaNV.getText() + "				  \n"
-                + "\t\t\t\t   Tên khách hàng : \t  " + cboTenKH.getSelectedItem()+ "				  \n"
-                + "-------------------------------------------------------------------------------------------------------\n"
-                + "\t\t Cảm ơn và hẹn gặp lại Quý khách <3";
-        
-        File f = new File("D:\\FALL 2021\\DUAN1-UDPM(PRO1041)\\PRO1041\\dsHoaDon\\" + codeno + ".txt");
-        try {
-            //            FileWriter a = new FileWriter(f,true); Ghi de len cai cu
-            FileWriter a = new FileWriter(f);
-            Desktop desktop = Desktop.getDesktop();
-            
-            desktop.open(f);
-
-            BufferedWriter b = new BufferedWriter(a);
-            b.newLine();
-            b.write(str1 + str2 + str3);
-            
-            b.close();
-            a.close();
-
-        } catch (Exception e) {
-        }
+    
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void cboTenKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTenKHActionPerformed
