@@ -507,7 +507,8 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnThongkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongkeActionPerformed
 //        this.dispose();
-        openThongKe1();
+        new ThongKe(this, true).setVisible(true);
+        this.openThongKe1();
 
     }//GEN-LAST:event_btnThongkeActionPerformed
 

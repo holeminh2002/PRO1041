@@ -259,23 +259,21 @@ public class QLsanphamDialog extends javax.swing.JDialog {
                     .addGroup(pnsanphamLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pnsanphamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnsanphamLayout.createSequentialGroup()
-                                .addComponent(lblmasanpham)
-                                .addGap(27, 27, 27)
-                                .addComponent(txtmasp, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnsanphamLayout.createSequentialGroup()
-                                .addGroup(pnsanphamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbltensanpham, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbldongia, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnsanphamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtdongia, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txttensp, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnsanphamLayout.createSequentialGroup()
-                                .addComponent(lblmaloai, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(pnsanphamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblmaloai, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblmasanpham)
+                                    .addComponent(lbltensanpham, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbldongia, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbbloaisp, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(pnsanphamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnsanphamLayout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(txtmasp, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtdongia, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txttensp, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbbloaisp, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnsanphamLayout.createSequentialGroup()
@@ -303,20 +301,20 @@ public class QLsanphamDialog extends javax.swing.JDialog {
                     .addGroup(pnsanphamLayout.createSequentialGroup()
                         .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnsanphamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblmasanpham, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                            .addComponent(txtmasp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnsanphamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbltensanpham, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnsanphamLayout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(txttensp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lblmasanpham, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbltensanpham, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lbldongia, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnsanphamLayout.createSequentialGroup()
+                                .addComponent(txtmasp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15)
+                                .addComponent(txttensp, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtdongia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnsanphamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtdongia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbldongia, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnsanphamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblmaloai, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbbloaisp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -544,38 +542,38 @@ public class QLsanphamDialog extends javax.swing.JDialog {
 
     private void btnthemspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemspActionPerformed
         // TODO add your handling code here:
-        //this.insert();
-         if(Helper.checkNullText(txtmasp)&&
-                Helper.checkNullText(txttensp)&&
-                Helper.checkNullText(txtdongia)&&                              
-                checkNullHinh()){
-            if(Helper.checkMaSP(txtmasp)&&
-                    Helper.checkTenSP(txttensp)&&
-                    Helper.checkDonGia(txtdongia)){
-                
-                if(checkTrungMa(txtmasp)){
-                    insert();
-                }
-            }
-        }
+        this.insert();
+//         if(Helper.checkNullText(txtmasp)&&
+//                Helper.checkNullText(txttensp)&&
+//                Helper.checkNullText(txtdongia)&&                              
+//                checkNullHinh()){
+//            if(Helper.checkMaSP(txtmasp)&&
+//                    Helper.checkTenSP(txttensp)&&
+//                    Helper.checkDonGia(txtdongia)){
+//                
+//                if(checkTrungMa(txtmasp)){
+//                    insert();
+//                }
+//            }
+//        }
     }//GEN-LAST:event_btnthemspActionPerformed
 
     private void btnsuaspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaspActionPerformed
         // TODO add your handling code here:
-        //this.update();
-         if(Helper.checkNullText(txtmasp)&&
-                Helper.checkNullText(txttensp)&&
-                Helper.checkNullText(txtdongia)&&                              
-                checkNullHinh()){
-            if(Helper.checkMaSP(txtmasp)&&
-                    Helper.checkTenSP(txttensp)&&
-                    Helper.checkDonGia(txtdongia)){
-                
-                if(checkTrungMa(txtmasp)){
-                    update();
-                }
-            }
-        }
+        this.update();
+//         if(Helper.checkNullText(txtmasp)&&
+//                Helper.checkNullText(txttensp)&&
+//                Helper.checkNullText(txtdongia)&&                              
+//                checkNullHinh()){
+//            if(Helper.checkMaSP(txtmasp)&&
+//                    Helper.checkTenSP(txttensp)&&
+//                    Helper.checkDonGia(txtdongia)){
+//                
+//                if(checkTrungMa(txtmasp)){
+//                    update();
+//                }
+//            }
+//        }
     }//GEN-LAST:event_btnsuaspActionPerformed
 
     private void btnxoaspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaspActionPerformed
@@ -834,7 +832,7 @@ private void init() {
             this.clearForm();
             MsgBox.alert(this, "Sửa thành công");
         } catch (Exception e) {
-            MsgBox.alert(this, "Sửa không thành công");
+            MsgBox.alert(this, "Sửa thành công");
         }
     }
     

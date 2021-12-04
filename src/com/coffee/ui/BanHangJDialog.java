@@ -118,24 +118,24 @@ public class BanHangJDialog extends javax.swing.JDialog {
             sl = def.getValueAt(k, 1).toString();
 //            dg = def.getValueAt(k, 2).toString();
             tt = def.getValueAt(k, 2).toString();
-            String str22 = "\t " + tensp + "\t   " + sl + "\t\t" + tt + "   \n";
+            String str22 = "\t " + tensp + "                           " + sl + "                           " + tt + "   \n";
             str2 += str22;
         }
 
         String str1 = "-------------------------------------------------------------------------------------------------------\n"
-                + "\t\t\t    Coffee Group2			  \n"
-                +"\t Innovation Building, Tân Chánh Hiệp, q12, Hồ Chí Minh\n"
-                +"\n"
-                + "\t\t\t Hóa đơn thanh toán 			  \n"
-                + "\t\t\t Số hóa đơn : " + codeno + "			  \n"
-                + "\t\t Ngày " + ngay + " \t " + gio + "                 \n\n"
-                + "\t Tên sản phẩm\tSố lượng\t\tThành tiền\n";
+                + "\t\t\t                                      History Coffee 			  \n"
+                + "\t                    Innovation Building, Tan Chanh Hiep, q12, Ho Chi Minh\n"
+                + "\n"
+                + "\t\t\t                                      Haa đon thanh toan 			  \n"
+                + "\t\t\t                                      So hoa đon : " + codeno + "			  \n"
+                + "\t\t\t                                      Ngày " + ngay + " \t " + gio + "                 \n\n"
+                + "\t Ten san pham                   So luong                   Thanh tien\n";
         String str3 ="\n" 
-                +"\t\t\t\t   Tổng thanh toán:\t  " + lblTongTien.getText() + "				  \n"
-                + "\t\t\t\t   Tên thu ngân: \t  " + lblMaNV.getText() + "				  \n"
-                + "\t\t\t\t   Tên khách hàng : \t  " + cboTenKH.getSelectedItem()+ "				  \n"
+                + "                                                                     Tong thanh toán:\t  " + lblTongTien.getText() + "				  \n"
+                + "                                                                     Tên thu ngân: \t    " + lblMaNV.getText() + "				  \n"
+                + "                                                                     Tên khách hàng : \t " + cboTenKH.getSelectedItem()+ "				  \n"
                 + "-------------------------------------------------------------------------------------------------------\n"
-                + "\t\t Cảm ơn và hẹn gặp lại Quý khách <3";
+                + "\t\t                    Cam on và hen gap lai Quý khách <3";
 
         Document doc = new Document();
         PdfWriter.getInstance(doc, new FileOutputStream("bill.pdf"));

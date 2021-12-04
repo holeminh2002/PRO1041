@@ -469,8 +469,9 @@ public class KhuyenMaiJDialog extends javax.swing.JDialog {
             kmdao.update(km);
             this.fillToTable();
             this.add();
+            MsgBox.alert(this, "Cập nhật thành công!");
         } catch (Exception ex1) {
-            MsgBox.alert(this, "Lỗi thêm mới thất bại!");
+            MsgBox.alert(this, "Cập nhật thất bại!");
         }
 
     }
@@ -481,7 +482,7 @@ public class KhuyenMaiJDialog extends javax.swing.JDialog {
             try {
                 kmdao.delete(masv);
                 this.fillToTable();
-                this.add(this);
+                this.add();
                 MsgBox.alert(this, "Bạn đã xóa thất bại!");
             } catch (Exception ex2) {
                 MsgBox.alert(this, "Bạn đã xóa thành công");

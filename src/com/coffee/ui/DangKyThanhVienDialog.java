@@ -418,7 +418,7 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
             String to = "thuongntmps18777@fpt.edu.vn,huebtaps18781@fpt.edu.vn,minhhlps18682@fpt.edu.vn,nhatnmps18727@fpt.edu.vn,khaptnps18767@fpt.edu.vn,khanhnpps18747@fpt.edu.vn";
             String subject = "Welcome to Coffee GROUP2";
             String body = "Coffee Group 2 moi quy khach hang than thiet tham khao cac chuong trinh khuyen mai ap dung"
-                    + "trong thang 11"
+                    + "trong thang 12"
                     + "\n Khuyen mai 11/11"
                     + "\n Khuyen mai 20/11"
                     + "\n Khuyen mai dành cho khach hang co the HS/SV"

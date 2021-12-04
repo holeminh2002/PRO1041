@@ -5,14 +5,13 @@
 
 			 Hóa đơn thanh toán 			  
 			 Số hóa đơn : 7			  
-		 Ngày  27.11.2021  	 10:7:35 AM                 
+		 Ngày  04.12.2021  	 11:20:39 AM                 
 
 	 Tên sản phẩm	Số lượng		Thành tiền
-	 Mirinda Soda Kem	   2		40000.0   
-	 Trà Sữa Yummy	   3		120000.0   
+	 CoCa CoLa	   2		40000.0   
 
-				   Tổng thanh toán:	  142000.0				  
+				   Tổng thanh toán:	  40000.0				  
 				   Tên thu ngân: 	  TP_Thuong				  
-				   Tên khách hàng : 	  Hoàng Diệu				  
+				   Tên khách hàng : 	  Anonymous				  
 -------------------------------------------------------------------------------------------------------
 		 Cảm ơn và hẹn gặp lại Quý khách <3
