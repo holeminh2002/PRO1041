@@ -18,11 +18,8 @@ import com.coffee.entity.NhanVien;
 import com.coffee.entity.SanPham;
 import com.coffee.utils.Auth;
 import com.coffee.utils.MsgBox;
-<<<<<<< HEAD
 import com.itextpdf.text.pdf.PdfWriter;
-=======
 import com.coffee.utils.XJdbc;
->>>>>>> 0189566458263312658bcc13c08ad8b4b8e26daf
 import java.awt.Desktop;
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
@@ -675,7 +672,6 @@ public class BanHangJDialog extends javax.swing.JDialog {
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
 
         try {
-<<<<<<< HEAD
             //        int codeno;
 //        try {
 //            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -766,75 +762,8 @@ public class BanHangJDialog extends javax.swing.JDialog {
             Logger.getLogger(BanHangJDialog.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DocumentException ex) {
             Logger.getLogger(BanHangJDialog.class.getName()).log(Level.SEVERE, null, ex);
-=======
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String dbUrl = "jdbc:sqlserver://localhost:1433;database=QL_coffee_Group2_update;user=sa;password=123";
-            Connection con = DriverManager.getConnection(dbUrl);
-            PreparedStatement s = con.prepareStatement("insert into HoaDon values(" + (codeno+1) + ",'" + lblMaNV.getText() + "'," + codeno + ",'"+lblNgayInHD.getText()+"'," + lblTongTien.getText() + "," + 1000 + "," + null +","+500000+","+20000+","+null+ ");");
-//            PreparedStatement s = con.prepareStatement("insert into HoaDon values(" + (codeno+1) + ",'" + lblMaNV.getText() + "'," + codeno + ",'"+lblNgayInHD.getText()+"'," + lblTongTien.getText() + "," + 1000 + "," + null +","+500000+","+20000+","+null+ ");");
-            s.executeUpdate();
-//            JOptionPane.showMessageDialog(this, "Xuất hóa đơn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            con.close();
-            //
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, " xuất hóa đơn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
 
         }
-        String tensp = "";
-        String sl = "";
-//        String dg = "";
-        String tt = "";
-        String nhanvien = "";
-        String ngay = lblNgayInHD.getText();
-        
-        String gio = lblGio.getText();
-        DefaultTableModel def = (DefaultTableModel) tblOrder.getModel();
-        int i = def.getRowCount();
-
-        String str2 = "";
-        for (int k = 0; k < i; k++) {
-            tensp = def.getValueAt(k, 0).toString();
-            sl = def.getValueAt(k, 1).toString();
-//            dg = def.getValueAt(k, 2).toString();
-            tt = def.getValueAt(k, 2).toString();
-            String str22 = "\t " + tensp + "\t   " + sl + "\t\t" + tt + "   \n";
-            str2 += str22;
-        }
-
-        String str1 = "-------------------------------------------------------------------------------------------------------\n"
-                + "\t\t\t    Coffee Group2			  \n"
-                +"\t Innovation Building, Tân Chánh Hiệp, q12, Hồ Chí Minh\n"
-                +"\n"
-                + "\t\t\t Hóa đơn thanh toán 			  \n"
-                + "\t\t\t Số hóa đơn : " + codeno + "			  \n"
-                + "\t\t Ngày " + ngay + " \t " + gio + "                 \n\n"
-                + "\t Tên sản phẩm\tSố lượng\t\tThành tiền\n";
-        String str3 ="\n" 
-                +"\t\t\t\t   Tổng thanh toán:\t  " + lblTongTien.getText() + "				  \n"
-                + "\t\t\t\t   Tên thu ngân: \t  " + lblMaNV.getText() + "				  \n"
-                + "\t\t\t\t   Tên khách hàng : \t  " + cboTenKH.getSelectedItem()+ "				  \n"
-                + "-------------------------------------------------------------------------------------------------------\n"
-                + "\t\t Cảm ơn và hẹn gặp lại Quý khách <3";
-        
-        File f = new File("./dsHoaDon/" + codeno + ".txt");
-        try {
-            //            FileWriter a = new FileWriter(f,true); Ghi de len cai cu
-            FileWriter a = new FileWriter(f);
-            Desktop desktop = Desktop.getDesktop();
-            
-            desktop.open(f);
-
-            BufferedWriter b = new BufferedWriter(a);
-            b.newLine();
-            b.write(str1 + str2 + str3);
-            
-            b.close();
-            a.close();
-
-        } catch (Exception e) {
->>>>>>> 0189566458263312658bcc13c08ad8b4b8e26daf
-        }
-    
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void cboChietKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboChietKhauActionPerformed
