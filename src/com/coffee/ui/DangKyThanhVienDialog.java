@@ -84,13 +84,16 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("QUẢN LÍ ĐĂNG KÍ THÀNH VIÊN");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
-        jLabel1.setText("Đăng ký thành viên");
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 51, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("ĐĂNG KÍ THÀNH VIÊN");
 
         jPanel1.setBackground(new java.awt.Color(189, 107, 9));
 
-        tblThanhVien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tblThanhVien.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         tblThanhVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -112,6 +115,7 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
+        tblThanhVien.setRowHeight(20);
         tblThanhVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblThanhVienMouseClicked(evt);
@@ -121,22 +125,22 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(238, 207, 161));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel3.setText("Họ tên");
 
         txtHoTen.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel5.setText("Email");
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel6.setText("Số điện thoại");
 
         txtSDT.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel7.setText("Xếp hạng");
 
         cboXH.setEditable(true);
@@ -148,14 +152,14 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel8.setText("Điểm tích lũy");
 
         cboDiem.setEditable(true);
         cboDiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cboDiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1000", "2000", "3000", "4000" }));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel9.setText("Địa chỉ");
 
         txtDiaChi.setColumns(20);
@@ -163,7 +167,7 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
         txtDiaChi.setRows(5);
         jScrollPane2.setViewportView(txtDiaChi);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel4.setText("Mã KH");
 
         txtMaKH.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -176,39 +180,31 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(70, 70, 70)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtHoTen, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                            .addComponent(txtMaKH)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(cboDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSDT)
-                                    .addComponent(txtEmail)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(cboXH, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(41, 41, 41)
-                                                .addComponent(jLabel8))
-                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(70, 70, 70)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtMaKH)
-                                    .addComponent(txtHoTen))))
-                        .addGap(413, 413, 413))))
+                                .addComponent(cboXH, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(59, 59, 59)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cboDiem, 0, 1, Short.MAX_VALUE))
+                            .addComponent(txtSDT)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,10 +226,9 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
                     .addComponent(jLabel6)
                     .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7)
-                        .addComponent(cboXH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(cboXH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(cboDiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -282,7 +277,7 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -292,7 +287,7 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
                     .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(89, 89, 89))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(126, 126, 126)
+                .addGap(79, 79, 79)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -320,9 +315,10 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
                 .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,6 +332,7 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
+        btnGuiMail.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnGuiMail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Mail.png"))); // NOI18N
         btnGuiMail.setText("Gửi Mail");
         btnGuiMail.addActionListener(new java.awt.event.ActionListener() {
@@ -351,9 +348,9 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(336, 336, 336)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
                 .addComponent(btnGuiMail)
                 .addGap(104, 104, 104))
         );
@@ -361,10 +358,10 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnGuiMail)))
+                        .addComponent(btnGuiMail))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -409,14 +406,15 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
             p.put("mail.smtp.starttls.enable", "true");
             p.put("mail.smtp.host", "smtp.gmail.com");
             p.put("mail.smtp.port", 587);
-            String accountName = "thuongntmps18777@fpt.edu.vn";
-            String accountPassword = "";
+            String accountName = "thuongntmps18777@fpt.edu.vn"; //Đổi thành mail của người gửi
+            String accountPassword = ""; //Gõ mật khẩu của mail bên trên vào dấu ""
             Session s = Session.getInstance(p,
                     new javax.mail.Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
                             return new PasswordAuthentication(accountName, accountPassword);
                         }});          
-            String from = "thuongntmps18777@fpt.edu.vn";
+            String from = "thuongntmps18777@fpt.edu.vn"; //Đổi thành mail của người gửi
+            //Đổi thành mail của những người nhận mail
             String to = "thuongntmps18777@fpt.edu.vn,huebtaps18781@fpt.edu.vn,minhhlps18682@fpt.edu.vn,nhatnmps18727@fpt.edu.vn,khaptnps18767@fpt.edu.vn,khanhnpps18747@fpt.edu.vn";
             String subject = "Welcome to Coffee GROUP2";
             String body = "Coffee Group 2 moi quy khach hang than thiet tham khao cac chuong trinh khuyen mai ap dung"

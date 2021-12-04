@@ -14,7 +14,7 @@ public class XImage {
      * Ảnh biểu tượng của ứng dụng, xuất hiện trên mọi cửa sổ
      */
    public static Image getAppIcon(){
-      URL url = XImage.class.getResource("com/coffee/icon/coffee-icon.png");
+      URL url = XImage.class.getResource("/com/coffee/icon/logocaffee.jpg");
       return new ImageIcon(url).getImage();
     }
 
@@ -45,5 +45,9 @@ public class XImage {
     public static ImageIcon read(String fileName){
         File path = new File("logos", fileName);
         return new ImageIcon(path.getAbsolutePath());
+    }
+    public static Image read(String fileName, int width, int height){
+        File path = new File(fileName);
+        return new ImageIcon(path.getAbsolutePath()).getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT);
     }
 }

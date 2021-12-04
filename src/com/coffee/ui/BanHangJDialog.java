@@ -18,7 +18,11 @@ import com.coffee.entity.NhanVien;
 import com.coffee.entity.SanPham;
 import com.coffee.utils.Auth;
 import com.coffee.utils.MsgBox;
+<<<<<<< HEAD
 import com.itextpdf.text.pdf.PdfWriter;
+=======
+import com.coffee.utils.XJdbc;
+>>>>>>> 0189566458263312658bcc13c08ad8b4b8e26daf
 import java.awt.Desktop;
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
@@ -188,38 +192,52 @@ public class BanHangJDialog extends javax.swing.JDialog {
         lblDiemTichLuy = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("BÁN HÀNG");
+        setTitle("QUẢN LÍ BÁN HÀNG ");
 
         jPanel1.setBackground(new java.awt.Color(238, 207, 161));
 
         jPanel2.setBackground(new java.awt.Color(238, 207, 161));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "HÓA ĐƠN", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel1.setText("Ngày In HĐ:");
 
+        lblNgayInHD.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
         lblNgayInHD.setText("07/11/2021  8:00PM");
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel3.setText("Mã nhân viên:");
 
+        lblMaNV.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
         lblMaNV.setText("nv01-Hoa");
 
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel5.setText("Mã HĐ:");
 
         lblMaHD.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblMaHD.setForeground(new java.awt.Color(255, 0, 51));
         lblMaHD.setText("36");
 
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel2.setText("Tên khách hàng:");
 
+        cboTenKH.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
         cboTenKH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "anonymous" }));
+        cboTenKH.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboTenKHItemStateChanged(evt);
+            }
+        });
         cboTenKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboTenKHActionPerformed(evt);
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel9.setText("Giờ:");
 
+        lblGio.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
         lblGio.setText("07/11/2021  8:00PM");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -288,14 +306,17 @@ public class BanHangJDialog extends javax.swing.JDialog {
         jPanel3.setBackground(new java.awt.Color(238, 207, 161));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "THỰC ĐƠN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel7.setText("Loại sản phẩm:");
 
+        cboLoaiSP.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
         cboLoaiSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboLoaiSPActionPerformed(evt);
             }
         });
 
+        tblThucDon.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         tblThucDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -315,6 +336,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
                 "Mã sản phẩm", "Tên sản phẩm", "Đơn giá"
             }
         ));
+        tblThucDon.setRowHeight(20);
         jScrollPane2.setViewportView(tblThucDon);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -339,7 +361,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cboLoaiSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -354,10 +376,13 @@ public class BanHangJDialog extends javax.swing.JDialog {
         jPanel5.setBackground(new java.awt.Color(238, 207, 161));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "ORDER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel8.setText("Mã sản phẩm:");
 
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel10.setText("Đơn giá:");
 
+        tblOrder.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         tblOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -366,6 +391,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
                 "Tên sản phẩm", "Số lượng", "Thành tiền"
             }
         ));
+        tblOrder.setRowHeight(20);
         tblOrder.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 tblOrderKeyReleased(evt);
@@ -373,6 +399,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
         });
         jScrollPane3.setViewportView(tblOrder);
 
+        btnXoaMon.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         btnXoaMon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Delete.png"))); // NOI18N
         btnXoaMon.setText("Xóa món");
         btnXoaMon.addActionListener(new java.awt.event.ActionListener() {
@@ -399,7 +426,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(lblMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                                 .addComponent(btnXoaMon))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
@@ -422,17 +449,17 @@ public class BanHangJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblDonGia))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 255));
         jLabel12.setText("TỔNG TIỀN:");
 
         btnThanhToan.setBackground(new java.awt.Color(0, 51, 204));
-        btnThanhToan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnThanhToan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnThanhToan.setForeground(new java.awt.Color(255, 255, 255));
         btnThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/coffee/icon/Money.png"))); // NOI18N
         btnThanhToan.setText("Thanh Toán");
@@ -444,10 +471,13 @@ public class BanHangJDialog extends javax.swing.JDialog {
 
         lblTongTien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel4.setText("Điểm tích lũy:");
 
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel6.setText("Chiết khấu:");
 
+        cboChietKhau.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
         cboChietKhau.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboChietKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -464,14 +494,14 @@ public class BanHangJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnChuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 743, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 14, Short.MAX_VALUE))
+                        .addGap(0, 15, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -535,13 +565,11 @@ public class BanHangJDialog extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -602,20 +630,22 @@ public class BanHangJDialog extends javax.swing.JDialog {
 //                for (int i = 0; i < tblOrder.getRowCount(); i++) {
 //                    sum += Double.valueOf(tblOrder.getValueAt(i, 2).toString());
 //                }
-                  
+//                  int sum = (int) (Integer.valueOf(lblTongTien.getText())-Double.valueOf(tblOrder.getValueAt(row, 2).toString()));
+//                  lblTongTien.setText(""+ sum);
+//                 if (lblTongTien.getText().equals("0")) {
+//                 lblTongTien.setText(""); 
+//        }
                   tbl.removeRow(row);
                   MsgBox.alert(this, "Xoá thành công món được chọn");
-        }
-        if(row>=0){
-//                  int sum = Integer.parseInt(lblTongTien.getText());
-                    int sum = 0;
-                  for (int i = 0; i < tblOrder.getRowCount(); i++) {
-                    sum -= Double.valueOf(tblOrder.getValueAt(i, 2).toString());
-                }
-                 lblTongTien.setText(""+ sum);
-                 if (lblTongTien.getText().equals("0")) {
-                 lblTongTien.setText("");
-        }
+                  this.tinhTien();
+//        if(row>=0){
+////                  int sum = Integer.parseInt(lblTongTien.getText());
+//                    
+////                  for (int i = 0; i < tblOrder.getRowCount(); i++) {
+////                    sum -= Double.valueOf(tblOrder.getValueAt(i, 2).toString());
+////                }
+//                 
+//        }
         }
 
     }//GEN-LAST:event_btnXoaMonActionPerformed
@@ -638,15 +668,14 @@ public class BanHangJDialog extends javax.swing.JDialog {
 //                lblTongTien.setText(tblOrder.getValueAt(row, 2)+tblOrder.getValueAt(row+1, 2).toString()); 
 //                row++;     
 //        }
-                  lblTongTien.setText(String.valueOf(tinhTien()));
-                  
-                  
+            this.tinhTien();
         }
     }//GEN-LAST:event_tblOrderKeyReleased
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
 
         try {
+<<<<<<< HEAD
             //        int codeno;
 //        try {
 //            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -737,19 +766,92 @@ public class BanHangJDialog extends javax.swing.JDialog {
             Logger.getLogger(BanHangJDialog.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DocumentException ex) {
             Logger.getLogger(BanHangJDialog.class.getName()).log(Level.SEVERE, null, ex);
+=======
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String dbUrl = "jdbc:sqlserver://localhost:1433;database=QL_coffee_Group2_update;user=sa;password=123";
+            Connection con = DriverManager.getConnection(dbUrl);
+            PreparedStatement s = con.prepareStatement("insert into HoaDon values(" + (codeno+1) + ",'" + lblMaNV.getText() + "'," + codeno + ",'"+lblNgayInHD.getText()+"'," + lblTongTien.getText() + "," + 1000 + "," + null +","+500000+","+20000+","+null+ ");");
+//            PreparedStatement s = con.prepareStatement("insert into HoaDon values(" + (codeno+1) + ",'" + lblMaNV.getText() + "'," + codeno + ",'"+lblNgayInHD.getText()+"'," + lblTongTien.getText() + "," + 1000 + "," + null +","+500000+","+20000+","+null+ ");");
+            s.executeUpdate();
+//            JOptionPane.showMessageDialog(this, "Xuất hóa đơn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            con.close();
+            //
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, " xuất hóa đơn", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+        String tensp = "";
+        String sl = "";
+//        String dg = "";
+        String tt = "";
+        String nhanvien = "";
+        String ngay = lblNgayInHD.getText();
+        
+        String gio = lblGio.getText();
+        DefaultTableModel def = (DefaultTableModel) tblOrder.getModel();
+        int i = def.getRowCount();
+
+        String str2 = "";
+        for (int k = 0; k < i; k++) {
+            tensp = def.getValueAt(k, 0).toString();
+            sl = def.getValueAt(k, 1).toString();
+//            dg = def.getValueAt(k, 2).toString();
+            tt = def.getValueAt(k, 2).toString();
+            String str22 = "\t " + tensp + "\t   " + sl + "\t\t" + tt + "   \n";
+            str2 += str22;
+        }
+
+        String str1 = "-------------------------------------------------------------------------------------------------------\n"
+                + "\t\t\t    Coffee Group2			  \n"
+                +"\t Innovation Building, Tân Chánh Hiệp, q12, Hồ Chí Minh\n"
+                +"\n"
+                + "\t\t\t Hóa đơn thanh toán 			  \n"
+                + "\t\t\t Số hóa đơn : " + codeno + "			  \n"
+                + "\t\t Ngày " + ngay + " \t " + gio + "                 \n\n"
+                + "\t Tên sản phẩm\tSố lượng\t\tThành tiền\n";
+        String str3 ="\n" 
+                +"\t\t\t\t   Tổng thanh toán:\t  " + lblTongTien.getText() + "				  \n"
+                + "\t\t\t\t   Tên thu ngân: \t  " + lblMaNV.getText() + "				  \n"
+                + "\t\t\t\t   Tên khách hàng : \t  " + cboTenKH.getSelectedItem()+ "				  \n"
+                + "-------------------------------------------------------------------------------------------------------\n"
+                + "\t\t Cảm ơn và hẹn gặp lại Quý khách <3";
+        
+        File f = new File("./dsHoaDon/" + codeno + ".txt");
+        try {
+            //            FileWriter a = new FileWriter(f,true); Ghi de len cai cu
+            FileWriter a = new FileWriter(f);
+            Desktop desktop = Desktop.getDesktop();
+            
+            desktop.open(f);
+
+            BufferedWriter b = new BufferedWriter(a);
+            b.newLine();
+            b.write(str1 + str2 + str3);
+            
+            b.close();
+            a.close();
+
+        } catch (Exception e) {
+>>>>>>> 0189566458263312658bcc13c08ad8b4b8e26daf
         }
     
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
-    private void cboTenKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTenKHActionPerformed
-        // TODO add your handling code here:
-        this.chonTenKH();
-    }//GEN-LAST:event_cboTenKHActionPerformed
-
     private void cboChietKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboChietKhauActionPerformed
         // TODO add your handling code here:
-        this.chonGiamGia();
+//        this.chonGiamGia();
+        
     }//GEN-LAST:event_cboChietKhauActionPerformed
+
+    private void cboTenKHItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTenKHItemStateChanged
+        // TODO add your handling code here:
+        double diemtichluy = (double) XJdbc.value("Select DiemTichLuy from KhachHang where TenKH like ?", cboTenKH.getSelectedItem().toString());
+        lblDiemTichLuy.setText(String.valueOf(diemtichluy));
+    }//GEN-LAST:event_cboTenKHItemStateChanged
+
+    private void cboTenKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTenKHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboTenKHActionPerformed
 
     /**
      * @param args the command line arguments
@@ -831,6 +933,7 @@ public class BanHangJDialog extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     void init(){
         setLocationRelativeTo(null);
+        cbotenkh=new DefaultComboBoxModel();
         this.fillComboBoxLoaiSanPham();
         this.fillComboBoxTenKH();
         this.fillComboBoxChietKhau();
@@ -914,17 +1017,22 @@ public class BanHangJDialog extends javax.swing.JDialog {
     }
     
     KhachHangDAO khdao = new KhachHangDAO();
+    DefaultComboBoxModel cbotenkh;
     
-    void chonTenKH(){
-        KhachHang tenKH = (KhachHang) cboTenKH.getSelectedItem();
-    }
+//    void chonTenKH(){
+//        KhachHang tenKH = (KhachHang) cboTenKH.getSelectedItem();
+//    }
     void fillComboBoxTenKH(){
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboTenKH.getModel();
-        model.removeAllElements();
+        cbotenkh.removeAllElements();
         List<KhachHang> list = khdao.selectAll();
         for(KhachHang tenkh: list){
-            model.addElement(tenkh);
+            cbotenkh.addElement(tenkh.getTenKH().toString());
         }
+        
+        cboTenKH.setModel(cbotenkh);
+        String tenkh = cboTenKH.getItemAt(0).toString();
+        double diemtichluy = (double) XJdbc.value("Select DiemTichLuy from KhachHang where TenKH like ?", tenkh);
+        lblDiemTichLuy.setText(String.valueOf(diemtichluy));
     }
     void fillLabel() {
         try {
@@ -940,26 +1048,31 @@ public class BanHangJDialog extends javax.swing.JDialog {
     
     KhuyenMaiDAO kmdao = new KhuyenMaiDAO();
     
-    void chonGiamGia(){
-        KhuyenMai tenKM = (KhuyenMai) cboChietKhau.getSelectedItem();
-    }
+//    void chonGiamGia(){
+//        KhuyenMai tenKM = (KhuyenMai) cboChietKhau.getSelectedItem();
+//    }
     void fillComboBoxChietKhau(){
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboChietKhau.getModel();
         model.removeAllElements();
         List<KhuyenMai> list = kmdao.selectAll();
         for(KhuyenMai giamgia: list){
-            model.addElement(giamgia);
+            model.addElement(giamgia.getTenKM());
         }
     }
     
     
     
-    public int tinhTien() {
-        int sum = 0;
-        for (int i = 0; i < tblOrder.getRowCount(); i++) {
-            sum += Double.valueOf(tblOrder.getValueAt(i, 2).toString());
-        }
-        return Integer.valueOf(sum);
+    public void tinhTien() {
+        double sum = 0;
+                  
+                  for(int i=0; i< tblOrder.getRowCount(); i++){
+                      System.out.println(""+tblOrder.getValueAt(i, 2).toString());
+                      sum += Double.valueOf(tblOrder.getValueAt(i, 2).toString());
+                  }
+//                  double sauchietkhau = sum*Double.valueOf(cboChietKhau.getSelectedItem().toString());
+//                  lblTongTien.setText(String.valueOf(sum-Double.valueOf(lblDiemTichLuy.getText())-sauchietkhau));
+                  
+                  lblTongTien.setText(String.valueOf(sum-Double.valueOf(lblDiemTichLuy.getText())));
     }
     
 //    void setForm(KhoaHoc kh){

@@ -5,6 +5,7 @@
  */
 package com.coffee.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -18,7 +19,10 @@ public class NhanVien {
     private String diaChi;
     private String sDT;
     private String email;
-    private Date ngayVaoLam;
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+    Date date = new Date();  
+    private Date ngayVaoLam = date;
+    
     private boolean vaiTro = false;
     private String matKhau;
     private String hinh;

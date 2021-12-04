@@ -164,10 +164,9 @@ public class ThongKe extends javax.swing.JDialog {
         btnInBaoCao = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDoanhThu = new javax.swing.JTable();
-        btnGuiMail = new javax.swing.JToggleButton();
         cboNam = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnGuiMail = new javax.swing.JToggleButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblKH = new javax.swing.JTable();
@@ -179,15 +178,17 @@ public class ThongKe extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         cboSP = new javax.swing.JComboBox<>();
         txtAttach = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tabs.setBackground(new java.awt.Color(238, 207, 161));
 
         jPanel1.setBackground(new java.awt.Color(238, 207, 161));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê doanh thu"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thống kê doanh thu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18), new java.awt.Color(153, 51, 0))); // NOI18N
 
         btnInBaoCao.setBackground(new java.awt.Color(0, 255, 204));
+        btnInBaoCao.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         btnInBaoCao.setText("IN BÁO CÁO");
         btnInBaoCao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,7 +196,7 @@ public class ThongKe extends javax.swing.JDialog {
             }
         });
 
-        tblDoanhThu.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        tblDoanhThu.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         tblDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -204,16 +205,10 @@ public class ThongKe extends javax.swing.JDialog {
                 "MaHD ", "MaNV ", "Số Lượng", "Tên Sản Phẩm", "Mã Sản Phẩm", "Tổng Tiền"
             }
         ));
+        tblDoanhThu.setRowHeight(20);
         jScrollPane2.setViewportView(tblDoanhThu);
 
-        btnGuiMail.setBackground(new java.awt.Color(0, 255, 204));
-        btnGuiMail.setText("GỬI MAIL");
-        btnGuiMail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuiMailActionPerformed(evt);
-            }
-        });
-
+        cboNam.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
         cboNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboNam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,14 +216,15 @@ public class ThongKe extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel1.setText("Năm :");
 
-        jButton1.setBackground(new java.awt.Color(0, 255, 204));
-        jButton1.setText("Chọn File");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnGuiMail.setBackground(new java.awt.Color(0, 255, 204));
+        btnGuiMail.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        btnGuiMail.setText("GỬI MAIL");
+        btnGuiMail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnGuiMailActionPerformed(evt);
             }
         });
 
@@ -242,20 +238,20 @@ public class ThongKe extends javax.swing.JDialog {
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                         .addComponent(cboNam, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61)
                         .addComponent(btnInBaoCao)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnGuiMail, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGuiMail)
+                        .addGap(103, 103, 103)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+<<<<<<< HEAD
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -263,8 +259,15 @@ public class ThongKe extends javax.swing.JDialog {
                         .addComponent(jLabel1)
                         .addComponent(btnInBaoCao, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnGuiMail, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+=======
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboNam, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnInBaoCao, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuiMail, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> 0189566458263312658bcc13c08ad8b4b8e26daf
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -282,8 +285,9 @@ public class ThongKe extends javax.swing.JDialog {
         tabs.addTab("DOANH THU", jPanel6);
 
         jPanel2.setBackground(new java.awt.Color(238, 207, 161));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê khách hàng"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thống kê khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18), new java.awt.Color(153, 51, 0))); // NOI18N
 
+        tblKH.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         tblKH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -292,11 +296,13 @@ public class ThongKe extends javax.swing.JDialog {
                 "Tháng", "Mã Khách Hàng", "Tên Khách Hàng", "Số Lượng SP Đã Mua", "Điểm Tích Lũy", "Xếp Hạng"
             }
         ));
+        tblKH.setRowHeight(20);
         jScrollPane3.setViewportView(tblKH);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel2.setText("Tháng :");
 
+        cboKH.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
         cboKH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -327,14 +333,15 @@ public class ThongKe extends javax.swing.JDialog {
                     .addComponent(cboKH, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))
         );
 
         tabs.addTab("KHÁCH HÀNG", jPanel2);
 
         jPanel4.setBackground(new java.awt.Color(238, 207, 161));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê sản phẩm"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thống kê sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18), new java.awt.Color(153, 51, 0))); // NOI18N
 
+        tblSP.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         tblSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -343,11 +350,13 @@ public class ThongKe extends javax.swing.JDialog {
                 "Tháng", "Tên Loại SP", "Mã Sản Phẩm", "Tên Sản Phẩm", "Số Lượng Bán Ra"
             }
         ));
+        tblSP.setRowHeight(20);
         jScrollPane5.setViewportView(tblSP);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel3.setText("Tháng :");
 
+        cboSP.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
         cboSP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -378,10 +387,19 @@ public class ThongKe extends javax.swing.JDialog {
                     .addComponent(cboSP, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))
         );
 
         tabs.addTab("SẢN PHẨM", jPanel4);
+
+        jButton1.setBackground(new java.awt.Color(0, 255, 204));
+        jButton1.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
+        jButton1.setText("Chọn File");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -393,6 +411,8 @@ public class ThongKe extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(txtAttach, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -400,7 +420,11 @@ public class ThongKe extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtAttach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAttach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -419,16 +443,16 @@ public class ThongKe extends javax.swing.JDialog {
             p.put("mail.smtp.starttls.enable", "true");
             p.put("mail.smtp.host", "smtp.gmail.com");
             p.put("mail.smtp.port", 587);
-            String accountName = "thuongntmps18777@fpt.edu.vn";
-            String accountPassword = "";
+            String accountName = "thuongntmps18777@fpt.edu.vn"; //Đổi thành mail của người gửi
+            String accountPassword = ""; //Gõ mật khẩu của mail bên trên vào dấu ""
             javax.mail.Session s = javax.mail.Session.getInstance(p,
                     new javax.mail.Authenticator() {
                         protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
                             return new javax.mail.PasswordAuthentication(accountName, accountPassword);
                         }});          
-            String from = "thuongntmps18777@fpt.edu.vn";
-            String to = "thuongntmps18777@fpt.edu.vn";
-//            String subject = txtSubject.getText();
+            String from = "thuongntmps18777@fpt.edu.vn"; //Đổi thành mail của người gửi
+            String to = "thuongntmps18777@fpt.edu.vn"; //Đổi thành mail của người nhận
+            String subject = "THỐNG KÊ DOANH THU";
             String body = "Thống kê doanh thu";
             
             Message msg = new MimeMessage(s);
@@ -436,8 +460,8 @@ public class ThongKe extends javax.swing.JDialog {
             msg.setFrom(new InternetAddress(from));
 //            String ccEmails = "thuongntmps18777@fpt.edu.vn,maithuong0001@gmail.com";
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-//            msg.setSubject(subject);
-//            msg.setText(body);
+            msg.setSubject(subject);
+            msg.setText(body);
             msg.setSentDate(new Date());
             
             //3. dinh nghia loai noi dung cua message
@@ -469,7 +493,7 @@ public class ThongKe extends javax.swing.JDialog {
 
     private void btnInBaoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInBaoCaoActionPerformed
         // TODO add your handling code here:
-        
+        this.exportExcel(tblDoanhThu);
     }//GEN-LAST:event_btnInBaoCaoActionPerformed
 
     private void cboKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboKHActionPerformed

@@ -5,6 +5,7 @@
  */
 package com.coffee.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -15,9 +16,11 @@ public class KhuyenMai {
 
     private String MaKM;
     private String TenKM;
-    private double GiamGia;
-    private Date DateStart;
-    private Date DateEnd;
+     private double GiamGia;
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+    Date date = new Date();    
+    private Date DateStart = date;
+    private Date DateEnd = date ;
 
     public Date getDateStart() {
         return DateStart;

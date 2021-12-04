@@ -25,10 +25,10 @@ public class KhuyenMaiDAO extends CoffeeDAO<KhuyenMai, String>{
         XJdbc.update(sql, 
                 model.getMaKM(), 
                 model.getTenKM(), 
-                model.getGiamGia());
-                model.getDateStart();
-                model.getDateEnd();
-                model.getMoTa();
+                model.getGiamGia(),
+                model.getDateStart(),
+                model.getDateEnd(),
+                model.getMoTa());
     }
 
     

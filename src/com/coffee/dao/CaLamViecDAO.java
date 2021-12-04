@@ -20,7 +20,7 @@ public class CaLamViecDAO extends CoffeeDAO<CaLamViec, String> {
 
     
     public void insert(CaLamViec model) {
-        String sql="INSERT INTO CaLamViec (MaCaLV, TenCaLV,GioBD, GioKT, SoTien) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql="INSERT INTO CaLamViec (MaCaLV, TenCaLV,GioBD, GioKT, SoTien) VALUES (?, ?, ?, ?, ?)";
         XJdbc.update(sql, 
                 model.getMaCaLV(), 
                 model.getTenCaLV(), 
@@ -54,7 +54,7 @@ public class CaLamViecDAO extends CoffeeDAO<CaLamViec, String> {
     }
 
     
-    public List<CaLamViec> selectAll() {
+    public List<CaLamViec> selectAll(){
         String sql="SELECT * FROM CaLamViec";
         return this.selectBySql(sql);
     }
