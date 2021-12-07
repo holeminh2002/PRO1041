@@ -542,38 +542,39 @@ public class QLsanphamDialog extends javax.swing.JDialog {
 
     private void btnthemspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemspActionPerformed
         // TODO add your handling code here:
-        this.insert();
-//         if(Helper.checkNullText(txtmasp)&&
-//                Helper.checkNullText(txttensp)&&
-//                Helper.checkNullText(txtdongia)&&                              
-//                checkNullHinh()){
-//            if(Helper.checkMaSP(txtmasp)&&
-//                    Helper.checkTenSP(txttensp)&&
-//                    Helper.checkDonGia(txtdongia)){
-//                
-//                if(checkTrungMa(txtmasp)){
-//                    insert();
-//                }
-//            }
-//        }
+        
+        //this.insert();
+       if(Helper.checkNullText(txtmasp)&&
+              Helper.checkNullText(txttensp)&&
+               Helper.checkNullText(txtdongia)&&                              
+              checkNullHinh()){
+          if(Helper.checkMaSP(txtmasp)&&
+               Helper.checkTenSP(txttensp)&&
+                 Helper.checkDonGia(txtdongia)){
+             
+             if(checkTrungMa(txtmasp)){
+                insert();
+             }
+         }
+       }
     }//GEN-LAST:event_btnthemspActionPerformed
 
     private void btnsuaspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaspActionPerformed
         // TODO add your handling code here:
-        this.update();
-//         if(Helper.checkNullText(txtmasp)&&
-//                Helper.checkNullText(txttensp)&&
-//                Helper.checkNullText(txtdongia)&&                              
-//                checkNullHinh()){
-//            if(Helper.checkMaSP(txtmasp)&&
-//                    Helper.checkTenSP(txttensp)&&
-//                    Helper.checkDonGia(txtdongia)){
-//                
-//                if(checkTrungMa(txtmasp)){
-//                    update();
-//                }
-//            }
-//        }
+        //this.update();
+      if(Helper.checkNullText(txtmasp)&&
+              Helper.checkNullText(txttensp)&&
+               Helper.checkNullText(txtdongia)&&                              
+              checkNullHinh()){
+         if(Helper.checkMaSP(txtmasp)&&
+                 Helper.checkTenSP(txttensp)&&
+                 Helper.checkDonGia(txtdongia)){
+            
+             if(checkTrungMa(txtmasp)){
+                 update();
+            }
+            }
+        }
     }//GEN-LAST:event_btnsuaspActionPerformed
 
     private void btnxoaspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaspActionPerformed
@@ -957,7 +958,7 @@ private void init() {
         try {
             if(checkloaiSP()){
             loaispdao.insert(loaisp);
-            this.fillToTable();
+            this.fillToTableLoaiSP();
             this.clearFormLoaiSP();
 //            this.add();
             MsgBox.alert(this, "Thêm mới thành công!");
@@ -993,7 +994,7 @@ private void init() {
         LoaiSanPham loaisp = getFormLoaiSP();
         try {
             loaispdao.update(loaisp);
-            this.fillToTable();
+          this.fillToTableLoaiSP();
             this.clearFormLoaiSP();
             MsgBox.alert(this, "Cập nhật thành công!");
         } 
