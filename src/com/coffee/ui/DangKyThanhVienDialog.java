@@ -68,12 +68,12 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         cboXH = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        cboDiem = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDiaChi = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         txtMaKH = new javax.swing.JTextField();
+        txtDiem = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btnAdd = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
@@ -96,19 +96,19 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
         tblThanhVien.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         tblThanhVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Họ tên", "Mã khách hàng", "Xếp hạng", "Điểm tích lũy", "Số điện thoại"
+                "Họ tên", "Mã khách hàng", "Xếp hạng", "Điểm tích lũy", "Số điện thoại", "Email", "Địa chỉ"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -155,10 +155,6 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel8.setText("Điểm tích lũy");
 
-        cboDiem.setEditable(true);
-        cboDiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboDiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1000", "2000", "3000", "4000" }));
-
         jLabel9.setFont(new java.awt.Font("Times New Roman", 3, 13)); // NOI18N
         jLabel9.setText("Địa chỉ");
 
@@ -195,15 +191,15 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
                             .addComponent(jLabel9))
                         .addGap(38, 38, 38)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSDT)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(cboXH, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(59, 59, 59)
+                                .addGap(30, 30, 30)
                                 .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cboDiem, 0, 1, Short.MAX_VALUE))
-                            .addComponent(txtSDT)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtDiem))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -230,7 +226,7 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
                     .addComponent(jLabel7)
                     .addComponent(cboXH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(cboDiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
@@ -418,7 +414,7 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
             String to = "thuongntmps18777@fpt.edu.vn,huebtaps18781@fpt.edu.vn,minhhlps18682@fpt.edu.vn,nhatnmps18727@fpt.edu.vn,khaptnps18767@fpt.edu.vn,khanhnpps18747@fpt.edu.vn";
             String subject = "Welcome to Coffee GROUP2";
             String body = "Coffee Group 2 moi quy khach hang than thiet tham khao cac chuong trinh khuyen mai ap dung"
-                    + "trong thang 12"
+                    + "trong thang 11"
                     + "\n Khuyen mai 11/11"
                     + "\n Khuyen mai 20/11"
                     + "\n Khuyen mai dành cho khach hang co the HS/SV"
@@ -467,6 +463,66 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -489,7 +545,6 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnGuiMail;
     private javax.swing.JButton btnNew;
-    private javax.swing.JComboBox<String> cboDiem;
     private javax.swing.JComboBox<String> cboXH;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -508,6 +563,7 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblThanhVien;
     private javax.swing.JTextArea txtDiaChi;
+    private javax.swing.JTextField txtDiem;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtMaKH;
@@ -525,11 +581,12 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
             List<KhachHang> list = khdao.selectAll();
             for(KhachHang kh: list){
                 Object[]row = {
-                    kh.getTenKH(), kh.getMaKH(), kh.getMaLoaiKH(), kh.getDiemTichLuy(), kh.getSDT()
+                    kh.getTenKH(), kh.getMaKH(), kh.getMaLoaiKH(), kh.getDiemTichLuy(), kh.getSDT(), kh.getEmail(), kh.getDiaChi()
                 };
                 model.addRow(row);
             }
         }catch (Exception e) {
+            e.printStackTrace();
             MsgBox.alert(this, "Lỗi truy vấn dữ liệu");
         }
     }
@@ -542,18 +599,19 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
 //        cboXH.setSelectedItem(true);
         cboXH.setSelectedItem(tblThanhVien.getValueAt(r, 2));
 //        cboDiem.setSelectedItem(true);
-        cboDiem.setSelectedItem(tblThanhVien.getValueAt(r, 3));
+//        Double.valueOf(kh.getDiemtichluy);
+        txtDiem.setText(String.valueOf(kh.getDiemTichLuy()));
         txtDiaChi.setText(kh.getDiaChi());
     }
     KhachHang getForm(){
         KhachHang kh = new KhachHang();
         kh.setTenKH(txtHoTen.getText());
-        kh.setMaKH(Integer.valueOf(txtMaKH.getText()));
+        kh.setMaKH(Integer.parseInt(txtMaKH.getText()));
         kh.setEmail(txtEmail.getText());
         kh.setSDT(txtSDT.getText());
         kh.setDiaChi(txtDiaChi.getText());
-        kh.setMaLoaiKH((String) cboXH.getSelectedItem());
-        kh.setDiemTichLuy((Double) cboDiem.getSelectedItem());
+        kh.setMaLoaiKH(String.valueOf(cboXH.getSelectedItem()));
+        kh.setDiemTichLuy(Float.valueOf(txtDiem.getText()));
         return kh;
     }
     void clearForm(){
@@ -566,10 +624,10 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
         this.setForm(kh);       
     }
     void delete(){
-        if(!Auth.isManager()){
-            MsgBox.alert(this, "Bạn không có quyền xóa nhân viên này!");
-        }
-        else{
+//        if(!Auth.isManager()){
+//            MsgBox.alert(this, "Bạn không có quyền xóa nhân viên này!");
+//        }
+//        else{
             if(MsgBox.confirm(this, "Bạn có muốn xóa hay không?")){
                 Integer MaKH = Integer.valueOf(txtMaKH.getText());
                 try {
@@ -581,35 +639,43 @@ public class DangKyThanhVienDialog extends javax.swing.JDialog {
                 catch (Exception e) {
                     MsgBox.alert(this, "Xóa thành công!");
                 }
-            }
+//            }
         }
     }
+    
     void update(){
-        KhachHang kh  = getForm();
         try {
+            KhachHang kh  = getForm();
             khdao.update(kh);
             this.fillTable();
             MsgBox.alert(this, "Cập nhật thành công!");
         } 
         catch (Exception e) {
+            e.printStackTrace();
             MsgBox.alert(this, "Cập nhật thất bại!");
         }
     }
     void insert(){
        KhachHang kh  = getForm();
         try {
-//           if(check()){
             khdao.insert(kh);
-            
-        System.out.println("ok");
             this.fillTable();
-            this.clearForm();
+//            this.clearForm();
             MsgBox.alert(this, "Thêm mới thành công!");
            }
-//        } 
         catch (Exception e) {
             MsgBox.alert(this, "Thêm mới thất bại!");
+            e.printStackTrace();
         }
+//        try {
+//            khdao.insert(kh);
+//            this.fillTable();
+//            this.clearForm();
+//            MsgBox.alert(this, "Thêm thành công");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            MsgBox.alert(this, "Thêm sản phẩm thành công");
+//        }
 
     }
     
